@@ -93,7 +93,7 @@ export default function DonateModal({ isOpen, onClose, defaultCause = "General F
 
       if (isScriptLoaded && (window as any).Razorpay) {
         const options = {
-          key: orderData.keyId || "rzp_live_SboFvtCQiYWPQj",
+          key: orderData.keyId || "rzp_test_YOUR_KEY_HERE",
           amount: orderData.amount,
           currency: orderData.currency || "INR",
           name: "Ratnakar's NGO",

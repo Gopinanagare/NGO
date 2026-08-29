@@ -18,8 +18,8 @@ async function main() {
       email: "contact@ratnakarngo.org",
       logoUrl: "/logo.png",
       signatureUrl: "/signature.png",
-      razorpayKeyId: "rzp_live_SboFvtCQiYWPQj",
-      razorpayKeySecret: "4jWrEpc9tOBOSYJfRWwrHLOO",
+      razorpayKeyId: "rzp_test_YOUR_KEY_HERE",
+      razorpayKeySecret: "YOUR_RAZORPAY_SECRET_HERE",
     },
     create: {
       id: "1",
@@ -33,8 +33,8 @@ async function main() {
       email: "contact@ratnakarngo.org",
       logoUrl: "/logo.png",
       signatureUrl: "/signature.png",
-      razorpayKeyId: "rzp_live_SboFvtCQiYWPQj",
-      razorpayKeySecret: "4jWrEpc9tOBOSYJfRWwrHLOO",
+      razorpayKeyId: "rzp_test_YOUR_KEY_HERE",
+      razorpayKeySecret: "YOUR_RAZORPAY_SECRET_HERE",
     },
   });
 

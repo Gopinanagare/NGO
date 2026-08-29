@@ -771,9 +771,9 @@ export default function AdminDashboardPage() {
               </div>
 
               <div className="p-4 bg-emerald-50 rounded-2xl border border-emerald-200 space-y-2 text-emerald-950">
-                <p className="font-bold text-emerald-900">Razorpay Live Payment Credentials Configured:</p>
-                <p><strong>Live Key ID:</strong> rzp_live_SboFvtCQiYWPQj</p>
-                <p><strong>Secret Key:</strong> 4jWrEpc9tOBOSYJfRWwrHLOO</p>
+                <p className="font-bold text-emerald-900">Razorpay Payment Credentials Configured:</p>
+                <p><strong>Key ID:</strong> rzp_test_YOUR_KEY_HERE</p>
+                <p><strong>Secret Key:</strong> ••••••••••••••••</p>
                 <p className="text-[10px] text-emerald-700 pt-1">All donations generate verified 80G tax PDF receipts automatically.</p>
               </div>
             </div>

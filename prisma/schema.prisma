@@ -252,6 +252,6 @@ model NGOInfo {
   email           String   @default("contact@ratnakarngo.org")
   logoUrl         String   @default("/logo.png")
   signatureUrl    String   @default("/signature.png")
-  razorpayKeyId   String   @default("rzp_live_SboFvtCQiYWPQj")
-  razorpayKeySecret String @default("4jWrEpc9tOBOSYJfRWwrHLOO")
+  razorpayKeyId   String   @default("rzp_test_YOUR_KEY_HERE")
+  razorpayKeySecret String @default("YOUR_RAZORPAY_SECRET_HERE")
 }
