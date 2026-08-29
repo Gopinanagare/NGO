@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>About Us | ImpactGlobal</title>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind Config defined by the Design System -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container-high": "#e6e8ea",
+                        "secondary": "#964900",
+                        "on-tertiary-container": "#89968c",
+                        "on-tertiary": "#ffffff",
+                        "on-tertiary-fixed-variant": "#3e4a41",
+                        "surface-container-lowest": "#ffffff",
+                        "on-error-container": "#93000a",
+                        "surface-variant": "#e0e3e5",
+                        "error": "#ba1a1a",
+                        "on-primary-container": "#8293b8",
+                        "tertiary-container": "#232e26",
+                        "on-secondary-fixed-variant": "#723600",
+                        "secondary-fixed-dim": "#ffb786",
+                        "surface-container-low": "#f2f4f6",
+                        "outline": "#75777f",
+                        "inverse-on-surface": "#eff1f3",
+                        "secondary-container": "#fc820c",
+                        "primary-container": "#1a2b4b",
+                        "surface-bright": "#f7f9fb",
+                        "tertiary": "#0f1912",
+                        "primary-fixed": "#d8e2ff",
+                        "surface-tint": "#4e5e81",
+                        "on-secondary-fixed": "#311300",
+                        "on-secondary": "#ffffff",
+                        "outline-variant": "#c5c6cf",
+                        "tertiary-fixed": "#d9e6da",
+                        "on-background": "#191c1e",
+                        "on-tertiary-fixed": "#131e17",
+                        "on-surface-variant": "#44474e",
+                        "primary-fixed-dim": "#b6c6ef",
+                        "on-primary-fixed-variant": "#364768",
+                        "on-primary": "#ffffff",
+                        "surface-container": "#eceef0",
+                        "inverse-primary": "#b6c6ef",
+                        "error-container": "#ffdad6",
+                        "surface-dim": "#d8dadc",
+                        "on-surface": "#191c1e",
+                        "inverse-surface": "#2d3133",
+                        "background": "#f7f9fb",
+                        "on-primary-fixed": "#081b3a",
+                        "secondary-fixed": "#ffdcc6",
+                        "on-error": "#ffffff",
+                        "surface-container-highest": "#e0e3e5",
+                        "on-secondary-container": "#5e2c00",
+                        "primary": "#031635",
+                        "surface": "#f7f9fb",
+                        "tertiary-fixed-dim": "#bdcabe"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-desktop": "40px",
+                        "section-gap": "80px",
+                        "base": "8px",
+                        "gutter": "24px",
+                        "margin-mobile": "16px",
+                        "container-max": "1280px"
+                    },
+                    "fontFamily": {
+                        "body-md": ["Inter"],
+                        "stat-lg": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "label-md": ["Inter"],
+                        "display-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "stat-lg": ["40px", { "lineHeight": "48px", "fontWeight": "700" }],
+                        "headline-lg-mobile": ["28px", { "lineHeight": "36px", "fontWeight": "600" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "label-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "500" }],
+                        "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body {
+            background-color: #f7f9fb;
+            color: #191c1e;
+            -webkit-font-smoothing: antialiased;
+        }
+        
+        .material-symbols-outlined {
+          font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        
+        .material-symbols-outlined.fill {
+            font-variation-settings: 'FILL' 1;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col font-body-md text-body-md bg-background text-on-background pt-[80px]">
+<!-- TopNavBar -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-margin-mobile md:px-margin-desktop py-4 max-w-container-max mx-auto bg-surface/95 dark:bg-primary/95 backdrop-blur-md border-b border-outline-variant/30 dark:border-outline/30 shadow-sm dark:shadow-none">
+<div class="text-headline-md font-headline-md font-bold text-primary dark:text-primary-fixed">
+            ImpactGlobal
+        </div>
+<!-- Web Nav -->
+<nav class="hidden md:flex items-center gap-gutter">
+<a class="font-label-md text-label-md text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-primary-fixed transition-colors" href="#">Home</a>
+<a class="font-label-md text-label-md text-secondary font-bold border-b-2 border-secondary pb-1" href="#">About</a>
+<a class="font-label-md text-label-md text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-primary-fixed transition-colors" href="#">Activities</a>
+<a class="font-label-md text-label-md text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-primary-fixed transition-colors" href="#">Events</a>
+<a class="font-label-md text-label-md text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-primary-fixed transition-colors" href="#">Blog</a>
+</nav>
+<button class="bg-[#F57C00] text-white px-6 py-2 rounded font-label-md text-label-md font-bold hover:opacity-90 transition-opacity flex items-center justify-center">
+            Donate Now
+        </button>
+</header>
+<!-- Main Content -->
+<main class="flex-grow w-full max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-section-gap flex flex-col gap-section-gap">
+<!-- Hero / Intro -->
+<section class="flex flex-col md:flex-row gap-margin-desktop items-center">
+<div class="flex-1 space-y-6">
+<h1 class="font-display-lg text-display-lg text-primary">Our Story</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant">
+                    Founded in 2010, ImpactGlobal emerged from a simple belief: verifiable action creates lasting change. What began as a local initiative in response to regional disparities has scaled into a robust institutional framework supporting communities worldwide. Our history is defined by relentless optimization of aid delivery and an unwavering commitment to transparent impact.
+                </p>
+<div class="flex gap-4 pt-4">
+<div>
+<div class="font-stat-lg text-stat-lg text-primary">14</div>
+<div class="font-label-md text-label-md text-outline">Years of Impact</div>
+</div>
+<div class="w-px bg-outline-variant"></div>
+<div>
+<div class="font-stat-lg text-stat-lg text-primary">50+</div>
+<div class="font-label-md text-label-md text-outline">Global Regions</div>
+</div>
+</div>
+</div>
+<div class="flex-1 w-full h-[400px] rounded-xl overflow-hidden shadow-[0px_4px_12px_rgba(26,43,75,0.05)]">
+<img class="w-full h-full object-cover" data-alt="A compelling, documentary-style photograph showing a diverse team of NGO workers and community leaders reviewing plans together outdoors under bright sunlight. The setting is a developing community showing signs of recent infrastructure improvement. The lighting is natural and optimistic, creating a bright, modern aesthetic aligned with corporate modernism and professional trust. Deep navy and white tones dominate, with warm accents." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCdrBhnKwqdFTmPgNNN_HoxT6VyWxa8SszUnne-1zLj2gSmXQzNszCURur0PQZGeW44BtlJK0pAAF7GJ84190_ihtxITRxe3z8fAHN9LZtEov8DoTvIwA7tj3jSXLp0B3JVsN4lKu-j6i4Iw65-AEeC790f6vGXsrww0oK3-VmpUROni5vyu2GPHEFnp1fcBQAkETm1c8D5mgNJB-jKv4FSeVWde560O-qLj9_GrJPLlzJvbBazZNoQaQ"/>
+</div>
+</section>
+<!-- Mission, Vision, Values Bento -->
+<section class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+<div class="md:col-span-2 bg-surface-container-lowest rounded-xl p-8 shadow-[0px_4px_12px_rgba(26,43,75,0.05)] border border-outline-variant/30 flex flex-col justify-center">
+<h2 class="font-headline-lg text-headline-lg text-primary mb-4">Mission &amp; Vision</h2>
+<div class="space-y-4">
+<p class="font-body-md text-body-md text-on-surface-variant border-l-4 border-secondary pl-4">
+<strong class="text-primary block mb-1">Mission:</strong> To engineer scalable, sustainable solutions for vulnerable communities through rigorous data analysis, local empowerment, and transparent resource allocation.
+                    </p>
+<p class="font-body-md text-body-md text-on-surface-variant border-l-4 border-primary pl-4">
+<strong class="text-primary block mb-1">Vision:</strong> A globally resilient ecosystem where institutional trust and grassroots action converge to eliminate systemic inequality.
+                    </p>
+</div>
+</div>
+<div class="bg-primary text-on-primary rounded-xl p-8 shadow-[0px_8px_24px_rgba(26,43,75,0.12)]">
+<h3 class="font-headline-md text-headline-md mb-6">Core Values</h3>
+<ul class="space-y-4">
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-secondary-fixed">verified_user</span>
+<div>
+<strong class="font-label-md text-label-md block">Radical Transparency</strong>
+<span class="font-body-md text-body-md text-primary-fixed-dim text-sm">Every dollar tracked.</span>
+</div>
+</li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-secondary-fixed">trending_up</span>
+<div>
+<strong class="font-label-md text-label-md block">Measurable Impact</strong>
+<span class="font-body-md text-body-md text-primary-fixed-dim text-sm">Data-driven outcomes.</span>
+</div>
+</li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-secondary-fixed">diversity_3</span>
+<div>
+<strong class="font-label-md text-label-md block">Local Empowerment</strong>
+<span class="font-body-md text-body-md text-primary-fixed-dim text-sm">Communities lead first.</span>
+</div>
+</li>
+</ul>
+</div>
+</section>
+<!-- Leadership Team -->
+<section class="space-y-8">
+<div class="text-center">
+<h2 class="font-headline-lg text-headline-lg text-primary">Leadership Team</h2>
+<p class="font-body-md text-body-md text-on-surface-variant mt-2 max-w-2xl mx-auto">Governed by experts in international development, finance, and logistics.</p>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
+<!-- Profile Card 1 -->
+<div class="bg-surface-container-lowest rounded-xl overflow-hidden shadow-[0px_4px_12px_rgba(26,43,75,0.05)] border border-outline-variant/30 hover:-translate-y-1 transition-transform duration-300">
+<div class="h-48 w-full bg-surface-container-high relative">
+<img class="w-full h-full object-cover" data-alt="A professional headshot of a female NGO executive in her 40s. She is wearing a modern, tailored navy blazer. The background is a slightly blurred, bright corporate office setting with subtle greenery. The lighting is soft and flattering, creating a trustworthy and stable mood aligned with the brand's corporate modernism aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAMBMy_HyCylI12U3yqXSk-SsSlHGEFf9eRbyONa5y_DzTpfp-s1xpk4LsOw5_1DNzcapiEYD9VuHkzgAwhdUnL3aYNRyMsr5eGmwsJUCli9G3hSdB-6Bw_CYDjUzCzoqM14pIEnasyRb2868MZF1NiXZhz3_kXwdKFIUVaTGXH5NUzdtMF97u6b5CzD2LZNEhJVzmCGcZ5av3GxM2DbECOFlyZfPEGtCoe3IOn7dQ7k7VxNvduIddmBA"/>
+</div>
+<div class="p-4 text-center">
+<h4 class="font-headline-md text-headline-md text-primary text-xl">Dr. Sarah Jenkins</h4>
+<p class="font-label-md text-label-md text-secondary mt-1">Founder &amp; CEO</p>
+</div>
+</div>
+<!-- Profile Card 2 -->
+<div class="bg-surface-container-lowest rounded-xl overflow-hidden shadow-[0px_4px_12px_rgba(26,43,75,0.05)] border border-outline-variant/30 hover:-translate-y-1 transition-transform duration-300">
+<div class="h-48 w-full bg-surface-container-high relative">
+<img class="w-full h-full object-cover" data-alt="A professional headshot of a male NGO board member in his 50s. He is wearing a crisp white shirt with no tie. The background is a slightly blurred, bright corporate office setting. The lighting is soft and flattering, creating a trustworthy and stable mood aligned with the brand's corporate modernism aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDcUoHs0QXot6-flervFPpv4klaq2Ek_B5ERZwnNS8z5XaRdRbN6nDBdox16Y960PGTTX7YMlI7IE_tg6zkoxsGroYu1Zug8fldmOar0RFiM7sgglyFh5UeUvY7Dudl5d6zOwWy82wBz_TLeSm8QCIT4AZY0RgPij1SMdIxPjPsRmO4oPTZrPfXN7AelhLFdKnl1RTxFsbk-UKUSTyO1og-cEM46-WtB7qDG4SVc2Z5zw6iAx0igxKK6g"/>
+</div>
+<div class="p-4 text-center">
+<h4 class="font-headline-md text-headline-md text-primary text-xl">Marcus Chen</h4>
+<p class="font-label-md text-label-md text-secondary mt-1">Chair of the Board</p>
+</div>
+</div>
+<!-- Profile Card 3 -->
+<div class="bg-surface-container-lowest rounded-xl overflow-hidden shadow-[0px_4px_12px_rgba(26,43,75,0.05)] border border-outline-variant/30 hover:-translate-y-1 transition-transform duration-300">
+<div class="h-48 w-full bg-surface-container-high relative">
+<img class="w-full h-full object-cover" data-alt="A professional headshot of a female NGO finance director in her 30s. She is wearing a professional blouse. The background is a slightly blurred, bright corporate office setting. The lighting is soft and flattering, creating a trustworthy and stable mood aligned with the brand's corporate modernism aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCiUbJMYlZW2ooJArRQJ2u4ZSIPqb4lFpj3CB0y16TmFrl-NRVpaw2SM9hc0b1o6rzkkZhZj_0nUK006LPO-jKSi579Hvuko_AzN-E8RpNVvV8o8VSSYCsuSd1U19T44ba6kV7T0tQNPANVySCNQoGFJ8haFQ5suUbJKCVI1mxShmisFRnFxwgtzpD8iB6majInZ-73WEZQ7r0zIaVLoixGZgmOttzWKPO5lmzhOGmlGtERQAB4JYMdtQ"/>
+</div>
+<div class="p-4 text-center">
+<h4 class="font-headline-md text-headline-md text-primary text-xl">Elena Rodriguez</h4>
+<p class="font-label-md text-label-md text-secondary mt-1">Chief Financial Officer</p>
+</div>
+</div>
+<!-- Profile Card 4 -->
+<div class="bg-surface-container-lowest rounded-xl overflow-hidden shadow-[0px_4px_12px_rgba(26,43,75,0.05)] border border-outline-variant/30 hover:-translate-y-1 transition-transform duration-300">
+<div class="h-48 w-full bg-surface-container-high relative">
+<img class="w-full h-full object-cover" data-alt="A professional headshot of a male NGO operations director in his 40s. He is wearing a dark, minimalist sweater. The background is a slightly blurred, bright corporate office setting. The lighting is soft and flattering, creating a trustworthy and stable mood aligned with the brand's corporate modernism aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDyvkbXoiITHxL4lvtty8A8pFQivTCXH47xE-j2K-HWd9k7QuFsWmQvjpEo8_672Vb1EJ9LkF4Ri-9REX8VmrGlxJ0MngChhODCYqgNjMyH_ZrIt8C7msCqfP9VX8XN_1MwMVfkqKbv8SJenLkHSXeoGVpoFjlzueX3apGvYgACaPoer6sCYr-fTAqdIBLM3NZOILNdc_04JYcdvlkK43v7CMZvIYibjAU-q327ekiq8lvCwhTzCuhEyA"/>
+</div>
+<div class="p-4 text-center">
+<h4 class="font-headline-md text-headline-md text-primary text-xl">David Osei</h4>
+<p class="font-label-md text-label-md text-secondary mt-1">Head of Global Operations</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Transparency & Legal -->
+<section class="bg-[#E8F5E9] rounded-xl p-margin-desktop shadow-[0px_4px_12px_rgba(26,43,75,0.05)]">
+<div class="flex flex-col md:flex-row gap-8 items-start">
+<div class="flex-1 space-y-4">
+<h2 class="font-headline-lg text-headline-lg text-[#131e17]">Transparency &amp; Accountability</h2>
+<p class="font-body-md text-body-md text-[#3e4a41]">
+                        We operate with absolute financial clarity. ImpactGlobal is a registered non-profit organization. We maintain strict compliance with international financial reporting standards.
+                    </p>
+<div class="inline-flex items-center gap-2 bg-[#d9e6da] px-3 py-1 rounded text-[#131e17] font-label-md text-label-md mt-2">
+<span class="material-symbols-outlined text-sm">gavel</span>
+                        Registered Charity 501(c)(3) &amp; 80G Certified
+                    </div>
+</div>
+<div class="flex-1 w-full bg-surface-container-lowest p-6 rounded-lg border border-outline-variant/30 space-y-4">
+<h3 class="font-headline-md text-headline-md text-primary text-lg">Financial Reports</h3>
+<ul class="space-y-3">
+<li>
+<a class="flex items-center justify-between p-3 hover:bg-surface-container-low rounded transition-colors group" href="#">
+<span class="font-body-md text-body-md font-medium text-on-surface">2023 Annual Report</span>
+<span class="material-symbols-outlined text-secondary group-hover:scale-110 transition-transform">download</span>
+</a>
+</li>
+<li class="border-t border-outline-variant/30">
+<a class="flex items-center justify-between p-3 hover:bg-surface-container-low rounded transition-colors group" href="#">
+<span class="font-body-md text-body-md font-medium text-on-surface">2022 Audited Financials</span>
+<span class="material-symbols-outlined text-secondary group-hover:scale-110 transition-transform">download</span>
+</a>
+</li>
+</ul>
+</div>
+</div>
+</section>
+<!-- Contact Summary -->
+<section class="border-t border-outline-variant/30 pt-section-gap grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+<div class="flex flex-col items-center gap-3">
+<div class="w-12 h-12 rounded-full bg-primary-fixed/20 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined fill">location_on</span>
+</div>
+<h4 class="font-headline-md text-headline-md text-lg text-primary">Headquarters</h4>
+<p class="font-body-md text-body-md text-on-surface-variant">1200 Impact Way, Suite 400<br/>Geneva, Switzerland</p>
+</div>
+<div class="flex flex-col items-center gap-3">
+<div class="w-12 h-12 rounded-full bg-primary-fixed/20 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined fill">mail</span>
+</div>
+<h4 class="font-headline-md text-headline-md text-lg text-primary">Email Us</h4>
+<p class="font-body-md text-body-md text-on-surface-variant">contact@impactglobal.org<br/>press@impactglobal.org</p>
+</div>
+<div class="flex flex-col items-center gap-3">
+<div class="w-12 h-12 rounded-full bg-primary-fixed/20 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined fill">call</span>
+</div>
+<h4 class="font-headline-md text-headline-md text-lg text-primary">Call Us</h4>
+<p class="font-body-md text-body-md text-on-surface-variant">+41 22 555 0199<br/>Mon-Fri, 9am - 5pm CET</p>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full bg-primary dark:bg-tertiary mt-auto">
+<div class="w-full flex flex-col gap-gutter px-margin-desktop py-section-gap max-w-container-max mx-auto">
+<div class="text-headline-md font-headline-md font-bold text-on-primary dark:text-primary-fixed mb-4">
+                ImpactGlobal
+            </div>
+<div class="flex flex-wrap gap-6 border-b border-white/10 pb-8">
+<a class="font-label-md text-label-md text-primary-fixed/80 hover:text-primary-fixed transition-colors hover:underline decoration-secondary-fixed underline-offset-4 focus-within:ring-2 focus-within:ring-secondary-fixed" href="#">Privacy Policy</a>
+<a class="font-label-md text-label-md text-primary-fixed/80 hover:text-primary-fixed transition-colors hover:underline decoration-secondary-fixed underline-offset-4 focus-within:ring-2 focus-within:ring-secondary-fixed" href="#">Financial Reports</a>
+<a class="font-label-md text-label-md text-primary-fixed/80 hover:text-primary-fixed transition-colors hover:underline decoration-secondary-fixed underline-offset-4 focus-within:ring-2 focus-within:ring-secondary-fixed" href="#">Volunteer Portal</a>
+<a class="font-label-md text-label-md text-primary-fixed/80 hover:text-primary-fixed transition-colors hover:underline decoration-secondary-fixed underline-offset-4 focus-within:ring-2 focus-within:ring-secondary-fixed" href="#">Contact Us</a>
+<a class="font-label-md text-label-md text-primary-fixed/80 hover:text-primary-fixed transition-colors hover:underline decoration-secondary-fixed underline-offset-4 focus-within:ring-2 focus-within:ring-secondary-fixed" href="#">Careers</a>
+</div>
+<div class="font-body-md text-body-md text-primary-fixed/60 text-sm mt-4">
+                © 2024 ImpactGlobal NGO. All rights reserved. Transparency and accountability verified.
+            </div>
+</div>
+</footer>
+</body></html>

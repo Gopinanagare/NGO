@@ -1,0 +1,256 @@
+datasource db {
+  provider = "sqlite"
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model User {
+  id        String   @id @default(uuid())
+  email     String   @unique
+  password  String
+  name      String
+  phone     String?
+  role      String   @default("DONOR") // ADMIN, VOLUNTEER, MEMBER, DONOR
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  donor       Donor?
+  volunteer   Volunteer?
+  member      Member?
+}
+
+model Donor {
+  id           String   @id @default(uuid())
+  userId       String?  @unique
+  user         User?    @relation(fields: [userId], references: [id], onDelete: SetNull)
+  name         String
+  email        String   @unique
+  phone        String
+  panNumber    String?
+  address      String?
+  city         String?
+  state        String?
+  pincode      String?
+  totalDonated Float    @default(0)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  donations Donation[]
+}
+
+model Donation {
+  id                String   @id @default(uuid())
+  receiptNumber     String   @unique
+  donorId           String?
+  donor             Donor?   @relation(fields: [donorId], references: [id], onDelete: SetNull)
+  donorName         String
+  donorEmail        String
+  donorPhone        String
+  donorPan          String?
+  donorAddress      String?
+  amount            Float
+  cause             String   @default("General Fund")
+  campaignId        String?
+  campaign          Campaign? @relation(fields: [campaignId], references: [id], onDelete: SetNull)
+  paymentMethod     String   @default("Razorpay")
+  paymentStatus     String   @default("SUCCESS") // SUCCESS, PENDING, FAILED
+  razorpayOrderId   String?
+  razorpayPaymentId String?
+  razorpaySignature String?
+  receiptPdfUrl     String?
+  createdAt         DateTime @default(now())
+}
+
+model Volunteer {
+  id                String   @id @default(uuid())
+  userId            String?  @unique
+  user              User?    @relation(fields: [userId], references: [id], onDelete: SetNull)
+  name              String
+  email             String   @unique
+  phone             String
+  dob               String?
+  address           String?
+  city              String?
+  occupation        String?
+  education         String?
+  skills            String   // Comma separated
+  availability      String   // Weekdays, Weekends, Full-time, etc.
+  interests         String?
+  profilePhoto      String?
+  status            String   @default("PENDING") // PENDING, VERIFIED, APPROVED, REJECTED
+  verificationNotes String?
+  totalHours        Float    @default(0)
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+
+  assignments  VolunteerAssignment[]
+  attendances  VolunteerAttendance[]
+  certificates VolunteerCertificate[]
+}
+
+model VolunteerAssignment {
+  id           String    @id @default(uuid())
+  volunteerId  String
+  volunteer    Volunteer @relation(fields: [volunteerId], references: [id], onDelete: Cascade)
+  projectId    String?
+  activity     Activity? @relation(fields: [projectId], references: [id], onDelete: SetNull)
+  eventName    String
+  assignedDate DateTime  @default(now())
+  status       String    @default("ACTIVE") // ACTIVE, COMPLETED
+  notes        String?
+}
+
+model VolunteerAttendance {
+  id          String    @id @default(uuid())
+  volunteerId String
+  volunteer   Volunteer @relation(fields: [volunteerId], references: [id], onDelete: Cascade)
+  projectId   String?
+  activity    Activity? @relation(fields: [projectId], references: [id], onDelete: SetNull)
+  date        String
+  checkIn     String
+  checkOut    String
+  hoursLogged Float
+  status      String    @default("VERIFIED") // SUBMITTED, VERIFIED, REJECTED
+  verifiedBy  String?
+  createdAt   DateTime  @default(now())
+}
+
+model VolunteerCertificate {
+  id               String    @id @default(uuid())
+  certificateNo    String    @unique
+  volunteerId      String
+  volunteer        Volunteer @relation(fields: [volunteerId], references: [id], onDelete: Cascade)
+  volunteerName    String
+  projectName      String
+  totalHours       Float
+  issueDate        DateTime  @default(now())
+  pdfUrl           String?
+  authorizedSignee String    @default("Ratnakar's NGO Management")
+}
+
+model MembershipPlan {
+  id             String   @id @default(uuid())
+  title          String
+  fee            Float
+  validityMonths Int      @default(12)
+  benefits       String   // Comma or line separated
+  active         Boolean  @default(true)
+  createdAt      DateTime @default(now())
+
+  members Member[]
+}
+
+model Member {
+  id           String         @id @default(uuid())
+  userId       String?        @unique
+  user         User?          @relation(fields: [userId], references: [id], onDelete: SetNull)
+  membershipNo String         @unique
+  planId       String
+  plan         MembershipPlan @relation(fields: [planId], references: [id])
+  memberName   String
+  memberEmail  String
+  memberPhone  String
+  status       String         @default("ACTIVE") // ACTIVE, EXPIRED, PENDING
+  validFrom    DateTime       @default(now())
+  validTill    DateTime
+  amountPaid   Float
+  paymentId    String?
+  createdAt    DateTime       @default(now())
+}
+
+model Campaign {
+  id           String     @id @default(uuid())
+  title        String
+  slug         String     @unique
+  description  String
+  targetAmount Float
+  raisedAmount Float      @default(0)
+  image        String
+  status       String     @default("ACTIVE") // ACTIVE, COMPLETED
+  category     String     @default("General")
+  createdAt    DateTime   @default(now())
+
+  donations Donation[]
+}
+
+model Activity {
+  id            String   @id @default(uuid())
+  title         String
+  category      String
+  description   String
+  location      String
+  beneficiaries Int      @default(0)
+  date          String
+  image         String
+  featured      Boolean  @default(false)
+  createdAt     DateTime @default(now())
+
+  assignments VolunteerAssignment[]
+  attendances VolunteerAttendance[]
+}
+
+model Event {
+  id                   String   @id @default(uuid())
+  title                String
+  description          String
+  venue                String
+  eventDate            String
+  eventTime            String
+  bannerImage          String
+  maxVolunteers        Int      @default(10)
+  registeredVolunteers Int      @default(0)
+  status               String   @default("UPCOMING") // UPCOMING, COMPLETED, CANCELLED
+  createdAt            DateTime @default(now())
+}
+
+model GalleryItem {
+  id        String   @id @default(uuid())
+  title     String
+  category  String
+  mediaType String   @default("image") // image, video
+  url       String
+  createdAt DateTime @default(now())
+}
+
+model BlogPost {
+  id          String   @id @default(uuid())
+  title       String
+  slug        String   @unique
+  excerpt     String
+  content     String
+  author      String   @default("Ratnakar NGO Team")
+  category    String   @default("Community")
+  image       String
+  published   Boolean  @default(true)
+  publishedAt DateTime @default(now())
+  createdAt   DateTime @default(now())
+}
+
+model ContactSubmission {
+  id        String   @id @default(uuid())
+  name      String
+  email     String
+  phone     String
+  subject   String
+  message   String
+  status    String   @default("NEW") // NEW, READ, REPLIED
+  createdAt DateTime @default(now())
+}
+
+model NGOInfo {
+  id              String   @id @default("1")
+  name            String   @default("Ratnakar's NGO")
+  tagline         String   @default("Empowering Communities, Transforming Lives")
+  regNumber       String   @default("NGO-IND-2024-884930")
+  taxExempt80G    String   @default("CIT(E)/80G/2024-25/A-99201")
+  taxExempt12A    String   @default("CIT(E)/12A/2024-25/A-11029")
+  address         String   @default("123 Humanity Enclave, Sector 15, New Delhi - 110001, India")
+  phone           String   @default("+91 98765 43210")
+  email           String   @default("contact@ratnakarngo.org")
+  logoUrl         String   @default("/logo.png")
+  signatureUrl    String   @default("/signature.png")
+  razorpayKeyId   String   @default("rzp_live_SboFvtCQiYWPQj")
+  razorpayKeySecret String @default("4jWrEpc9tOBOSYJfRWwrHLOO")
+}

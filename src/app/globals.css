@@ -1,0 +1,51 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --bg-surface: #f7f9fb;
+    --primary-navy: #031635;
+    --primary-container: #1a2b4b;
+    --brand-orange: #F57C00;
+    --brand-orange-hover: #e06d00;
+    --secondary-brown: #964900;
+    --soft-sage: #E8F5E9;
+    --dark-green: #1B5E20;
+    --surface-border: #e0e3e5;
+  }
+
+  body {
+    background-color: #f7f9fb;
+    color: #191c1e;
+    font-family: 'Inter', sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+}
+
+.material-symbols-outlined {
+  font-family: 'Material Symbols Outlined';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  font-feature-settings: 'liga';
+  -webkit-font-smoothing: antialiased;
+  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+}
+
+.material-symbols-outlined.fill {
+  font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+}
+
+.ambient-shadow-sm {
+  box-shadow: 0px 4px 12px rgba(26, 43, 75, 0.05);
+}
+
+.ambient-shadow-lg {
+  box-shadow: 0px 8px 24px rgba(26, 43, 75, 0.12);
+}

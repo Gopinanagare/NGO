@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ImpactGlobal - Activities</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "surface-container-high": "#e6e8ea",
+                      "secondary": "#964900",
+                      "on-tertiary-container": "#89968c",
+                      "on-tertiary": "#ffffff",
+                      "on-tertiary-fixed-variant": "#3e4a41",
+                      "surface-container-lowest": "#ffffff",
+                      "on-error-container": "#93000a",
+                      "surface-variant": "#e0e3e5",
+                      "error": "#ba1a1a",
+                      "on-primary-container": "#8293b8",
+                      "tertiary-container": "#232e26",
+                      "on-secondary-fixed-variant": "#723600",
+                      "secondary-fixed-dim": "#ffb786",
+                      "surface-container-low": "#f2f4f6",
+                      "outline": "#75777f",
+                      "inverse-on-surface": "#eff1f3",
+                      "secondary-container": "#fc820c",
+                      "primary-container": "#1a2b4b",
+                      "surface-bright": "#f7f9fb",
+                      "tertiary": "#0f1912",
+                      "primary-fixed": "#d8e2ff",
+                      "surface-tint": "#4e5e81",
+                      "on-secondary-fixed": "#311300",
+                      "on-secondary": "#ffffff",
+                      "outline-variant": "#c5c6cf",
+                      "tertiary-fixed": "#d9e6da",
+                      "on-background": "#191c1e",
+                      "on-tertiary-fixed": "#131e17",
+                      "on-surface-variant": "#44474e",
+                      "primary-fixed-dim": "#b6c6ef",
+                      "on-primary-fixed-variant": "#364768",
+                      "on-primary": "#ffffff",
+                      "surface-container": "#eceef0",
+                      "inverse-primary": "#b6c6ef",
+                      "error-container": "#ffdad6",
+                      "surface-dim": "#d8dadc",
+                      "on-surface": "#191c1e",
+                      "inverse-surface": "#2d3133",
+                      "background": "#f7f9fb",
+                      "on-primary-fixed": "#081b3a",
+                      "secondary-fixed": "#ffdcc6",
+                      "on-error": "#ffffff",
+                      "surface-container-highest": "#e0e3e5",
+                      "on-secondary-container": "#5e2c00",
+                      "primary": "#031635",
+                      "surface": "#f7f9fb",
+                      "tertiary-fixed-dim": "#bdcabe"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "margin-desktop": "40px",
+                      "section-gap": "80px",
+                      "base": "8px",
+                      "gutter": "24px",
+                      "margin-mobile": "16px",
+                      "container-max": "1280px"
+              },
+              "fontFamily": {
+                      "body-md": ["Inter"],
+                      "stat-lg": ["Inter"],
+                      "headline-lg-mobile": ["Inter"],
+                      "headline-md": ["Inter"],
+                      "headline-lg": ["Inter"],
+                      "body-lg": ["Inter"],
+                      "label-md": ["Inter"],
+                      "display-lg": ["Inter"]
+              },
+              "fontSize": {
+                      "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                      "stat-lg": ["40px", {"lineHeight": "48px", "fontWeight": "700"}],
+                      "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "600"}],
+                      "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                      "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                      "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                      "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "500"}],
+                      "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+              }
+            }
+          }
+        }
+      </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .material-symbols-outlined.fill { font-variation-settings: 'FILL' 1; }
+      </style>
+</head>
+<body class="bg-background text-on-background antialiased min-h-screen flex flex-col pt-[88px]">
+<!-- TopNavBar -->
+<nav class="bg-surface/95 dark:bg-primary/95 backdrop-blur-md border-b border-outline-variant/30 dark:border-outline/30 shadow-sm dark:shadow-none fixed top-0 left-0 w-full z-50 flex justify-between items-center px-margin-desktop py-4 max-w-container-max mx-auto h-[88px]">
+<div class="flex items-center gap-12">
+<a class="text-headline-md font-headline-md font-bold text-primary dark:text-primary-fixed" href="#">
+                ImpactGlobal
+            </a>
+<div class="hidden md:flex gap-8">
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-primary-fixed transition-colors text-label-md font-label-md hover:bg-surface-container-low dark:hover:bg-surface-container-high/10 transition-all duration-200 px-3 py-2 rounded-lg" href="#">Home</a>
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-primary-fixed transition-colors text-label-md font-label-md hover:bg-surface-container-low dark:hover:bg-surface-container-high/10 transition-all duration-200 px-3 py-2 rounded-lg" href="#">About</a>
+<a class="text-secondary font-bold border-b-2 border-secondary pb-1 text-label-md font-label-md" href="#">Activities</a>
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-primary-fixed transition-colors text-label-md font-label-md hover:bg-surface-container-low dark:hover:bg-surface-container-high/10 transition-all duration-200 px-3 py-2 rounded-lg" href="#">Events</a>
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-primary-fixed transition-colors text-label-md font-label-md hover:bg-surface-container-low dark:hover:bg-surface-container-high/10 transition-all duration-200 px-3 py-2 rounded-lg" href="#">Blog</a>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="bg-[#F57C00] text-white px-6 py-2.5 rounded-lg text-label-md font-label-md font-bold hover:bg-[#E65100] transition-colors active:scale-95 duration-150 ease-in-out">
+                Donate Now
+            </button>
+<button class="md:hidden text-on-surface">
+<span class="material-symbols-outlined" data-icon="menu">menu</span>
+</button>
+</div>
+</nav>
+<!-- Main Content -->
+<main class="flex-grow">
+<!-- Hero Section -->
+<section class="bg-surface-container-low py-section-gap px-margin-mobile md:px-margin-desktop">
+<div class="max-w-container-max mx-auto grid grid-cols-1 md:grid-cols-2 gap-gutter items-center">
+<div>
+<h1 class="font-display-lg text-display-lg text-primary mb-6">Our Global Activities &amp; Projects</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant mb-8 max-w-xl">
+                        Discover the real-world impact of our initiatives across the globe. From clean water access to educational infrastructure, explore how your contributions are driving sustainable change.
+                    </p>
+<div class="flex gap-4">
+<button class="bg-primary text-on-primary px-6 py-3 rounded-lg font-label-md text-label-md hover:bg-primary/90 transition-colors">
+                            Explore Map
+                        </button>
+</div>
+</div>
+<div class="h-[400px] rounded-xl overflow-hidden relative shadow-[0px_4px_12px_rgba(26,43,75,0.05)]">
+<img class="w-full h-full object-cover" data-alt="A professional, high-impact photograph showing diverse community members and aid workers collaborating on a clean water project in a sunlit rural landscape. The mood is hopeful and active, reflecting corporate modernism with bright natural lighting and earthy tones, grounded by deep navy accents from worker uniforms." src="https://lh3.googleusercontent.com/aida-public/AB6AXuChWsDd03ulb3bsi3IEjlUXGrpQbmOpXBIR72zHipcJycYIspm4kWlW705tyrVfhwOY7SeoBMSCkddj-jW__NgAmAQuFFwBdu1Qb9l3NR_KD5X_ZUt_YLnUDFDJHxLEbSHF0d4HM1nqKaB_gAu3GHvT8QPrPgV00LNYcFHgFk_fFt_uz0dHJLIY_H4U34ihqniSTH2vMcqAwv4hap-7xsqNL_eoURuEfYvJAoi2v-cRC7Jyy0gIMiQb-Q"/>
+</div>
+</div>
+</section>
+<!-- Project Filter & Grid Section -->
+<section class="py-section-gap px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
+<div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-12 gap-6">
+<h2 class="font-headline-lg text-headline-lg text-primary">Project Portfolio</h2>
+<div class="flex gap-2 p-1 bg-surface-container rounded-lg border border-outline-variant/50">
+<button class="px-6 py-2 rounded bg-surface shadow-sm font-label-md text-label-md text-primary font-medium">All Projects</button>
+<button class="px-6 py-2 rounded hover:bg-surface-variant/50 transition-colors font-label-md text-label-md text-on-surface-variant">Ongoing</button>
+<button class="px-6 py-2 rounded hover:bg-surface-variant/50 transition-colors font-label-md text-label-md text-on-surface-variant">Completed</button>
+</div>
+</div>
+<!-- Bento Grid -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-gutter">
+<!-- Featured Large Card -->
+<article class="col-span-1 md:col-span-8 bg-surface-container-lowest rounded-xl overflow-hidden border border-outline-variant/30 shadow-[0px_4px_12px_rgba(26,43,75,0.05)] hover:shadow-[0px_8px_24px_rgba(26,43,75,0.12)] transition-shadow duration-300 flex flex-col group">
+<div class="relative h-64 md:h-80 overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" data-alt="Wide shot of a newly constructed modern school building in a developing region, children playing in the foreground. High contrast, clear blue sky, corporate modernism aesthetic, projecting stability and educational advancement." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAWOuV4TyXaEbURUFp6uLszGkPM4rZDR3iXV8AXmcn6QzFoWAvzo1UndAYC_5h2F8sZ0oYNAL0uIcPu51W9qOqYk9VHV-xKvZyy87mv7cQs1zJrQdVC9-9xras0wJAif9taw-mTddYfOcQybnTei_PJn2djmXtK4KVQevZVJwgHfXlx0nOesrKfLAxqTW4GjUzn2qLlTsE2a-wV43C66FuNUrhKtKyyASK08JaUsD53X6lOVEKYfeckhQ"/>
+<div class="absolute top-4 left-4 bg-[#E8F5E9] text-[#1B5E20] px-3 py-1 rounded font-label-md text-label-md font-semibold flex items-center gap-1">
+<span class="material-symbols-outlined fill text-[16px]" data-icon="verified">verified</span> Ongoing
+                        </div>
+</div>
+<div class="p-6 md:p-8 flex flex-col flex-grow">
+<div class="flex justify-between items-start mb-4">
+<h3 class="font-headline-md text-headline-md text-primary">Project EduBuild 2024</h3>
+<span class="bg-surface-container px-3 py-1 rounded text-on-surface-variant font-label-md text-label-md">Education</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant mb-6 max-w-3xl">
+                            Constructing 12 state-of-the-art primary schools in underserved regions of Sub-Saharan Africa, providing safe learning environments and modern resources.
+                        </p>
+<div class="mt-auto grid grid-cols-3 gap-4 py-4 border-t border-outline-variant/30">
+<div>
+<p class="text-on-surface-variant font-label-md text-label-md mb-1">Beneficiaries</p>
+<p class="font-headline-md text-headline-md text-primary">5,400+</p>
+</div>
+<div>
+<p class="text-on-surface-variant font-label-md text-label-md mb-1">Funded</p>
+<p class="font-headline-md text-headline-md text-[#F57C00]">85%</p>
+</div>
+<div>
+<p class="text-on-surface-variant font-label-md text-label-md mb-1">Region</p>
+<p class="font-headline-md text-headline-md text-primary flex items-center gap-1">
+<span class="material-symbols-outlined text-[20px]" data-icon="location_on">location_on</span> Kenya
+                                </p>
+</div>
+</div>
+<div class="mt-4 w-full bg-surface-variant h-2 rounded-full overflow-hidden">
+<div class="bg-[#F57C00] h-full" style="width: 85%"></div>
+</div>
+</div>
+</article>
+<!-- Small Card 1 -->
+<article class="col-span-1 md:col-span-4 bg-surface-container-lowest rounded-xl overflow-hidden border border-outline-variant/30 shadow-[0px_4px_12px_rgba(26,43,75,0.05)] hover:shadow-[0px_8px_24px_rgba(26,43,75,0.12)] transition-shadow duration-300 flex flex-col group">
+<div class="relative h-48 overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" data-alt="Close up of clear water flowing into a clean, modern container held by a community member. Bright, hopeful lighting, emphasizing transparency and the success of the clean water initiative. Professional corporate NGO aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBRoe8-gmAoLa_fLIPQpWdJuAnWG2cBQskjkADiYFUcfItqE2K2Xr5WMkz6XIAKZtcOj3lGuOIDuWhPZx6cIHgXKnADPwwnsiENqBZNJdJaOdbceIAjEmnYYBI1MbQo4130ojr6_TgRgOBwNwgFBAR6N1MpJpEKTr7o9X2HdjMW7Iy_-XZF4yq-BtxCWQz83oTaiIXM3w1xmwnpAoV_6ShxFa9bfLj6omP5MzgfELuCZyY5ULAmvsPuRQ"/>
+<div class="absolute top-4 left-4 bg-surface-container-high text-on-surface px-3 py-1 rounded font-label-md text-label-md font-semibold">
+                            Completed
+                        </div>
+</div>
+<div class="p-6 flex flex-col flex-grow">
+<h3 class="font-headline-md text-headline-md text-primary mb-2 text-xl">AquaLife Wells</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-6 line-clamp-3">
+                            Installation of 50 deep-water solar-powered wells ensuring consistent access to potable water for rural farming communities.
+                        </p>
+<div class="mt-auto">
+<div class="flex justify-between items-center mb-2">
+<span class="text-on-surface-variant font-label-md text-label-md">Impact Reached</span>
+<span class="font-headline-md text-headline-md text-primary text-lg">12,000</span>
+</div>
+<button class="w-full py-2 border border-[#1A2B4B] text-[#1A2B4B] rounded-lg font-label-md text-label-md hover:bg-surface-container-low transition-colors mt-4">
+                                Read Report
+                            </button>
+</div>
+</div>
+</article>
+<!-- Small Card 2 -->
+<article class="col-span-1 md:col-span-4 bg-surface-container-lowest rounded-xl overflow-hidden border border-outline-variant/30 shadow-[0px_4px_12px_rgba(26,43,75,0.05)] hover:shadow-[0px_8px_24px_rgba(26,43,75,0.12)] transition-shadow duration-300 flex flex-col group">
+<div class="relative h-48 overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" data-alt="Medical professionals setting up a mobile clinic in a remote area. Clean, clinical aesthetic mixed with natural outdoor lighting. Professional, trustworthy mood highlighting healthcare access initiatives." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB6H2zGwpS_7fPsSuxhIS6ccsBd6Te5RsD-lGdTgZelo-dk4V7Nl-ZFhc8oEkmpfpnwYgrB0EZWgwPFUkZeKxw4EtJx3IaXj6neev0Ol_KTmYsxDPvkpLjJ2eEOxKGcWSNjOIKaNUE3mmbpocOYJunqkClnp07o8mYnm-PZ7AwJmAQKeltFxE_wwHdnM12NCiKj64hfUOGlI_DpK1qpnKvgv_PMmv_bVbSj_RhzyQoxP_XCFx-eBrjZ0g"/>
+<div class="absolute top-4 left-4 bg-[#E8F5E9] text-[#1B5E20] px-3 py-1 rounded font-label-md text-label-md font-semibold flex items-center gap-1">
+<span class="material-symbols-outlined fill text-[16px]" data-icon="verified">verified</span> Ongoing
+                        </div>
+</div>
+<div class="p-6 flex flex-col flex-grow">
+<h3 class="font-headline-md text-headline-md text-primary mb-2 text-xl">Mobile Clinics</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-6 line-clamp-3">
+                            Deploying fully equipped mobile medical units to provide essential healthcare services and vaccinations to isolated populations.
+                        </p>
+<div class="mt-auto">
+<div class="flex justify-between items-center mb-2">
+<span class="text-on-surface-variant font-label-md text-label-md">Goal</span>
+<span class="font-headline-md text-headline-md text-primary text-lg">$500k</span>
+</div>
+<div class="w-full bg-surface-variant h-2 rounded-full overflow-hidden mb-4">
+<div class="bg-[#F57C00] h-full" style="width: 45%"></div>
+</div>
+<button class="w-full py-2 bg-[#F57C00] text-white rounded-lg font-label-md text-label-md font-bold hover:bg-[#E65100] transition-colors">
+                                Support Project
+                            </button>
+</div>
+</div>
+</article>
+<!-- Impact Highlights -->
+<article class="col-span-1 md:col-span-8 bg-primary rounded-xl overflow-hidden shadow-[0px_4px_12px_rgba(26,43,75,0.05)] p-8 md:p-12 flex flex-col justify-center text-on-primary relative">
+<div class="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/4 pointer-events-none"></div>
+<div class="relative z-10">
+<h2 class="font-headline-lg text-headline-lg mb-8">Global Impact to Date</h2>
+<div class="grid grid-cols-1 sm:grid-cols-3 gap-8">
+<div>
+<p class="font-stat-lg text-stat-lg mb-2">2.4M+</p>
+<p class="font-label-md text-label-md text-primary-fixed-dim">Lives Improved</p>
+</div>
+<div>
+<p class="font-stat-lg text-stat-lg mb-2">142</p>
+<p class="font-label-md text-label-md text-primary-fixed-dim">Completed Projects</p>
+</div>
+<div>
+<p class="font-stat-lg text-stat-lg mb-2">35</p>
+<p class="font-label-md text-label-md text-primary-fixed-dim">Countries Active</p>
+</div>
+</div>
+</div>
+</article>
+</div>
+</section>
+<!-- Map Section -->
+<section class="py-section-gap px-margin-mobile md:px-margin-desktop bg-surface-container-low border-t border-outline-variant/20">
+<div class="max-w-container-max mx-auto text-center mb-12">
+<h2 class="font-headline-lg text-headline-lg text-primary mb-4">Our Presence</h2>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-2xl mx-auto">
+                    We operate strategically in regions where our interventions can create the most sustainable and verifiable impact.
+                </p>
+</div>
+<div class="max-w-container-max mx-auto h-[500px] rounded-xl overflow-hidden border border-outline-variant/30 shadow-[0px_4px_12px_rgba(26,43,75,0.05)] relative bg-surface-container">
+<!-- Symbolic Map Image -->
+<img class="w-full h-full object-cover" data-alt="A clean, minimalist abstract map of the world in a light mode corporate aesthetic. Deep navy dots indicate project locations across continents, connected by thin, subtle arcs. The background is a soft off-white, emphasizing global reach and structured organizational planning." data-location="Global" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBVHVlHaIVrw-fbIv279SsjMVFD64D1HoDhez5cwO7vNUSuiygVwCz9q4cP0ER3g2GKjddIfyhQnWLFIyow-RLTRWCS02QKJLWTeXYXUzDTL_9GONkl6iSqKy7H-z20ddR58FEzalhRFHsIuqVgjrlF-rAizBR9eTAkJbu4ELxlLYkE0h2u0u7N2spclo6yR1ZYQHNyeUIXUQwW17HnhJ7YZhb6dOYu88_DS34i4IGwOHbNy84CZdZ-0w"/>
+<div class="absolute bottom-6 left-6 bg-surface/90 backdrop-blur p-4 rounded-lg border border-outline-variant/20 shadow-sm">
+<p class="font-label-md text-label-md text-primary mb-2 font-bold">Active Regions</p>
+<ul class="font-body-md text-body-md text-on-surface-variant space-y-1 text-sm">
+<li class="flex items-center gap-2"><div class="w-2 h-2 rounded-full bg-secondary-container"></div> Sub-Saharan Africa</li>
+<li class="flex items-center gap-2"><div class="w-2 h-2 rounded-full bg-secondary-container"></div> Southeast Asia</li>
+<li class="flex items-center gap-2"><div class="w-2 h-2 rounded-full bg-secondary-container"></div> Latin America</li>
+</ul>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-primary dark:bg-tertiary w-full flex flex-col gap-gutter px-margin-desktop py-section-gap max-w-container-max mx-auto flat no shadows pt-section-gap pb-base">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8 w-full mb-8">
+<div>
+<span class="text-headline-md font-headline-md font-bold text-on-primary dark:text-primary-fixed block mb-4">
+                    ImpactGlobal
+                </span>
+<p class="text-primary-fixed/80 font-body-md text-body-md max-w-md">
+                    Dedicated to verifiable, sustainable change across the globe through transparent management and direct action.
+                </p>
+</div>
+<div class="flex flex-wrap gap-x-8 gap-y-4 md:justify-end items-start focus-within:ring-2 focus-within:ring-secondary-fixed">
+<a class="font-label-md text-label-md text-primary-fixed/80 hover:text-primary-fixed transition-colors hover:underline decoration-secondary-fixed underline-offset-4" href="#">Privacy Policy</a>
+<a class="font-label-md text-label-md text-primary-fixed/80 hover:text-primary-fixed transition-colors hover:underline decoration-secondary-fixed underline-offset-4" href="#">Financial Reports</a>
+<a class="font-label-md text-label-md text-primary-fixed/80 hover:text-primary-fixed transition-colors hover:underline decoration-secondary-fixed underline-offset-4" href="#">Volunteer Portal</a>
+<a class="font-label-md text-label-md text-primary-fixed/80 hover:text-primary-fixed transition-colors hover:underline decoration-secondary-fixed underline-offset-4" href="#">Contact Us</a>
+<a class="font-label-md text-label-md text-primary-fixed/80 hover:text-primary-fixed transition-colors hover:underline decoration-secondary-fixed underline-offset-4" href="#">Careers</a>
+</div>
+</div>
+<div class="border-t border-primary-fixed/20 pt-8 w-full text-center">
+<p class="text-primary-fixed/60 font-body-md text-body-md text-sm">
+                © 2024 ImpactGlobal NGO. All rights reserved. Transparency and accountability verified.
+            </p>
+</div>
+</footer>
+</body></html>

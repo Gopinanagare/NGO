@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ImpactGlobal - Donation</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "surface-container-high": "#e6e8ea",
+                      "secondary": "#964900",
+                      "on-tertiary-container": "#89968c",
+                      "on-tertiary": "#ffffff",
+                      "on-tertiary-fixed-variant": "#3e4a41",
+                      "surface-container-lowest": "#ffffff",
+                      "on-error-container": "#93000a",
+                      "surface-variant": "#e0e3e5",
+                      "error": "#ba1a1a",
+                      "on-primary-container": "#8293b8",
+                      "tertiary-container": "#232e26",
+                      "on-secondary-fixed-variant": "#723600",
+                      "secondary-fixed-dim": "#ffb786",
+                      "surface-container-low": "#f2f4f6",
+                      "outline": "#75777f",
+                      "inverse-on-surface": "#eff1f3",
+                      "secondary-container": "#fc820c",
+                      "primary-container": "#1a2b4b",
+                      "surface-bright": "#f7f9fb",
+                      "tertiary": "#0f1912",
+                      "primary-fixed": "#d8e2ff",
+                      "surface-tint": "#4e5e81",
+                      "on-secondary-fixed": "#311300",
+                      "on-secondary": "#ffffff",
+                      "outline-variant": "#c5c6cf",
+                      "tertiary-fixed": "#d9e6da",
+                      "on-background": "#191c1e",
+                      "on-tertiary-fixed": "#131e17",
+                      "on-surface-variant": "#44474e",
+                      "primary-fixed-dim": "#b6c6ef",
+                      "on-primary-fixed-variant": "#364768",
+                      "on-primary": "#ffffff",
+                      "surface-container": "#eceef0",
+                      "inverse-primary": "#b6c6ef",
+                      "error-container": "#ffdad6",
+                      "surface-dim": "#d8dadc",
+                      "on-surface": "#191c1e",
+                      "inverse-surface": "#2d3133",
+                      "background": "#f7f9fb",
+                      "on-primary-fixed": "#081b3a",
+                      "secondary-fixed": "#ffdcc6",
+                      "on-error": "#ffffff",
+                      "surface-container-highest": "#e0e3e5",
+                      "on-secondary-container": "#5e2c00",
+                      "primary": "#031635",
+                      "surface": "#f7f9fb",
+                      "tertiary-fixed-dim": "#bdcabe",
+                      "soft-sage": "#E8F5E9",
+                      "deep-navy": "#1A2B4B",
+                      "slate": "#64748B",
+                      "brand-orange": "#F57C00",
+                      "dark-green": "#1B5E20"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "margin-desktop": "40px",
+                      "section-gap": "80px",
+                      "base": "8px",
+                      "gutter": "24px",
+                      "margin-mobile": "16px",
+                      "container-max": "1280px"
+              },
+              "fontFamily": {
+                      "body-md": [
+                              "Inter"
+                      ],
+                      "stat-lg": [
+                              "Inter"
+                      ],
+                      "headline-lg-mobile": [
+                              "Inter"
+                      ],
+                      "headline-md": [
+                              "Inter"
+                      ],
+                      "headline-lg": [
+                              "Inter"
+                      ],
+                      "body-lg": [
+                              "Inter"
+                      ],
+                      "label-md": [
+                              "Inter"
+                      ],
+                      "display-lg": [
+                              "Inter"
+                      ]
+              },
+              "fontSize": {
+                      "body-md": [
+                              "16px",
+                              {
+                                      "lineHeight": "24px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "stat-lg": [
+                              "40px",
+                              {
+                                      "lineHeight": "48px",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "headline-lg-mobile": [
+                              "28px",
+                              {
+                                      "lineHeight": "36px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "headline-md": [
+                              "24px",
+                              {
+                                      "lineHeight": "32px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "headline-lg": [
+                              "32px",
+                              {
+                                      "lineHeight": "40px",
+                                      "letterSpacing": "-0.01em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "body-lg": [
+                              "18px",
+                              {
+                                      "lineHeight": "28px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "label-md": [
+                              "14px",
+                              {
+                                      "lineHeight": "20px",
+                                      "letterSpacing": "0.01em",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "display-lg": [
+                              "48px",
+                              {
+                                      "lineHeight": "56px",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "700"
+                              }
+                      ]
+              }
+            }
+          }
+        }
+    </script>
+<style>
+        body { background-color: #F8FAFC; }
+        .ambient-shadow-sm { box-shadow: 0px 4px 12px rgba(26, 43, 75, 0.05); }
+        .ambient-shadow-lg { box-shadow: 0px 8px 24px rgba(26, 43, 75, 0.12); }
+        
+        .donation-step { display: none; }
+        .donation-step.active { display: block; animation: fadeIn 0.4s ease-out; }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .step-indicator.completed .indicator-dot { background-color: #F57C00; border-color: #F57C00; }
+        .step-indicator.active .indicator-dot { border-color: #F57C00; background-color: white; border-width: 2px; }
+        .step-indicator.completed .indicator-line { background-color: #F57C00; }
+    </style>
+</head>
+<body class="font-body-md text-on-background min-h-screen flex flex-col">
+<!-- TopNavBar -->
+<header class="bg-surface/95 dark:bg-primary/95 backdrop-blur-md docked full-width top-0 border-b border-outline-variant/30 dark:border-outline/30 shadow-sm dark:shadow-none fixed top-0 left-0 w-full z-50 flex justify-between items-center px-margin-desktop py-4 max-w-container-max mx-auto">
+<div class="text-headline-md font-headline-md font-bold text-primary dark:text-primary-fixed">ImpactGlobal</div>
+<nav class="hidden md:flex gap-6 items-center">
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-primary-fixed transition-colors font-label-md text-label-md" href="#">Home</a>
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-primary-fixed transition-colors font-label-md text-label-md" href="#">About</a>
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-primary-fixed transition-colors font-label-md text-label-md" href="#">Activities</a>
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-primary-fixed transition-colors font-label-md text-label-md" href="#">Events</a>
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-primary-fixed transition-colors font-label-md text-label-md" href="#">Blog</a>
+<button class="bg-brand-orange text-white font-label-md text-label-md px-6 py-2 rounded font-bold ml-4">Donate Now</button>
+</nav>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-grow pt-[100px] pb-section-gap px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto w-full flex flex-col md:flex-row gap-gutter">
+<!-- Left Column: Context / Impact Image -->
+<div class="w-full md:w-1/2 flex flex-col gap-base">
+<h1 class="font-display-lg text-display-lg text-primary mb-4 hidden md:block">Make a Lasting Impact Today.</h1>
+<div class="w-full h-64 md:h-[500px] rounded-xl overflow-hidden ambient-shadow-sm mb-6 relative">
+<div class="bg-cover bg-center w-full h-full absolute inset-0" data-alt="A compelling photograph showing a diverse community working together in a rural setting, warm sunlight filtering through trees, conveying hope, resilience, and the positive impact of charitable contributions. Professional documentary style, vibrant but natural colors." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDKOOsy2PUMitoV5ZISVWt0IScdX3KdbDLVQFohSuCtdl_DK5G0Sm4-IyHm2TaBdknuh-fhHB-xu0g5Ir3viIm4FN-NiIYmLvMXvuREOocnrvkP35I3v81S8Srx9NWO-J3ClEZULo4RduqDv-UG6ZpPobgh9S1To_go49L6xDur1upuCJrKc4hrpV5u4ec1VO-jkjSKqE9E2rBtpRMrXhkqryaZJ5b6n-apL0C5RFp7b0ra9llcPCtqEg')"></div>
+<div class="absolute bottom-0 left-0 w-full p-6 bg-gradient-to-t from-black/80 to-transparent">
+<p class="text-white font-body-lg text-body-lg">"Your support directly enables grassroots transformation in communities that need it most."</p>
+</div>
+</div>
+<div class="grid grid-cols-3 gap-4 mb-6">
+<div class="bg-soft-sage p-4 rounded-lg flex flex-col items-center justify-center">
+<span class="material-symbols-outlined text-dark-green mb-2" style="font-variation-settings: 'FILL' 1;">security</span>
+<span class="font-label-md text-label-md text-dark-green text-center">Secure Payments</span>
+</div>
+<div class="bg-soft-sage p-4 rounded-lg flex flex-col items-center justify-center">
+<span class="material-symbols-outlined text-dark-green mb-2" style="font-variation-settings: 'FILL' 1;">receipt_long</span>
+<span class="font-label-md text-label-md text-dark-green text-center">Tax-Deductible</span>
+</div>
+<div class="bg-soft-sage p-4 rounded-lg flex flex-col items-center justify-center">
+<span class="material-symbols-outlined text-dark-green mb-2" style="font-variation-settings: 'FILL' 1;">verified</span>
+<span class="font-label-md text-label-md text-dark-green text-center">Verified NGO</span>
+</div>
+</div>
+</div>
+<!-- Right Column: Interactive Donation Form -->
+<div class="w-full md:w-1/2">
+<div class="bg-surface-container-lowest rounded-xl ambient-shadow-sm p-6 md:p-8">
+<!-- Stepper -->
+<div class="flex items-center justify-between mb-8 relative">
+<div class="absolute top-1/2 left-0 w-full h-1 bg-outline-variant/30 -z-10 -translate-y-1/2"></div>
+<div class="step-indicator active flex flex-col items-center gap-2 relative bg-surface-container-lowest px-2" id="nav-step-1">
+<div class="indicator-dot w-6 h-6 rounded-full border-2 border-outline-variant bg-surface-container-lowest"></div>
+<span class="font-label-md text-label-md text-on-surface-variant">Amount</span>
+</div>
+<div class="step-indicator flex flex-col items-center gap-2 relative bg-surface-container-lowest px-2" id="nav-step-2">
+<div class="indicator-dot w-6 h-6 rounded-full border-2 border-outline-variant bg-surface-container-lowest"></div>
+<span class="font-label-md text-label-md text-on-surface-variant">Details</span>
+</div>
+<div class="step-indicator flex flex-col items-center gap-2 relative bg-surface-container-lowest px-2" id="nav-step-3">
+<div class="indicator-dot w-6 h-6 rounded-full border-2 border-outline-variant bg-surface-container-lowest"></div>
+<span class="font-label-md text-label-md text-on-surface-variant">Payment</span>
+</div>
+</div>
+<!-- Step 1: Amount Selection -->
+<div class="donation-step active" id="step-1">
+<h2 class="font-headline-md text-headline-md text-primary mb-6">Choose Your Donation</h2>
+<div class="flex gap-4 mb-6 bg-surface-container p-1 rounded-lg">
+<button class="flex-1 py-2 font-label-md text-label-md bg-surface-container-lowest text-primary rounded shadow-sm transition-all" onclick="toggleFrequency('one-time')">One-Time</button>
+<button class="flex-1 py-2 font-label-md text-label-md text-on-surface-variant rounded hover:bg-surface-container-high transition-all" onclick="toggleFrequency('monthly')">Monthly</button>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-3 gap-4 mb-6">
+<button class="preset-btn py-4 border border-outline-variant rounded-lg font-headline-md text-headline-md text-primary hover:border-brand-orange hover:text-brand-orange transition-all" data-amount="25">$25</button>
+<button class="preset-btn py-4 border-2 border-brand-orange rounded-lg font-headline-md text-headline-md text-brand-orange ambient-shadow-lg transition-all" data-amount="50">$50</button>
+<button class="preset-btn py-4 border border-outline-variant rounded-lg font-headline-md text-headline-md text-primary hover:border-brand-orange hover:text-brand-orange transition-all" data-amount="100">$100</button>
+<button class="preset-btn py-4 border border-outline-variant rounded-lg font-headline-md text-headline-md text-primary hover:border-brand-orange hover:text-brand-orange transition-all" data-amount="250">$250</button>
+<button class="preset-btn py-4 border border-outline-variant rounded-lg font-headline-md text-headline-md text-primary hover:border-brand-orange hover:text-brand-orange transition-all" data-amount="500">$500</button>
+<div class="relative">
+<span class="absolute left-4 top-1/2 -translate-y-1/2 font-headline-md text-headline-md text-on-surface-variant">$</span>
+<input class="w-full h-full py-4 pl-8 pr-4 border border-outline-variant rounded-lg font-headline-md text-headline-md text-primary focus:border-deep-navy focus:ring-0 outline-none transition-all" placeholder="Other" type="number"/>
+</div>
+</div>
+<div class="bg-primary-fixed/30 p-4 rounded-lg mb-8 flex items-start gap-4">
+<span class="material-symbols-outlined text-primary mt-1">favorite</span>
+<p class="font-body-md text-body-md text-primary-container" id="impact-statement">Your $50 provides clean water for 5 families for a month.</p>
+</div>
+<button class="w-full bg-brand-orange text-white font-label-md text-label-md py-4 rounded-lg font-bold hover:bg-orange-600 transition-colors" onclick="nextStep(2)">Continue to Details</button>
+</div>
+<!-- Step 2: Donor Information -->
+<div class="donation-step" id="step-2">
+<h2 class="font-headline-md text-headline-md text-primary mb-6">Your Information</h2>
+<form class="flex flex-col gap-4">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<div class="flex flex-col gap-1">
+<label class="font-label-md text-label-md text-on-surface-variant">First Name</label>
+<input class="border border-outline-variant rounded-lg p-3 font-body-md text-body-md focus:border-deep-navy focus:ring-0 outline-none transition-all" type="text"/>
+</div>
+<div class="flex flex-col gap-1">
+<label class="font-label-md text-label-md text-on-surface-variant">Last Name</label>
+<input class="border border-outline-variant rounded-lg p-3 font-body-md text-body-md focus:border-deep-navy focus:ring-0 outline-none transition-all" type="text"/>
+</div>
+</div>
+<div class="flex flex-col gap-1">
+<label class="font-label-md text-label-md text-on-surface-variant">Email Address</label>
+<input class="border border-outline-variant rounded-lg p-3 font-body-md text-body-md focus:border-deep-navy focus:ring-0 outline-none transition-all" type="email"/>
+</div>
+<div class="flex flex-col gap-1">
+<label class="font-label-md text-label-md text-on-surface-variant">Phone (Optional)</label>
+<input class="border border-outline-variant rounded-lg p-3 font-body-md text-body-md focus:border-deep-navy focus:ring-0 outline-none transition-all" type="tel"/>
+</div>
+<div class="flex flex-col gap-1">
+<label class="font-label-md text-label-md text-on-surface-variant">Mailing Address</label>
+<input class="border border-outline-variant rounded-lg p-3 mb-2 font-body-md text-body-md focus:border-deep-navy focus:ring-0 outline-none transition-all" placeholder="Street Address" type="text"/>
+<div class="grid grid-cols-2 gap-2">
+<input class="border border-outline-variant rounded-lg p-3 font-body-md text-body-md focus:border-deep-navy focus:ring-0 outline-none transition-all" placeholder="City" type="text"/>
+<input class="border border-outline-variant rounded-lg p-3 font-body-md text-body-md focus:border-deep-navy focus:ring-0 outline-none transition-all" placeholder="Zip Code" type="text"/>
+</div>
+</div>
+<div class="flex gap-4 mt-6">
+<button class="w-1/3 border border-deep-navy text-deep-navy font-label-md text-label-md py-4 rounded-lg font-bold hover:bg-surface-container-low transition-colors" onclick="nextStep(1)" type="button">Back</button>
+<button class="w-2/3 bg-brand-orange text-white font-label-md text-label-md py-4 rounded-lg font-bold hover:bg-orange-600 transition-colors" onclick="nextStep(3)" type="button">Continue to Payment</button>
+</div>
+</form>
+</div>
+<!-- Step 3: Payment Method -->
+<div class="donation-step" id="step-3">
+<h2 class="font-headline-md text-headline-md text-primary mb-6">Payment Method</h2>
+<div class="bg-surface-container p-6 rounded-lg mb-6 text-center border-2 border-dashed border-outline-variant">
+<span class="material-symbols-outlined text-outline text-4xl mb-2">credit_card</span>
+<p class="font-body-md text-body-md text-on-surface-variant">[ Payment Gateway Integration Placeholder ]</p>
+<p class="font-label-md text-label-md text-outline mt-2">Stripe / PayPal Elements would load here.</p>
+</div>
+<div class="flex gap-4 mt-6">
+<button class="w-1/3 border border-deep-navy text-deep-navy font-label-md text-label-md py-4 rounded-lg font-bold hover:bg-surface-container-low transition-colors" onclick="nextStep(2)" type="button">Back</button>
+<button class="w-2/3 bg-brand-orange text-white font-label-md text-label-md py-4 rounded-lg font-bold flex items-center justify-center gap-2 hover:bg-orange-600 transition-colors" type="button">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">lock</span>
+                                Complete Donation
+                            </button>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="bg-primary dark:bg-tertiary full-width bottom-0 bg-primary dark:bg-tertiary pt-section-gap pb-base flat no shadows w-full flex flex-col gap-gutter px-margin-desktop py-section-gap max-w-container-max mx-auto mt-auto">
+<div class="flex flex-col md:flex-row justify-between items-start gap-8">
+<div>
+<div class="text-headline-md font-headline-md font-bold text-on-primary dark:text-primary-fixed mb-4">ImpactGlobal</div>
+<p class="text-primary-fixed/80 font-body-md text-body-md max-w-sm">Dedicated to transparent, accountable, and sustainable development worldwide.</p>
+</div>
+<div class="flex flex-wrap gap-x-8 gap-y-4">
+<a class="text-primary-fixed/80 hover:text-primary-fixed transition-colors hover:underline decoration-secondary-fixed underline-offset-4 font-label-md text-label-md" href="#">Privacy Policy</a>
+<a class="text-primary-fixed/80 hover:text-primary-fixed transition-colors hover:underline decoration-secondary-fixed underline-offset-4 font-label-md text-label-md" href="#">Financial Reports</a>
+<a class="text-primary-fixed/80 hover:text-primary-fixed transition-colors hover:underline decoration-secondary-fixed underline-offset-4 font-label-md text-label-md" href="#">Volunteer Portal</a>
+<a class="text-primary-fixed/80 hover:text-primary-fixed transition-colors hover:underline decoration-secondary-fixed underline-offset-4 font-label-md text-label-md" href="#">Contact Us</a>
+<a class="text-primary-fixed/80 hover:text-primary-fixed transition-colors hover:underline decoration-secondary-fixed underline-offset-4 font-label-md text-label-md" href="#">Careers</a>
+</div>
+</div>
+<div class="mt-8 pt-8 border-t border-on-primary/10">
+<p class="text-primary-fixed/80 font-body-md text-body-md">© 2024 ImpactGlobal NGO. All rights reserved. Transparency and accountability verified.</p>
+</div>
+</footer>
+<script>
+        function nextStep(step) {
+            document.querySelectorAll('.donation-step').forEach(el => el.classList.remove('active'));
+            document.getElementById(`step-${step}`).classList.add('active');
+            
+            // Update Stepper
+            document.querySelectorAll('.step-indicator').forEach((el, index) => {
+                el.classList.remove('active', 'completed');
+                if (index + 1 < step) {
+                    el.classList.add('completed');
+                } else if (index + 1 === step) {
+                    el.classList.add('active');
+                }
+            });
+        }
+
+        // Basic interactivity for preset buttons
+        document.querySelectorAll('.preset-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                // Reset all
+                document.querySelectorAll('.preset-btn').forEach(b => {
+                    b.classList.remove('border-2', 'border-brand-orange', 'text-brand-orange', 'ambient-shadow-lg');
+                    b.classList.add('border', 'border-outline-variant', 'text-primary');
+                });
+                // Set active
+                this.classList.remove('border', 'border-outline-variant', 'text-primary');
+                this.classList.add('border-2', 'border-brand-orange', 'text-brand-orange', 'ambient-shadow-lg');
+                
+                // Update impact statement (simple mock logic)
+                const amount = this.dataset.amount;
+                let impact = "";
+                if(amount == 25) impact = "Your $25 provides a school kit for one child.";
+                else if(amount == 50) impact = "Your $50 provides clean water for 5 families for a month.";
+                else if(amount == 100) impact = "Your $100 funds a community health clinic for a day.";
+                else if(amount == 250) impact = "Your $250 sponsors a farmer's cooperative startup.";
+                else impact = `Your $${amount} makes a significant contribution to our general fund.`;
+                
+                document.getElementById('impact-statement').textContent = impact;
+            });
+        });
+
+        function toggleFrequency(type) {
+             const btns = document.querySelectorAll('#step-1 > div:first-of-type button');
+             if(type === 'one-time') {
+                 btns[0].classList.add('bg-surface-container-lowest', 'text-primary', 'shadow-sm');
+                 btns[0].classList.remove('text-on-surface-variant');
+                 btns[1].classList.remove('bg-surface-container-lowest', 'text-primary', 'shadow-sm');
+                 btns[1].classList.add('text-on-surface-variant');
+             } else {
+                 btns[1].classList.add('bg-surface-container-lowest', 'text-primary', 'shadow-sm');
+                 btns[1].classList.remove('text-on-surface-variant');
+                 btns[0].classList.remove('bg-surface-container-lowest', 'text-primary', 'shadow-sm');
+                 btns[0].classList.add('text-on-surface-variant');
+             }
+        }
+    </script>
+</body></html>
