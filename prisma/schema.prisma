@@ -78,6 +78,7 @@ model Volunteer {
   skills            String   // Comma separated
   availability      String   // Weekdays, Weekends, Full-time, etc.
   interests         String?
+  motivation        String?
   profilePhoto      String?
   status            String   @default("PENDING") // PENDING, VERIFIED, APPROVED, REJECTED
   verificationNotes String?

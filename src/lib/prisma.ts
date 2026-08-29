@@ -10,13 +10,29 @@ const globalForPrisma = globalThis as unknown as {
 function createPrismaClient() {
   const rootDbPath = path.join(process.cwd(), "dev.db");
   const prismaDbPath = path.join(process.cwd(), "prisma", "dev.db");
-  
-  let targetDbPath = rootDbPath;
+  const tmpDbPath = path.join("/tmp", "dev.db");
 
-  if (fs.existsSync(rootDbPath) && fs.statSync(rootDbPath).size > 0) {
-    targetDbPath = rootDbPath;
-  } else if (fs.existsSync(prismaDbPath) && fs.statSync(prismaDbPath).size > 0) {
-    targetDbPath = prismaDbPath;
+  let sourceDbPath = rootDbPath;
+  if (fs.existsSync(prismaDbPath) && fs.statSync(prismaDbPath).size > 0) {
+    sourceDbPath = prismaDbPath;
+  } else if (fs.existsSync(rootDbPath) && fs.statSync(rootDbPath).size > 0) {
+    sourceDbPath = rootDbPath;
+  }
+
+  let targetDbPath = sourceDbPath;
+
+  // On Vercel serverless environment, copy DB to /tmp for write permission
+  if (process.env.VERCEL) {
+    try {
+      if (fs.existsSync(sourceDbPath)) {
+        if (!fs.existsSync(tmpDbPath)) {
+          fs.copyFileSync(sourceDbPath, tmpDbPath);
+        }
+        targetDbPath = tmpDbPath;
+      }
+    } catch (e) {
+      console.error("Vercel DB copy error:", e);
+    }
   }
 
   const adapter = new PrismaBetterSqlite3({ url: targetDbPath });
