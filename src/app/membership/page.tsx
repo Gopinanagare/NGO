@@ -3,9 +3,28 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 
+const fallbackPlans = [
+  {
+    id: "plan-annual-1",
+    title: "Annual Supporting Member",
+    fee: 1000,
+    validityMonths: 12,
+    benefits: "Includes official member certificate, voting rights in General Body, and annual impact reports.",
+    description: "Annual membership for individual supporters with General Body voting rights.",
+  },
+  {
+    id: "plan-life-2",
+    title: "Life Member",
+    fee: 10000,
+    validityMonths: 120,
+    benefits: "Lifetime voting rights, VIP invitations to all NGO initiatives, and annual audit presentation.",
+    description: "Lifetime institutional membership with governance privileges.",
+  },
+];
+
 export default function MembershipPage() {
-  const [plans, setPlans] = useState<any[]>([]);
-  const [selectedPlan, setSelectedPlan] = useState<any>(null);
+  const [plans, setPlans] = useState<any[]>(fallbackPlans);
+  const [selectedPlan, setSelectedPlan] = useState<any>(fallbackPlans[0]);
 
   const [memberName, setMemberName] = useState("");
   const [memberEmail, setMemberEmail] = useState("");
@@ -23,9 +42,14 @@ export default function MembershipPage() {
     fetch("/api/membership/plans")
       .then((res) => res.json())
       .then((data) => {
-        if (data.plans) {
-          setPlans(data.plans);
-          setSelectedPlan(data.plans[0]);
+        if (data.plans && data.plans.length > 0) {
+          const formatted = data.plans.map((p: any) => ({
+            ...p,
+            fee: p.fee ?? p.amount ?? 1000,
+            validityMonths: p.validityMonths ?? p.durationMonths ?? 12,
+          }));
+          setPlans(formatted);
+          setSelectedPlan(formatted[0]);
         }
       })
       .catch(() => {});
@@ -78,6 +102,7 @@ export default function MembershipPage() {
 
     try {
       const isScriptLoaded = await loadRazorpayScript();
+      const planFee = selectedPlan.fee ?? selectedPlan.amount ?? 1000;
 
       const orderRes = await fetch("/api/membership/apply", {
         method: "POST",
@@ -126,7 +151,7 @@ export default function MembershipPage() {
       if (isScriptLoaded && (window as any).Razorpay) {
         const options = {
           key: orderData.keyId || "rzp_test_YOUR_KEY_HERE",
-          amount: orderData.amount,
+          amount: orderData.amount || planFee * 100,
           currency: orderData.currency || "INR",
           name: "Ratnakar's NGO",
           description: `Membership Fee - ${selectedPlan.title}`,
@@ -158,6 +183,8 @@ export default function MembershipPage() {
     }
   };
 
+  const selectedFee = selectedPlan?.fee ?? selectedPlan?.amount ?? 1000;
+
   return (
     <div className="py-12 max-w-[1280px] mx-auto px-6 space-y-12">
       <div className="space-y-4 max-w-3xl">
@@ -173,51 +200,55 @@ export default function MembershipPage() {
 
       {/* Membership Plans Grid */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-        {plans.map((p) => (
-          <div
-            key={p.id}
-            onClick={() => setSelectedPlan(p)}
-            className={`bg-white rounded-xl p-8 border cursor-pointer transition-all flex flex-col justify-between space-y-6 ${
-              selectedPlan?.id === p.id
-                ? "border-2 border-[#F57C00] shadow-md ring-2 ring-[#F57C00]/20"
-                : "border-[#e0e3e5] hover:border-[#F57C00]"
-            }`}
-          >
-            <div className="space-y-4">
-              <div className="flex justify-between items-center">
-                <h3 className="text-xl font-bold text-[#031635]">{p.title}</h3>
-                {selectedPlan?.id === p.id && (
-                  <span className="bg-[#F57C00] text-white text-[10px] font-bold px-2 py-0.5 rounded">
-                    Selected
-                  </span>
-                )}
-              </div>
-              <p className="text-xs text-[#44474e]">{p.description}</p>
-              <div className="text-3xl font-black text-[#031635]">
-                ₹{p.amount.toLocaleString("en-IN")}
-                <span className="text-xs font-normal text-slate-500"> / {p.durationMonths} Months</span>
-              </div>
-            </div>
-
-            <button
-              type="button"
-              className={`w-full py-2.5 rounded font-bold text-xs transition-colors ${
+        {plans.map((p) => {
+          const currentFee = p.fee ?? p.amount ?? 1000;
+          const currentMonths = p.validityMonths ?? p.durationMonths ?? 12;
+          return (
+            <div
+              key={p.id}
+              onClick={() => setSelectedPlan(p)}
+              className={`bg-white rounded-xl p-8 border cursor-pointer transition-all flex flex-col justify-between space-y-6 ${
                 selectedPlan?.id === p.id
-                  ? "bg-[#F57C00] text-white shadow"
-                  : "bg-slate-100 text-[#031635] hover:bg-slate-200"
+                  ? "border-2 border-[#F57C00] shadow-md ring-2 ring-[#F57C00]/20"
+                  : "border-[#e0e3e5] hover:border-[#F57C00]"
               }`}
             >
-              Select {p.title}
-            </button>
-          </div>
-        ))}
+              <div className="space-y-4">
+                <div className="flex justify-between items-center">
+                  <h3 className="text-xl font-bold text-[#031635]">{p.title}</h3>
+                  {selectedPlan?.id === p.id && (
+                    <span className="bg-[#F57C00] text-white text-[10px] font-bold px-2 py-0.5 rounded">
+                      Selected
+                    </span>
+                  )}
+                </div>
+                <p className="text-xs text-[#44474e]">{p.description || p.benefits}</p>
+                <div className="text-3xl font-black text-[#031635]">
+                  ₹{currentFee.toLocaleString("en-IN")}
+                  <span className="text-xs font-normal text-slate-500"> / {currentMonths} Months</span>
+                </div>
+              </div>
+
+              <button
+                type="button"
+                className={`w-full py-2.5 rounded font-bold text-xs transition-colors ${
+                  selectedPlan?.id === p.id
+                    ? "bg-[#F57C00] text-white shadow"
+                    : "bg-slate-100 text-[#031635] hover:bg-slate-200"
+                }`}
+              >
+                Select {p.title}
+              </button>
+            </div>
+          );
+        })}
       </div>
 
       {/* Enrollment Form */}
       {selectedPlan && (
         <div className="bg-white rounded-2xl border border-[#e0e3e5] p-8 max-w-2xl mx-auto shadow-sm space-y-6">
           <h2 className="text-xl font-bold text-[#031635] border-b border-slate-100 pb-3">
-            Enrollment Form — {selectedPlan.title} (₹{selectedPlan.amount.toLocaleString()})
+            Enrollment Form — {selectedPlan.title} (₹{selectedFee.toLocaleString("en-IN")})
           </h2>
 
           {successData ? (
@@ -361,7 +392,7 @@ export default function MembershipPage() {
                 className="w-full bg-[#F57C00] hover:bg-[#F57C00]/90 text-white font-bold text-sm py-3.5 rounded-xl shadow transition-colors flex items-center justify-center gap-2"
               >
                 <span className="material-symbols-outlined text-[18px]">credit_card</span>
-                {loading ? "Processing Membership..." : `Pay ₹${selectedPlan.amount.toLocaleString()} & Submit Application`}
+                {loading ? "Processing Membership..." : `Pay ₹${selectedFee.toLocaleString("en-IN")} & Submit Application`}
               </button>
             </form>
           )}
