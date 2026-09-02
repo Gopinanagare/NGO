@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
+import VolunteerIDCard from "@/components/VolunteerIDCard";
 import {
   Heart, Users, Award, Clock, FileText, Download, CheckCircle, XCircle,
   Plus, Settings, LogOut, Search, Filter, ShieldCheck, Mail, Calendar,
@@ -24,6 +25,7 @@ export default function AdminDashboardPage() {
 
   // Volunteer Modal state
   const [selectedVol, setSelectedVol] = useState<any>(null);
+  const [viewingIdCardVol, setViewingIdCardVol] = useState<any>(null);
   const [verifNotes, setVerifNotes] = useState("");
   const [volHours, setVolHours] = useState(0);
 
@@ -462,19 +464,31 @@ export default function AdminDashboardPage() {
                 <table className="w-full text-left text-xs text-slate-700">
                   <thead className="bg-slate-50 text-slate-900 font-bold uppercase text-[10px] border-b border-slate-200">
                     <tr>
-                      <th className="py-3 px-4">Name</th>
+                      <th className="py-3 px-4">Photo & Name</th>
                       <th className="py-3 px-4">Contact</th>
                       <th className="py-3 px-4">Skills</th>
                       <th className="py-3 px-4">Availability</th>
                       <th className="py-3 px-4">Status</th>
                       <th className="py-3 px-4">Verified Hours</th>
-                      <th className="py-3 px-4">Action</th>
+                      <th className="py-3 px-4">Actions</th>
                     </tr>
                   </thead>
                   <tbody className="divide-y divide-slate-100">
                     {volunteers.map((v) => (
                       <tr key={v.id} className="hover:bg-slate-50">
-                        <td className="py-3 px-4 font-bold text-slate-900">{v.name}</td>
+                        <td className="py-3 px-4">
+                          <div className="flex items-center gap-3">
+                            <img
+                              src={v.profilePhoto && v.profilePhoto.trim() !== "" ? v.profilePhoto : "https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=400&auto=format&fit=crop"}
+                              alt={v.name}
+                              className="w-9 h-9 rounded-full object-cover border border-slate-200 shadow-sm shrink-0"
+                            />
+                            <div>
+                              <p className="font-bold text-slate-900">{v.name}</p>
+                              <p className="text-[10px] font-mono font-bold text-amber-600">VOL-2026-{v.id.slice(0, 6).toUpperCase()}</p>
+                            </div>
+                          </div>
+                        </td>
                         <td className="py-3 px-4">{v.email}<br />{v.phone}</td>
                         <td className="py-3 px-4">{v.skills}</td>
                         <td className="py-3 px-4">{v.availability}</td>
@@ -493,16 +507,24 @@ export default function AdminDashboardPage() {
                         </td>
                         <td className="py-3 px-4 font-bold text-slate-900">{v.totalHours} Hours</td>
                         <td className="py-3 px-4">
-                          <button
-                            onClick={() => {
-                              setSelectedVol(v);
-                              setVolHours(v.totalHours);
-                              setVerifNotes(v.verificationNotes || "");
-                            }}
-                            className="bg-slate-900 text-white font-bold text-xs px-3 py-1.5 rounded-lg"
-                          >
-                            Manage
-                          </button>
+                          <div className="flex items-center gap-2">
+                            <button
+                              onClick={() => setViewingIdCardVol(v)}
+                              className="bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold text-xs px-2.5 py-1.5 rounded-lg flex items-center gap-1 shadow-sm"
+                            >
+                              <span className="material-symbols-outlined text-[14px]">badge</span> ID Card
+                            </button>
+                            <button
+                              onClick={() => {
+                                setSelectedVol(v);
+                                setVolHours(v.totalHours);
+                                setVerifNotes(v.verificationNotes || "");
+                              }}
+                              className="bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs px-3 py-1.5 rounded-lg"
+                            >
+                              Manage
+                            </button>
+                          </div>
                         </td>
                       </tr>
                     ))}
@@ -511,10 +533,41 @@ export default function AdminDashboardPage() {
               </div>
             </div>
 
+            {/* Volunteer ID Card Inspection Modal */}
+            {viewingIdCardVol && (
+              <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/80 backdrop-blur-sm">
+                <div className="bg-white rounded-3xl p-6 max-w-md w-full space-y-4 shadow-2xl">
+                  <div className="flex justify-between items-center border-b border-slate-100 pb-3">
+                    <h3 className="text-base font-bold text-slate-900 flex items-center gap-1.5">
+                      <span className="material-symbols-outlined text-[#F57C00]">badge</span>
+                      Official Volunteer Digital ID Card
+                    </h3>
+                    <button
+                      onClick={() => setViewingIdCardVol(null)}
+                      className="text-slate-400 hover:text-slate-600 font-bold text-sm"
+                    >
+                      ✕
+                    </button>
+                  </div>
+
+                  <VolunteerIDCard volunteer={viewingIdCardVol} />
+
+                  <div className="pt-2">
+                    <button
+                      onClick={() => setViewingIdCardVol(null)}
+                      className="w-full bg-slate-900 text-white font-bold text-xs py-2.5 rounded-xl"
+                    >
+                      Close ID Card
+                    </button>
+                  </div>
+                </div>
+              </div>
+            )}
+
             {/* Volunteer Review Modal */}
             {selectedVol && (
-              <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/80 backdrop-blur-sm">
-                <div className="bg-white rounded-3xl p-6 max-w-lg w-full space-y-4 shadow-2xl">
+              <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/80 backdrop-blur-sm overflow-y-auto">
+                <div className="bg-white rounded-3xl p-6 max-w-lg w-full space-y-4 shadow-2xl my-8">
                   <h3 className="text-lg font-bold text-slate-900">Volunteer Verification & Status Update</h3>
                   <div className="text-xs space-y-1 text-slate-600 bg-slate-50 p-4 rounded-2xl">
                     <p><strong>Name:</strong> {selectedVol.name}</p>

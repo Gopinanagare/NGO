@@ -18,6 +18,7 @@ export async function POST(req: Request) {
       skills,
       availability,
       interests,
+      profilePhoto,
     } = body;
 
     if (!name || !email || !phone || !skills || !availability) {
@@ -61,6 +62,7 @@ export async function POST(req: Request) {
         skills: Array.isArray(skills) ? skills.join(", ") : skills,
         availability: Array.isArray(availability) ? availability.join(", ") : availability,
         interests: interests || null,
+        profilePhoto: profilePhoto || null,
         status: "PENDING",
       },
     });
@@ -84,6 +86,7 @@ export async function POST(req: Request) {
     return NextResponse.json({
       success: true,
       volunteerId: volunteer.id,
+      volunteer,
       message: "Volunteer application submitted successfully! Pending background verification.",
     });
   } catch (error: any) {
