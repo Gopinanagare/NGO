@@ -24,9 +24,10 @@ export default function AdminDashboardPage() {
   const [enquiries, setEnquiries] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
 
-  // Volunteer Modal state
+  // Volunteer Modal & Filter state
   const [selectedVol, setSelectedVol] = useState<any>(null);
   const [viewingIdCardVol, setViewingIdCardVol] = useState<any>(null);
+  const [volFilterStatus, setVolFilterStatus] = useState("ALL");
   const [verifNotes, setVerifNotes] = useState("");
   const [volHours, setVolHours] = useState(0);
 
@@ -97,7 +98,7 @@ export default function AdminDashboardPage() {
 
   useEffect(() => {
     fetchAdminData();
-  }, []);
+  }, [activeTab]);
 
   const handleLogout = async () => {
     await fetch("/api/auth/logout", { method: "POST" });
@@ -505,8 +506,36 @@ export default function AdminDashboardPage() {
         {/* TAB 3: VOLUNTEERS */}
         {activeTab === "volunteers" && (
           <div className="space-y-6">
-            <div className="bg-white rounded-3xl border border-slate-200 shadow-sm p-6 space-y-4">
-              <h3 className="text-lg font-bold text-slate-900">Volunteer Applications & Review</h3>
+            <div className="bg-white rounded-3xl border border-slate-200 shadow-sm p-6 space-y-5">
+              <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 border-b border-slate-100 pb-4">
+                <div>
+                  <h3 className="text-lg font-bold text-slate-900">Volunteer Applications & Verification</h3>
+                  <p className="text-xs text-slate-500">Review pending requests, approve digital ID cards, and track volunteer service hours.</p>
+                </div>
+
+                {/* Filter Pills */}
+                <div className="flex flex-wrap items-center gap-2">
+                  {[
+                    { id: "ALL", label: `All Volunteers (${volunteers.length})` },
+                    { id: "PENDING", label: `Pending (${volunteers.filter((v) => v.status === "PENDING").length})` },
+                    { id: "APPROVED", label: `Approved (${volunteers.filter((v) => v.status === "APPROVED" || v.status === "VERIFIED").length})` },
+                    { id: "REJECTED", label: `Rejected (${volunteers.filter((v) => v.status === "REJECTED").length})` },
+                  ].map((filter) => (
+                    <button
+                      key={filter.id}
+                      onClick={() => setVolFilterStatus(filter.id)}
+                      className={`px-3 py-1.5 rounded-xl font-bold text-xs transition-colors ${
+                        volFilterStatus === filter.id
+                          ? "bg-emerald-600 text-white shadow-sm"
+                          : "bg-slate-100 text-slate-600 hover:bg-slate-200"
+                      }`}
+                    >
+                      {filter.label}
+                    </button>
+                  ))}
+                </div>
+              </div>
+
               <div className="overflow-x-auto">
                 <table className="w-full text-left text-xs text-slate-700">
                   <thead className="bg-slate-50 text-slate-900 font-bold uppercase text-[10px] border-b border-slate-200">
@@ -521,7 +550,15 @@ export default function AdminDashboardPage() {
                     </tr>
                   </thead>
                   <tbody className="divide-y divide-slate-100">
-                    {volunteers.map((v) => (
+                    {volunteers
+                      .filter((v) => {
+                        if (volFilterStatus === "ALL") return true;
+                        if (volFilterStatus === "PENDING") return v.status === "PENDING";
+                        if (volFilterStatus === "APPROVED") return v.status === "APPROVED" || v.status === "VERIFIED";
+                        if (volFilterStatus === "REJECTED") return v.status === "REJECTED";
+                        return true;
+                      })
+                      .map((v) => (
                       <tr key={v.id} className="hover:bg-slate-50">
                         <td className="py-3 px-4">
                           <div className="flex items-center gap-3">
