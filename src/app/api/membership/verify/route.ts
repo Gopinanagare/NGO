@@ -16,6 +16,8 @@ export async function POST(req: Request) {
       memberEmail,
       memberPhone,
       password,
+      memberPhoto,
+      panNumber,
       isTestMode,
     } = body;
 
@@ -39,14 +41,23 @@ export async function POST(req: Request) {
 
     // Find or create User
     let user = await prisma.user.findUnique({ where: { email: cleanEmail } });
+    const defaultPassword = password || "Member@123";
+    const hashedPassword = await hashPassword(defaultPassword);
+
     if (!user) {
-      const defaultPassword = password || "Member@123";
-      const hashedPassword = await hashPassword(defaultPassword);
       user = await prisma.user.create({
         data: {
           name: memberName,
           email: cleanEmail,
           phone: memberPhone,
+          password: hashedPassword,
+          role: "MEMBER",
+        },
+      });
+    } else {
+      await prisma.user.update({
+        where: { id: user.id },
+        data: {
           password: hashedPassword,
           role: "MEMBER",
         },
@@ -67,7 +78,9 @@ export async function POST(req: Request) {
         memberName,
         memberEmail: cleanEmail,
         memberPhone,
-        status: "ACTIVE",
+        memberPhoto: memberPhoto || null,
+        panNumber: panNumber || null,
+        status: "PENDING",
         validFrom,
         validTill,
         amountPaid: plan.fee,

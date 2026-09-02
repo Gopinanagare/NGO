@@ -153,7 +153,9 @@ model Member {
   memberName   String
   memberEmail  String
   memberPhone  String
-  status       String         @default("ACTIVE") // ACTIVE, EXPIRED, PENDING
+  memberPhoto  String?
+  panNumber    String?
+  status       String         @default("PENDING") // PENDING, APPROVED, ACTIVE, EXPIRED, REJECTED
   validFrom    DateTime       @default(now())
   validTill    DateTime
   amountPaid   Float

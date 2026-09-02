@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import VolunteerIDCard from "@/components/VolunteerIDCard";
+import MemberIDCard from "@/components/MemberIDCard";
 import {
   Heart, Users, Award, Clock, FileText, Download, CheckCircle, XCircle,
   Plus, Settings, LogOut, Search, Filter, ShieldCheck, Mail, Calendar,
@@ -28,6 +29,10 @@ export default function AdminDashboardPage() {
   const [viewingIdCardVol, setViewingIdCardVol] = useState<any>(null);
   const [verifNotes, setVerifNotes] = useState("");
   const [volHours, setVolHours] = useState(0);
+
+  // Member Modal state
+  const [selectedMember, setSelectedMember] = useState<any>(null);
+  const [viewingMemberCard, setViewingMemberCard] = useState<any>(null);
 
   // Certificate Modal state
   const [certVolId, setCertVolId] = useState("");
@@ -112,6 +117,22 @@ export default function AdminDashboardPage() {
       });
       if (res.ok) {
         setSelectedVol(null);
+        fetchAdminData();
+      }
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  const handleUpdateMemberStatus = async (memberId: string, newStatus: string) => {
+    try {
+      const res = await fetch(`/api/membership/${memberId}`, {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ status: newStatus }),
+      });
+      if (res.ok) {
+        setSelectedMember(null);
         fetchAdminData();
       }
     } catch (err) {
@@ -222,7 +243,7 @@ export default function AdminDashboardPage() {
               { id: "donations", label: "Donations & 80G Receipts", icon: Heart },
               { id: "volunteers", label: "Volunteer Applications", icon: Users, badge: volunteers.filter((v) => v.status === "PENDING").length },
               { id: "certificates", label: "Issue Certificates", icon: Award },
-              { id: "members", label: "NGO Memberships", icon: ShieldCheck },
+              { id: "members", label: "NGO Memberships", icon: ShieldCheck, badge: members.filter((m) => m.status === "PENDING").length },
               { id: "cms", label: "Content Manager (CMS)", icon: FileText },
               { id: "enquiries", label: "Contact Enquiries", icon: Mail },
               { id: "settings", label: "System Settings", icon: Settings },
@@ -708,40 +729,148 @@ export default function AdminDashboardPage() {
 
         {/* TAB 5: MEMBERS */}
         {activeTab === "members" && (
-          <div className="bg-white rounded-3xl border border-slate-200 shadow-sm p-6 space-y-4">
-            <h3 className="text-lg font-bold text-slate-900">Active NGO Members</h3>
-            <div className="overflow-x-auto">
-              <table className="w-full text-left text-xs text-slate-700">
-                <thead className="bg-slate-50 text-slate-900 font-bold uppercase text-[10px] border-b border-slate-200">
-                  <tr>
-                    <th className="py-3 px-4">Membership No</th>
-                    <th className="py-3 px-4">Member Name</th>
-                    <th className="py-3 px-4">Contact</th>
-                    <th className="py-3 px-4">Plan Title</th>
-                    <th className="py-3 px-4">Validity</th>
-                    <th className="py-3 px-4">Status</th>
-                  </tr>
-                </thead>
-                <tbody className="divide-y divide-slate-100">
-                  {members.map((m) => (
-                    <tr key={m.id} className="hover:bg-slate-50">
-                      <td className="py-3 px-4 font-mono font-bold text-amber-700">{m.membershipNo}</td>
-                      <td className="py-3 px-4 font-bold text-slate-900">{m.memberName}</td>
-                      <td className="py-3 px-4">{m.memberEmail}<br />{m.memberPhone}</td>
-                      <td className="py-3 px-4">{m.plan?.title || "Annual"}</td>
-                      <td className="py-3 px-4">
-                        {new Date(m.validFrom).toLocaleDateString("en-IN")} to {new Date(m.validTill).toLocaleDateString("en-IN")}
-                      </td>
-                      <td className="py-3 px-4">
-                        <span className="bg-emerald-100 text-emerald-800 font-bold text-[10px] px-2 py-0.5 rounded-full">
-                          {m.status}
-                        </span>
-                      </td>
+          <div className="space-y-6">
+            <div className="bg-white rounded-3xl border border-slate-200 shadow-sm p-6 space-y-4">
+              <h3 className="text-lg font-bold text-slate-900">NGO Institutional Membership Applications & Review</h3>
+              <div className="overflow-x-auto">
+                <table className="w-full text-left text-xs text-slate-700">
+                  <thead className="bg-slate-50 text-slate-900 font-bold uppercase text-[10px] border-b border-slate-200">
+                    <tr>
+                      <th className="py-3 px-4">Photo & Member Name</th>
+                      <th className="py-3 px-4">Contact</th>
+                      <th className="py-3 px-4">Plan Title</th>
+                      <th className="py-3 px-4">Validity</th>
+                      <th className="py-3 px-4">Status</th>
+                      <th className="py-3 px-4">Actions</th>
                     </tr>
-                  ))}
-                </tbody>
-              </table>
+                  </thead>
+                  <tbody className="divide-y divide-slate-100">
+                    {members.map((m) => (
+                      <tr key={m.id} className="hover:bg-slate-50">
+                        <td className="py-3 px-4">
+                          <div className="flex items-center gap-3">
+                            <img
+                              src={m.memberPhoto && m.memberPhoto.trim() !== "" ? m.memberPhoto : "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=400&auto=format&fit=crop"}
+                              alt={m.memberName}
+                              className="w-9 h-9 rounded-full object-cover border border-slate-200 shrink-0"
+                            />
+                            <div>
+                              <p className="font-bold text-slate-900">{m.memberName}</p>
+                              <p className="text-[10px] font-mono font-bold text-amber-600">{m.membershipNo}</p>
+                            </div>
+                          </div>
+                        </td>
+                        <td className="py-3 px-4">{m.memberEmail}<br />{m.memberPhone}</td>
+                        <td className="py-3 px-4 font-semibold">{m.plan?.title || "Annual Member"}</td>
+                        <td className="py-3 px-4">
+                          {new Date(m.validFrom).toLocaleDateString("en-IN")} to {new Date(m.validTill).toLocaleDateString("en-IN")}
+                        </td>
+                        <td className="py-3 px-4">
+                          <span
+                            className={`font-bold text-[10px] px-2.5 py-1 rounded-full ${
+                              m.status === "APPROVED" || m.status === "ACTIVE"
+                                ? "bg-emerald-100 text-emerald-800"
+                                : m.status === "PENDING"
+                                ? "bg-amber-100 text-amber-800"
+                                : "bg-red-100 text-red-800"
+                            }`}
+                          >
+                            {m.status}
+                          </span>
+                        </td>
+                        <td className="py-3 px-4">
+                          <div className="flex items-center gap-2">
+                            <button
+                              onClick={() => setViewingMemberCard(m)}
+                              className="bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold text-xs px-2.5 py-1.5 rounded-lg flex items-center gap-1 shadow-sm"
+                            >
+                              <span className="material-symbols-outlined text-[14px]">shield</span> Card
+                            </button>
+                            <button
+                              onClick={() => setSelectedMember(m)}
+                              className="bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs px-3 py-1.5 rounded-lg"
+                            >
+                              Manage
+                            </button>
+                          </div>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
             </div>
+
+            {/* Member ID Card Inspection Modal */}
+            {viewingMemberCard && (
+              <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/80 backdrop-blur-sm">
+                <div className="bg-white rounded-3xl p-6 max-w-md w-full space-y-4 shadow-2xl">
+                  <div className="flex justify-between items-center border-b border-slate-100 pb-3">
+                    <h3 className="text-base font-bold text-slate-900 flex items-center gap-1.5">
+                      <span className="material-symbols-outlined text-[#F57C00]">shield</span>
+                      Official Digital Membership Card
+                    </h3>
+                    <button
+                      onClick={() => setViewingMemberCard(null)}
+                      className="text-slate-400 hover:text-slate-600 font-bold text-sm"
+                    >
+                      ✕
+                    </button>
+                  </div>
+
+                  <MemberIDCard member={viewingMemberCard} />
+
+                  <div className="pt-2">
+                    <button
+                      onClick={() => setViewingMemberCard(null)}
+                      className="w-full bg-slate-900 text-white font-bold text-xs py-2.5 rounded-xl"
+                    >
+                      Close Card
+                    </button>
+                  </div>
+                </div>
+              </div>
+            )}
+
+            {/* Member Review Modal */}
+            {selectedMember && (
+              <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/80 backdrop-blur-sm overflow-y-auto">
+                <div className="bg-white rounded-3xl p-6 max-w-lg w-full space-y-4 shadow-2xl my-8">
+                  <h3 className="text-lg font-bold text-slate-900">Membership Verification & Status Update</h3>
+                  <div className="text-xs space-y-1 text-slate-600 bg-slate-50 p-4 rounded-2xl">
+                    <p><strong>Member Name:</strong> {selectedMember.memberName}</p>
+                    <p><strong>Email:</strong> {selectedMember.memberEmail}</p>
+                    <p><strong>Phone:</strong> {selectedMember.memberPhone}</p>
+                    <p><strong>Plan Title:</strong> {selectedMember.plan?.title || "Annual Member"}</p>
+                    <p><strong>Fee Paid:</strong> ₹{selectedMember.amountPaid?.toLocaleString("en-IN")}</p>
+                    <p><strong>Membership Number:</strong> {selectedMember.membershipNo}</p>
+                  </div>
+
+                  <div className="flex gap-2 pt-2">
+                    <button
+                      onClick={() => handleUpdateMemberStatus(selectedMember.id, "APPROVED")}
+                      className="flex-1 bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs py-2.5 rounded-xl flex items-center justify-center gap-1 shadow-sm"
+                    >
+                      <span className="material-symbols-outlined text-[16px]">shield</span>
+                      Approve & Issue Member Card
+                    </button>
+                    <button
+                      onClick={() => handleUpdateMemberStatus(selectedMember.id, "REJECTED")}
+                      className="flex-1 bg-red-600 hover:bg-red-700 text-white font-bold text-xs py-2.5 rounded-xl flex items-center justify-center gap-1 shadow-sm"
+                    >
+                      <span className="material-symbols-outlined text-[16px]">block</span>
+                      Reject (No Card)
+                    </button>
+                    <button
+                      onClick={() => setSelectedMember(null)}
+                      className="py-2.5 px-4 bg-slate-100 text-slate-700 font-bold text-xs rounded-xl"
+                    >
+                      Cancel
+                    </button>
+                  </div>
+                </div>
+              </div>
+            )}
           </div>
         )}
 
