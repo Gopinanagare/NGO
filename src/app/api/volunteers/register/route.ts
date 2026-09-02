@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
-import { hashPassword } from "@/lib/auth";
+import { hashPassword, signToken } from "@/lib/auth";
 import { sendEmail } from "@/lib/email";
 
 export async function POST(req: Request) {
@@ -92,12 +92,30 @@ export async function POST(req: Request) {
       `,
     }).catch((err) => console.error("Email error:", err));
 
-    return NextResponse.json({
+    const tokenPayload = {
+      id: user.id,
+      email: user.email,
+      name: user.name,
+      role: user.role,
+    };
+    const token = signToken(tokenPayload);
+
+    const response = NextResponse.json({
       success: true,
       volunteerId: volunteer.id,
       volunteer,
       message: "Volunteer application submitted successfully! Pending background verification.",
     });
+
+    response.cookies.set("ratnakar_auth_token", token, {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === "production",
+      sameSite: "lax",
+      maxAge: 7 * 24 * 60 * 60,
+      path: "/",
+    });
+
+    return response;
   } catch (error: any) {
     console.error("Volunteer registration error:", error);
     return NextResponse.json({ error: error?.message || "Failed to submit volunteer application" }, { status: 500 });

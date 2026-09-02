@@ -21,7 +21,7 @@ function createPrismaClient() {
 
   let targetDbPath = sourceDbPath;
 
-  // On Vercel serverless environment, copy DB to /tmp for write permission
+  // On Vercel serverless environment, copy DB to /tmp for write permission if not exists
   if (process.env.VERCEL) {
     try {
       if (fs.existsSync(sourceDbPath)) {
@@ -41,4 +41,4 @@ function createPrismaClient() {
 
 export const prisma = globalForPrisma.prisma ?? createPrismaClient();
 
-if (process.env.NODE_ENV !== "production") globalForPrisma.prisma = prisma;
+globalForPrisma.prisma = prisma;
