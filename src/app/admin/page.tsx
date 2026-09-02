@@ -58,35 +58,35 @@ export default function AdminDashboardPage() {
   const fetchAdminData = async () => {
     setLoading(true);
     try {
-      const statsRes = await fetch("/api/admin/stats");
+      const statsRes = await fetch("/api/admin/stats", { cache: "no-store" });
       const statsData = await statsRes.json();
       if (statsData.stats) setStats(statsData.stats);
 
-      const donRes = await fetch("/api/donations");
+      const donRes = await fetch("/api/donations", { cache: "no-store" });
       const donData = await donRes.json();
       if (donData.donations) setDonations(donData.donations);
 
-      const volRes = await fetch("/api/volunteers?status=ALL");
+      const volRes = await fetch("/api/volunteers?status=ALL", { cache: "no-store" });
       const volData = await volRes.json();
       if (volData.volunteers) setVolunteers(volData.volunteers);
 
-      const memRes = await fetch("/api/membership");
+      const memRes = await fetch("/api/membership", { cache: "no-store" });
       const memData = await memRes.json();
       if (memData.members) setMembers(memData.members);
 
-      const campRes = await fetch("/api/campaigns");
+      const campRes = await fetch("/api/campaigns", { cache: "no-store" });
       const campData = await campRes.json();
       if (campData.campaigns) setCampaigns(campData.campaigns);
 
-      const actRes = await fetch("/api/activities");
+      const actRes = await fetch("/api/activities", { cache: "no-store" });
       const actData = await actRes.json();
       if (actData.activities) setActivities(actData.activities);
 
-      const evRes = await fetch("/api/events");
+      const evRes = await fetch("/api/events", { cache: "no-store" });
       const evData = await evRes.json();
       if (evData.events) setEvents(evData.events);
 
-      const enqRes = await fetch("/api/contact");
+      const enqRes = await fetch("/api/contact", { cache: "no-store" });
       const enqData = await enqRes.json();
       if (enqData.submissions) setEnquiries(enqData.submissions);
     } catch (err) {

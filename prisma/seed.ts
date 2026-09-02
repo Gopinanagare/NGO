@@ -38,13 +38,8 @@ async function main() {
     },
   });
 
-  // 2. Passwords
+  // 2. Admin User
   const adminPassword = await bcrypt.hash("Admin@123456", 10);
-  const volunteerPassword = await bcrypt.hash("Volunteer@123", 10);
-  const memberPassword = await bcrypt.hash("Member@123", 10);
-  const donorPassword = await bcrypt.hash("Donor@123", 10);
-
-  // 3. Create Admin User
   await prisma.user.upsert({
     where: { email: "admin@ratnakarngo.org" },
     update: { password: adminPassword },
@@ -57,40 +52,7 @@ async function main() {
     },
   });
 
-  // 4. Create Volunteer User & Volunteer Profile
-  const volUser = await prisma.user.upsert({
-    where: { email: "volunteer@ratnakarngo.org" },
-    update: { password: volunteerPassword },
-    create: {
-      email: "volunteer@ratnakarngo.org",
-      password: volunteerPassword,
-      name: "Rahul Sharma",
-      phone: "+91 98123 45678",
-      role: "VOLUNTEER",
-    },
-  });
-
-  const volunteer = await prisma.volunteer.upsert({
-    where: { email: "volunteer@ratnakarngo.org" },
-    update: { totalHours: 42, status: "APPROVED" },
-    create: {
-      user: { connect: { id: volUser.id } },
-      name: "Rahul Sharma",
-      email: "volunteer@ratnakarngo.org",
-      phone: "+91 98123 45678",
-      city: "New Delhi",
-      education: "B.Tech Computer Science",
-      occupation: "Software Engineer",
-      skills: "Teaching, Digital Literacy, Event Coordination",
-      availability: "WEEKENDS",
-      motivation: "Passionate about giving back and educating underprivileged children.",
-      status: "APPROVED",
-      verificationNotes: "Aadhaar Card Verified by Admin on 2026-01-10",
-      totalHours: 42,
-    },
-  });
-
-  // 5. Seed Membership Plans & Member
+  // 3. Seed Membership Plans
   let annualPlan = await prisma.membershipPlan.findFirst({
     where: { title: "Annual Supporting Member" },
   });
@@ -121,76 +83,16 @@ async function main() {
     });
   }
 
-  const memberUser = await prisma.user.upsert({
-    where: { email: "member@ratnakarngo.org" },
-    update: { password: memberPassword },
-    create: {
-      email: "member@ratnakarngo.org",
-      password: memberPassword,
-      name: "Suman Roy",
-      phone: "+91 98765 11223",
-      role: "MEMBER",
-    },
-  });
-
-  await prisma.member.upsert({
-    where: { membershipNo: "MEM-2026-1049" },
-    update: { status: "ACTIVE" },
-    create: {
-      user: { connect: { id: memberUser.id } },
-      plan: { connect: { id: annualPlan.id } },
-      membershipNo: "MEM-2026-1049",
-      memberName: "Suman Roy",
-      memberEmail: "member@ratnakarngo.org",
-      memberPhone: "+91 98765 11223",
-      validFrom: new Date("2026-01-01"),
-      validTill: new Date("2027-01-01"),
-      amountPaid: 1000,
-      status: "ACTIVE",
-    },
-  });
-
-  // 6. Seed Donor
-  const donorUser = await prisma.user.upsert({
-    where: { email: "donor@ratnakarngo.org" },
-    update: { password: donorPassword },
-    create: {
-      email: "donor@ratnakarngo.org",
-      password: donorPassword,
-      name: "Anita Deshmukh",
-      phone: "+91 99887 76655",
-      role: "DONOR",
-    },
-  });
-
-  const donor = await prisma.donor.upsert({
-    where: { email: "donor@ratnakarngo.org" },
-    update: { totalDonated: 15000 },
-    create: {
-      user: { connect: { id: donorUser.id } },
-      name: "Anita Deshmukh",
-      email: "donor@ratnakarngo.org",
-      phone: "+91 99887 76655",
-      panNumber: "ABCDE1234F",
-      address: "45 Lotus Garden, Vasant Kunj, New Delhi",
-      city: "New Delhi",
-      state: "Delhi",
-      pincode: "110070",
-      totalDonated: 15000,
-    },
-  });
-
-  // Check if campaigns already exist
+  // 4. Seed Campaigns
   const existingCampaigns = await prisma.campaign.count();
   if (existingCampaigns === 0) {
-    // 7. Seed Campaigns
-    const campaign1 = await prisma.campaign.create({
+    await prisma.campaign.create({
       data: {
         title: "Educate 500 Rural Children",
         slug: "educate-500-rural-children",
         description: "Providing school kits, digital tablets, and qualified teachers to children in underprivileged rural villages.",
         targetAmount: 500000,
-        raisedAmount: 320000,
+        raisedAmount: 0,
         image: "https://images.unsplash.com/photo-1497633762265-9d179a990aa6?q=80&w=1200&auto=format&fit=crop",
         category: "Education",
         status: "ACTIVE",
@@ -203,15 +105,15 @@ async function main() {
         slug: "mobile-health-clinic",
         description: "Deploying fully equipped mobile medical vans with doctors to remote tribal belts and slums.",
         targetAmount: 750000,
-        raisedAmount: 480000,
+        raisedAmount: 0,
         image: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?q=80&w=1200&auto=format&fit=crop",
         category: "Healthcare",
         status: "ACTIVE",
       },
     });
 
-    // 8. Seed Activities / Projects
-    const activity1 = await prisma.activity.create({
+    // 5. Seed Activities / Projects
+    await prisma.activity.create({
       data: {
         title: "Digital Literacy & Computer Lab Center",
         category: "Education",
@@ -237,7 +139,7 @@ async function main() {
       },
     });
 
-    // 9. Seed Events
+    // 6. Seed Events
     await prisma.event.create({
       data: {
         title: "Annual Impact Summit & Volunteer Recognition 2026",
@@ -247,73 +149,12 @@ async function main() {
         eventTime: "10:00 AM - 04:00 PM",
         bannerImage: "https://images.unsplash.com/photo-1511578314322-379afb476865?q=80&w=1200&auto=format&fit=crop",
         maxVolunteers: 25,
-        registeredVolunteers: 18,
+        registeredVolunteers: 0,
         status: "UPCOMING",
       },
     });
 
-    await prisma.event.create({
-      data: {
-        title: "Clean Yamuna Riverbank Drive & Tree Plantation",
-        description: "Community cleanup drive and planting 2,500 native saplings along the riverbank.",
-        venue: "Yamuna Ghat Sector 7, Delhi",
-        eventDate: "2026-09-22",
-        eventTime: "07:00 AM - 11:30 AM",
-        bannerImage: "https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?q=80&w=1200&auto=format&fit=crop",
-        maxVolunteers: 50,
-        registeredVolunteers: 41,
-        status: "UPCOMING",
-      },
-    });
-
-    // 10. Seed Volunteer Attendance & Certificate
-    await prisma.volunteerAttendance.create({
-      data: {
-        volunteer: { connect: { id: volunteer.id } },
-        activity: { connect: { id: activity1.id } },
-        date: "2026-01-15",
-        checkIn: "09:00 AM",
-        checkOut: "05:00 PM",
-        hoursLogged: 8,
-        status: "VERIFIED",
-        verifiedBy: "Ratnakar NGO Admin",
-      },
-    });
-
-    await prisma.volunteerCertificate.create({
-      data: {
-        certificateNo: "CERT-2026-9041",
-        volunteer: { connect: { id: volunteer.id } },
-        volunteerName: "Rahul Sharma",
-        projectName: "Digital Literacy & Computer Lab Initiative",
-        totalHours: 42,
-        issueDate: new Date("2026-02-01"),
-        authorizedSignee: "Ratnakar's NGO Management",
-      },
-    });
-
-    // 11. Seed Donations & 80G Receipts
-    await prisma.donation.create({
-      data: {
-        receiptNumber: "RN-80G-2026-0012",
-        donor: { connect: { id: donor.id } },
-        donorName: "Anita Deshmukh",
-        donorEmail: "anita.deshmukh@example.com",
-        donorPhone: "+91 99887 76655",
-        donorPan: "ABCDE1234F",
-        donorAddress: "45 Lotus Garden, Vasant Kunj, New Delhi",
-        amount: 10000,
-        cause: "Educate 500 Rural Children",
-        campaign: { connect: { id: campaign1.id } },
-        paymentMethod: "Razorpay Live",
-        paymentStatus: "SUCCESS",
-        razorpayOrderId: "order_demo_1001",
-        razorpayPaymentId: "pay_demo_8829",
-        razorpaySignature: "sig_verified_demo",
-      },
-    });
-
-    // 12. Seed Gallery Items
+    // 7. Seed Gallery Items
     await prisma.galleryItem.createMany({
       data: [
         { title: "Children enjoying interactive learning in class", category: "Education", mediaType: "image", url: "https://images.unsplash.com/photo-1509062522246-3755977927d7?q=80&w=800&auto=format&fit=crop" },
@@ -323,7 +164,7 @@ async function main() {
       ],
     });
 
-    // 13. Seed Blog Posts
+    // 8. Seed Blog Posts
     await prisma.blogPost.create({
       data: {
         title: "How Digital Education is Transforming Rural Villages in India",
@@ -336,21 +177,9 @@ async function main() {
         published: true,
       },
     });
-
-    // 14. Seed Contact Submissions
-    await prisma.contactSubmission.create({
-      data: {
-        name: "Suresh Gupta",
-        email: "suresh.g@example.com",
-        phone: "+91 98111 22334",
-        subject: "CSR Partnership Proposal",
-        message: "We would like to explore a CSR collaboration for funding your mobile health clinic drive in 2026.",
-        status: "NEW",
-      },
-    });
   }
 
-  console.log("Database seeded successfully!");
+  console.log("Database seeded successfully with clean structure!");
 }
 
 main()

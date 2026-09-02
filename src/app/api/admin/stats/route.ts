@@ -1,6 +1,9 @@
 import { NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 
+export const dynamic = "force-dynamic";
+export const revalidate = 0;
+
 export async function GET() {
   try {
     const totalDonationAgg = await prisma.donation.aggregate({
@@ -18,7 +21,7 @@ export async function GET() {
       _sum: { hoursLogged: true },
     });
 
-    const totalMembers = await prisma.member.count({ where: { status: "ACTIVE" } });
+    const totalMembers = await prisma.member.count({ where: { status: { in: ["ACTIVE", "APPROVED"] } } });
     const totalCampaigns = await prisma.campaign.count();
     const totalEvents = await prisma.event.count();
     const totalEnquiries = await prisma.contactSubmission.count({ where: { status: "NEW" } });
@@ -34,7 +37,6 @@ export async function GET() {
       orderBy: { createdAt: "desc" },
     });
 
-    // Monthly breakdown data for analytics charts
     const monthlyDonationData = [
       { month: "Jan", amount: 45000, volunteers: 12 },
       { month: "Feb", amount: 62000, volunteers: 18 },
@@ -43,7 +45,7 @@ export async function GET() {
       { month: "May", amount: 95000, volunteers: 30 },
       { month: "Jun", amount: 112000, volunteers: 38 },
       { month: "Jul", amount: 130000, volunteers: 45 },
-      { month: "Aug", amount: Number(totalDonationAgg._sum.amount || 150000), volunteers: 52 },
+      { month: "Aug", amount: Number(totalDonationAgg._sum.amount || 0), volunteers: totalVolunteers },
     ];
 
     return NextResponse.json({
