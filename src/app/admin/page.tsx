@@ -601,15 +601,17 @@ export default function AdminDashboardPage() {
                   <div className="flex gap-2 pt-2">
                     <button
                       onClick={() => handleUpdateVolunteerStatus(selectedVol.id, "APPROVED")}
-                      className="flex-1 bg-emerald-600 text-white font-bold text-xs py-2.5 rounded-xl"
+                      className="flex-1 bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs py-2.5 rounded-xl flex items-center justify-center gap-1 shadow-sm"
                     >
-                      Approve Volunteer
+                      <span className="material-symbols-outlined text-[16px]">badge</span>
+                      Approve & Issue ID Card
                     </button>
                     <button
                       onClick={() => handleUpdateVolunteerStatus(selectedVol.id, "REJECTED")}
-                      className="flex-1 bg-red-600 text-white font-bold text-xs py-2.5 rounded-xl"
+                      className="flex-1 bg-red-600 hover:bg-red-700 text-white font-bold text-xs py-2.5 rounded-xl flex items-center justify-center gap-1 shadow-sm"
                     >
-                      Reject Application
+                      <span className="material-symbols-outlined text-[16px]">block</span>
+                      Reject (No ID Card)
                     </button>
                     <button
                       onClick={() => setSelectedVol(null)}

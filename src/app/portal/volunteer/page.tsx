@@ -138,7 +138,13 @@ export default function VolunteerPortalPage() {
           <div className="lg:col-span-4 space-y-4 sticky top-24">
             <div className="text-center sm:text-left">
               <h3 className="text-lg font-bold text-[#031635]">Digital Volunteer ID Card</h3>
-              <p className="text-xs text-[#44474e]">Official digital badge for field identification and events.</p>
+              <p className="text-xs text-[#44474e]">
+                {volData.status === "APPROVED" || volData.status === "VERIFIED"
+                  ? "Official digital badge authorized by NGO Admin for field drives."
+                  : volData.status === "REJECTED"
+                  ? "Application status: Rejected. No ID card issued."
+                  : "Your application is currently Under Admin Review. Official ID Card will be issued upon Admin approval."}
+              </p>
             </div>
 
             <VolunteerIDCard volunteer={volData} />

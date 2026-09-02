@@ -90,7 +90,7 @@ export default function VolunteerPage() {
         </span>
         <h1 className="text-4xl md:text-5xl font-bold text-[#031635]">Join Our Global Force for Good</h1>
         <p className="text-base text-[#44474e] leading-relaxed">
-          Volunteer with Ratnakar&apos;s NGO to lead digital education labs, organize health camps, or mentor youth. Upload your photo to automatically generate your official **Digital Volunteer ID Card**.
+          Volunteer with Ratnakar&apos;s NGO to lead digital education labs, organize health camps, or mentor youth. Upload your photo to apply. Upon NGO Admin review and approval, your official **Digital Volunteer ID Card** will be issued.
         </p>
       </div>
 
@@ -100,12 +100,14 @@ export default function VolunteerPage() {
           <h2 className="text-xl font-bold text-[#031635]">Volunteer Registration Form</h2>
 
           {success && (
-            <div className="p-4 bg-[#E8F5E9] text-[#1B5E20] border border-[#d9e6da] rounded-lg text-xs space-y-2">
-              <div className="flex items-center gap-2 font-bold text-sm">
-                <span className="material-symbols-outlined text-lg fill">verified</span>
-                <span>Application Submitted & Digital ID Card Generated!</span>
+            <div className="p-4 bg-amber-50 text-amber-900 border border-amber-200 rounded-lg text-xs space-y-2">
+              <div className="flex items-center gap-2 font-bold text-sm text-amber-800">
+                <span className="material-symbols-outlined text-lg fill">hourglass_empty</span>
+                <span>Application Submitted & Under Admin Review</span>
               </div>
-              <p>Your volunteer profile and digital ID card have been generated automatically. NGO Admin will review your profile for verification.</p>
+              <p>
+                Thank you for applying! Your application and photo are currently <strong>UNDER REVIEW</strong> by the NGO Administrator. Once the Admin confirms your application, your official Digital Volunteer ID Card will be generated and issued in your Volunteer Portal.
+              </p>
             </div>
           )}
 
