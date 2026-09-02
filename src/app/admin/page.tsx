@@ -220,7 +220,7 @@ export default function AdminDashboardPage() {
             {[
               { id: "overview", label: "Dashboard Overview", icon: BarChart3 },
               { id: "donations", label: "Donations & 80G Receipts", icon: Heart },
-              { id: "volunteers", label: "Volunteer Management", icon: Users },
+              { id: "volunteers", label: "Volunteer Applications", icon: Users, badge: volunteers.filter((v) => v.status === "PENDING").length },
               { id: "certificates", label: "Issue Certificates", icon: Award },
               { id: "members", label: "NGO Memberships", icon: ShieldCheck },
               { id: "cms", label: "Content Manager (CMS)", icon: FileText },
@@ -233,14 +233,21 @@ export default function AdminDashboardPage() {
                 <button
                   key={item.id}
                   onClick={() => setActiveTab(item.id)}
-                  className={`w-full flex items-center gap-3 px-3.5 py-3 rounded-xl transition-all ${
+                  className={`w-full flex items-center justify-between px-3.5 py-3 rounded-xl transition-all ${
                     isActive
                       ? "bg-emerald-600 text-white font-bold shadow-md shadow-emerald-600/30"
                       : "hover:bg-slate-900 text-slate-400 hover:text-slate-200"
                   }`}
                 >
-                  <Icon className="w-4 h-4 shrink-0" />
-                  <span>{item.label}</span>
+                  <div className="flex items-center gap-3">
+                    <Icon className="w-4 h-4 shrink-0" />
+                    <span>{item.label}</span>
+                  </div>
+                  {Boolean(item.badge) && item.badge! > 0 && (
+                    <span className="bg-amber-500 text-slate-950 text-[10px] font-black px-2 py-0.5 rounded-full animate-pulse">
+                      {item.badge}
+                    </span>
+                  )}
                 </button>
               );
             })}
@@ -381,19 +388,38 @@ export default function AdminDashboardPage() {
 
               {/* Pending Volunteers */}
               <div className="bg-white p-6 rounded-3xl border border-slate-200 shadow-sm space-y-4">
-                <h3 className="text-base font-bold text-slate-900">Pending Volunteer Applications</h3>
+                <div className="flex justify-between items-center">
+                  <h3 className="text-base font-bold text-slate-900">Pending Volunteer Applications</h3>
+                  <button
+                    onClick={() => setActiveTab("volunteers")}
+                    className="text-xs font-bold text-emerald-600 hover:underline"
+                  >
+                    View All ({volunteers.filter((v) => v.status === "PENDING").length}) →
+                  </button>
+                </div>
                 <div className="divide-y divide-slate-100 text-xs">
                   {volunteers.filter((v) => v.status === "PENDING").slice(0, 5).map((v) => (
                     <div key={v.id} className="py-3 flex justify-between items-center">
-                      <div>
-                        <p className="font-bold text-slate-900">{v.name} ({v.city})</p>
-                        <p className="text-slate-500">{v.skills} • {v.email}</p>
+                      <div className="flex items-center gap-3">
+                        <img
+                          src={v.profilePhoto && v.profilePhoto.trim() !== "" ? v.profilePhoto : "https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=400&auto=format&fit=crop"}
+                          alt={v.name}
+                          className="w-8 h-8 rounded-full object-cover border border-slate-200"
+                        />
+                        <div>
+                          <p className="font-bold text-slate-900">{v.name} ({v.city || "India"})</p>
+                          <p className="text-slate-500 text-[11px]">{v.skills} • {v.email}</p>
+                        </div>
                       </div>
                       <button
-                        onClick={() => setSelectedVol(v)}
-                        className="bg-emerald-600 text-white font-bold text-xs px-3 py-1 rounded-lg"
+                        onClick={() => {
+                          setSelectedVol(v);
+                          setVolHours(v.totalHours);
+                          setVerifNotes(v.verificationNotes || "");
+                        }}
+                        className="bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs px-3 py-1.5 rounded-lg shadow-sm"
                       >
-                        Review
+                        Review Application
                       </button>
                     </div>
                   ))}

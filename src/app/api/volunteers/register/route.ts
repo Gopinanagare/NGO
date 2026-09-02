@@ -21,22 +21,31 @@ export async function POST(req: Request) {
       profilePhoto,
     } = body;
 
-    if (!name || !email || !phone || !skills || !availability) {
-      return NextResponse.json({ error: "Please fill out all required fields" }, { status: 400 });
+    if (!name || !email || !phone || !password || !skills || !availability) {
+      return NextResponse.json({ error: "Please fill out all required fields (Name, Email, Phone, Password, Skills, Availability)" }, { status: 400 });
     }
 
     const cleanEmail = email.toLowerCase().trim();
 
     // Check if user already exists
     let user = await prisma.user.findUnique({ where: { email: cleanEmail } });
+    const hashedPassword = await hashPassword(password);
+
     if (!user) {
-      const defaultPassword = password || "Volunteer@123";
-      const hashedPassword = await hashPassword(defaultPassword);
       user = await prisma.user.create({
         data: {
           name,
           email: cleanEmail,
           phone,
+          password: hashedPassword,
+          role: "VOLUNTEER",
+        },
+      });
+    } else {
+      // Update password and role if needed
+      await prisma.user.update({
+        where: { id: user.id },
+        data: {
           password: hashedPassword,
           role: "VOLUNTEER",
         },
