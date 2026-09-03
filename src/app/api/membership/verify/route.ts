@@ -3,6 +3,7 @@ import { prisma } from "@/lib/prisma";
 import { verifyRazorpaySignature } from "@/lib/razorpay";
 import { hashPassword, signToken } from "@/lib/auth";
 import { sendEmail } from "@/lib/email";
+import { saveMemberToStore } from "@/lib/store";
 
 export async function POST(req: Request) {
   try {
@@ -86,6 +87,11 @@ export async function POST(req: Request) {
         amountPaid: plan.fee,
         paymentId: razorpay_payment_id || `pay_mem_${Date.now()}`,
       },
+    });
+
+    saveMemberToStore({
+      ...member,
+      plan: { title: plan.title },
     });
 
     sendEmail({

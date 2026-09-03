@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 import { hashPassword, signToken } from "@/lib/auth";
 import { sendEmail } from "@/lib/email";
+import { saveVolunteerToStore } from "@/lib/store";
 
 export async function POST(req: Request) {
   try {
@@ -75,6 +76,8 @@ export async function POST(req: Request) {
         status: "PENDING",
       },
     });
+
+    saveVolunteerToStore(volunteer);
 
     sendEmail({
       to: cleanEmail,

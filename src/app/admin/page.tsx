@@ -407,29 +407,44 @@ export default function AdminDashboardPage() {
                   ))}
                 </div>
               </div>
-
-              {/* Pending Volunteers */}
+              {/* Volunteer Applications & Verification Summary */}
               <div className="bg-white p-6 rounded-3xl border border-slate-200 shadow-sm space-y-4">
-                <div className="flex justify-between items-center">
-                  <h3 className="text-base font-bold text-slate-900">Pending Volunteer Applications</h3>
+                <div className="flex justify-between items-center border-b border-slate-100 pb-3">
+                  <div>
+                    <h3 className="text-base font-bold text-slate-900">Recent Volunteer Applications</h3>
+                    <p className="text-[11px] text-slate-500">Showing all pending, approved, and rejected volunteer registrations.</p>
+                  </div>
                   <button
                     onClick={() => setActiveTab("volunteers")}
                     className="text-xs font-bold text-emerald-600 hover:underline"
                   >
-                    View All ({volunteers.filter((v) => v.status === "PENDING").length}) →
+                    View All ({volunteers.length}) →
                   </button>
                 </div>
                 <div className="divide-y divide-slate-100 text-xs">
-                  {volunteers.filter((v) => v.status === "PENDING").slice(0, 5).map((v) => (
+                  {volunteers.slice(0, 5).map((v) => (
                     <div key={v.id} className="py-3 flex justify-between items-center">
                       <div className="flex items-center gap-3">
                         <img
                           src={v.profilePhoto && v.profilePhoto.trim() !== "" ? v.profilePhoto : "https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=400&auto=format&fit=crop"}
                           alt={v.name}
-                          className="w-8 h-8 rounded-full object-cover border border-slate-200"
+                          className="w-9 h-9 rounded-full object-cover border border-slate-200 shadow-sm shrink-0"
                         />
                         <div>
-                          <p className="font-bold text-slate-900">{v.name} ({v.city || "India"})</p>
+                          <div className="flex items-center gap-2">
+                            <p className="font-bold text-slate-900">{v.name}</p>
+                            <span
+                              className={`text-[9px] font-bold px-2 py-0.5 rounded-full ${
+                                v.status === "APPROVED" || v.status === "VERIFIED"
+                                  ? "bg-emerald-100 text-emerald-800"
+                                  : v.status === "REJECTED"
+                                  ? "bg-red-100 text-red-800"
+                                  : "bg-amber-100 text-amber-800"
+                              }`}
+                            >
+                              {v.status}
+                            </span>
+                          </div>
                           <p className="text-slate-500 text-[11px]">{v.skills} • {v.email}</p>
                         </div>
                       </div>
@@ -439,14 +454,14 @@ export default function AdminDashboardPage() {
                           setVolHours(v.totalHours);
                           setVerifNotes(v.verificationNotes || "");
                         }}
-                        className="bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs px-3 py-1.5 rounded-lg shadow-sm"
+                        className="bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs px-3 py-1.5 rounded-xl shadow-sm"
                       >
-                        Review Application
+                        Review
                       </button>
                     </div>
                   ))}
-                  {volunteers.filter((v) => v.status === "PENDING").length === 0 && (
-                    <p className="py-4 text-slate-500 text-center">No pending volunteer applications.</p>
+                  {volunteers.length === 0 && (
+                    <p className="py-4 text-slate-500 text-center">No volunteer applications submitted yet.</p>
                   )}
                 </div>
               </div>

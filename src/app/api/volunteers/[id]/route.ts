@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 import { sendEmail } from "@/lib/email";
+import { updateVolunteerStatusInStore } from "@/lib/store";
 
 export async function PATCH(req: Request, { params }: { params: Promise<{ id: string }> }) {
   try {
@@ -8,31 +9,35 @@ export async function PATCH(req: Request, { params }: { params: Promise<{ id: st
     const body = await req.json();
     const { status, verificationNotes, totalHours } = body;
 
-    const existing = await prisma.volunteer.findUnique({ where: { id } });
-    if (!existing) {
-      return NextResponse.json({ error: "Volunteer profile not found" }, { status: 404 });
+    let updated: any = null;
+    try {
+      const existing = await prisma.volunteer.findUnique({ where: { id } });
+      if (existing) {
+        updated = await prisma.volunteer.update({
+          where: { id },
+          data: {
+            status: status || existing.status,
+            verificationNotes: verificationNotes !== undefined ? verificationNotes : existing.verificationNotes,
+            totalHours: totalHours !== undefined ? Number(totalHours) : existing.totalHours,
+          },
+        });
+      }
+    } catch (e) {
+      console.error("Prisma update volunteer error:", e);
     }
 
-    const updated = await prisma.volunteer.update({
-      where: { id },
-      data: {
-        status: status || existing.status,
-        verificationNotes: verificationNotes !== undefined ? verificationNotes : existing.verificationNotes,
-        totalHours: totalHours !== undefined ? Number(totalHours) : existing.totalHours,
-      },
-    });
+    updateVolunteerStatusInStore(id, status, verificationNotes, totalHours);
 
-    if (status && status !== existing.status) {
-      const isApproved = status === "APPROVED";
+    if (updated) {
       sendEmail({
-        to: existing.email,
+        to: updated.email,
         subject: `Volunteer Status Update - Ratnakar's NGO (${status})`,
         html: `
           <div style="font-family: Arial, sans-serif; padding: 20px; color: #1e293b;">
-            <h2 style="color: ${isApproved ? "#0d9488" : "#dc2626"};">Volunteer Application Update</h2>
-            <p>Dear <strong>${existing.name}</strong>,</p>
+            <h2 style="color: ${status === "APPROVED" ? "#0d9488" : "#dc2626"};">Volunteer Application Update</h2>
+            <p>Dear <strong>${updated.name}</strong>,</p>
             <p>Your volunteer application status with Ratnakar's NGO has been updated to: <strong>${status}</strong>.</p>
-            ${isApproved ? `<p>Congratulations! You are now an approved volunteer. You can log into your portal to view assigned project activities and record volunteer hours.</p>` : `<p>Verification Notes: ${verificationNotes || "Application did not meet current requirements."}</p>`}
+            ${status === "APPROVED" ? `<p>Congratulations! You are now an approved volunteer. You can log into your portal to view assigned project activities and record volunteer hours.</p>` : `<p>Verification Notes: ${verificationNotes || "Application did not meet current requirements."}</p>`}
             <hr style="border: none; border-top: 1px solid #cbd5e1; margin: 20px 0;" />
             <p style="font-size: 12px; color: #64748b;">Ratnakar's NGO | Made by Satyajit</p>
           </div>
@@ -40,7 +45,7 @@ export async function PATCH(req: Request, { params }: { params: Promise<{ id: st
       }).catch((err) => console.error("Email notification error:", err));
     }
 
-    return NextResponse.json({ success: true, volunteer: updated });
+    return NextResponse.json({ success: true, volunteer: updated || { id, status } });
   } catch (error) {
     console.error("Update volunteer API error:", error);
     return NextResponse.json({ error: "Failed to update volunteer profile" }, { status: 500 });

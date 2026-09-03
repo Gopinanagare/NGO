@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
+import { mergeVolunteers } from "@/lib/store";
 
 export const dynamic = "force-dynamic";
 export const revalidate = 0;
@@ -14,17 +15,27 @@ export async function GET(req: Request) {
       where.status = status;
     }
 
-    const volunteers = await prisma.volunteer.findMany({
-      where,
-      include: {
-        assignments: {
-          include: { activity: true },
+    let dbVolunteers: any[] = [];
+    try {
+      dbVolunteers = await prisma.volunteer.findMany({
+        where,
+        include: {
+          assignments: {
+            include: { activity: true },
+          },
+          attendances: true,
+          certificates: true,
         },
-        attendances: true,
-        certificates: true,
-      },
-      orderBy: { createdAt: "desc" },
-    });
+        orderBy: { createdAt: "desc" },
+      });
+    } catch (e) {
+      console.error("Prisma volunteer query warning:", e);
+    }
+
+    let volunteers = mergeVolunteers(dbVolunteers);
+    if (status && status !== "ALL") {
+      volunteers = volunteers.filter((v: any) => v.status === status);
+    }
 
     return NextResponse.json({ volunteers });
   } catch (error) {
