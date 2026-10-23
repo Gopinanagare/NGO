@@ -6,7 +6,7 @@ import { Lock, Heart, ShieldCheck, AlertCircle } from "lucide-react";
 
 export default function AdminLoginPage() {
   const router = useRouter();
-  const [email, setEmail] = useState("admin@ratnakarngo.org");
+  const [email, setEmail] = useState("admin@samundridevitrust.org");
   const [password, setPassword] = useState("Admin@123456");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -41,12 +41,16 @@ export default function AdminLoginPage() {
     <div className="min-h-screen bg-slate-950 flex items-center justify-center p-4">
       <div className="w-full max-w-md bg-white rounded-3xl p-8 shadow-2xl space-y-6 border border-slate-800">
         <div className="text-center space-y-2">
-          <div className="w-14 h-14 bg-emerald-600 rounded-2xl flex items-center justify-center text-white mx-auto shadow-lg shadow-emerald-600/30">
-            <Heart className="w-8 h-8 fill-white" />
+          <div className="w-16 h-16 bg-white rounded-2xl flex items-center justify-center p-1 mx-auto shadow-md border border-slate-100">
+            <img
+              src="/images/trust_stamp.png"
+              alt="Maa Samundri Devi Trust Seal"
+              className="w-full h-full object-contain"
+            />
           </div>
-          <h1 className="text-2xl font-black text-slate-900 tracking-tight">Ratnakar&apos;s NGO</h1>
+          <h1 className="text-xl font-black text-slate-900 tracking-tight">Maa Samundri Devi Trust</h1>
           <p className="text-xs font-semibold text-emerald-700 bg-emerald-50 px-3 py-1 rounded-full inline-block">
-            Secure NGO Admin Portal
+            President: Kamla Kumari • NGO Admin Portal
           </p>
         </div>
 
@@ -91,7 +95,7 @@ export default function AdminLoginPage() {
 
         <div className="pt-4 border-t border-slate-100 text-center text-xs text-slate-500 space-y-1">
           <p>Pre-seeded Super Admin Credentials:</p>
-          <p className="font-mono text-slate-700 font-bold">admin@ratnakarngo.org / Admin@123456</p>
+          <p className="font-mono text-slate-700 font-bold">admin@samundridevitrust.org / Admin@123456</p>
           <p className="pt-2 text-[10px] text-emerald-800">Made by Satyajit</p>
         </div>
       </div>

@@ -55,14 +55,19 @@ export default function VolunteerIDCard({ volunteer }: VolunteerIDCardProps) {
       )}
 
       {/* Card Header */}
-      <div className="bg-[#031635] text-white p-5 text-center relative border-b-4 border-[#F57C00]">
+      <div className="bg-[#031635] text-white p-4 text-center relative border-b-4 border-[#F57C00]">
         <div className="flex items-center justify-center gap-2 mb-1">
-          <span className="material-symbols-outlined text-[#F57C00] text-2xl fill">favorite</span>
-          <span className="text-lg font-black tracking-tight text-white">Ratnakar&apos;s NGO</span>
+          <img
+            src="/images/trust_stamp.png"
+            alt="Trust Seal"
+            className="w-7 h-7 object-contain bg-white rounded-full p-0.5"
+          />
+          <span className="text-base font-black tracking-tight text-white">Maa Samundri Devi Trust</span>
         </div>
-        <p className="text-[10px] text-[#ffb786] font-bold uppercase tracking-widest">
+        <p className="text-[10px] text-[#ffb786] font-bold uppercase tracking-wider">
           {isApproved ? "Official Volunteer ID Card" : "Volunteer ID Application"}
         </p>
+        <p className="text-[9px] text-slate-300">Govt. Regd. Deed No. 16/2024 • Aurangabad, Bihar</p>
       </div>
 
       {/* Card Body */}
@@ -135,9 +140,11 @@ export default function VolunteerIDCard({ volunteer }: VolunteerIDCardProps) {
         </div>
 
         {/* Card Footer Bar */}
-        <div className="pt-2 flex justify-between items-center border-t border-slate-100 text-[10px] text-slate-400">
-          <span>{isApproved ? "Auth: Ratnakar NGO Admin" : "Awaiting Admin Verification"}</span>
-          <span className="font-mono text-[#031635] font-bold">80G Certified NGO</span>
+        <div className="pt-2 flex justify-between items-center border-t border-slate-100 text-[10px] text-slate-500">
+          <span className="font-semibold text-slate-700">
+            {isApproved ? "Auth Sign: Kamla Kumari (President)" : "Awaiting Admin Verification"}
+          </span>
+          <span className="font-mono text-[#031635] font-bold">80G & 12A Certified</span>
         </div>
       </div>
     </div>

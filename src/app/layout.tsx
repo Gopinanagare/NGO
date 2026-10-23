@@ -4,9 +4,9 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
-  title: "Ratnakar's NGO | Empowering Communities, Changing Lives",
-  description: "Official portal of Ratnakar's NGO. Support education, healthcare, and rural empowerment. Eligible for 80G Tax Exemption. Made by Satyajit.",
-  keywords: "Ratnakar NGO, NGO India, Donate NGO 80G, Volunteer Certificate, NGO Management System",
+  title: "Maa Samundri Devi Charitable Trust | Empowering Communities, Changing Lives",
+  description: "Official portal of Maa Samundri Devi Charitable Trust (Regd. Deed No. 16/2024, PAN: AALTM2352G, 80G & 12A Certified). President: Kamla Kumari. Support education, healthcare relief, rural development, and women empowerment in Bihar & India. Made by Satyajit.",
+  keywords: "Maa Samundri Devi Charitable Trust, Kamla Kumari President, NGO Aurangabad Bihar, Donate NGO 80G, 12A Non-Profit, Volunteer Certificate, Satyajit",
 };
 
 export default function RootLayout({

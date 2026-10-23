@@ -41,23 +41,23 @@ export default function HomePage() {
           <img
             className="w-full h-full object-cover opacity-60"
             src="https://lh3.googleusercontent.com/aida-public/AB6AXuAHGji4e0k01ZNoRduqYEXDeo-sFB6nQEhgbetVvV8bp9ni9f41HxbL9gkRWXgHKiGh-ippisFDZIhRpwYSw63IusuTgKChJ5SE8H-m56nsCWSX6GVAgQpJEq2mCY25suO2oeh_LmhFSo8jnY1pahGns1afxEtesJM7uGwr9CdAavDkDTuiIMC-940l91ywaPI1OXcfesTPK27Z_eAgcGUV3KlY_DCgi09QaGlowc0jaldCEq87R5zzxg"
-            alt="Ratnakar's NGO Community Gathering"
+            alt="Maa Samundri Devi Charitable Trust Community Gathering"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-[#031635]/90 to-[#031635]/40"></div>
         </div>
 
         <div className="relative z-10 text-center max-w-3xl flex flex-col items-center gap-6">
-          <span className="inline-flex items-center gap-1.5 bg-[#E8F5E9] text-[#1B5E20] px-4 py-1 rounded-full text-xs font-bold shadow">
+          <span className="inline-flex items-center gap-1.5 bg-[#E8F5E9] text-[#1B5E20] px-4 py-1.5 rounded-full text-xs font-bold shadow">
             <span className="material-symbols-outlined text-[16px] fill">verified</span>
-            Ratnakar&apos;s NGO — 80G Tax Exemption Certified
+            Maa Samundri Devi Charitable Trust — 80G & 12A Certified
           </span>
 
-          <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-white tracking-tight leading-tight">
-            Empowering Communities, Changing Lives
+          <h1 className="text-3xl sm:text-5xl md:text-6xl font-bold text-white tracking-tight leading-tight">
+            Empowering Communities, Transforming Lives
           </h1>
 
-          <p className="text-lg sm:text-xl text-[#b6c6ef] max-w-2xl font-normal">
-            Join us in our mission to create sustainable change globally through grassroots initiatives, education, and direct action.
+          <p className="text-base sm:text-lg text-[#b6c6ef] max-w-2xl font-normal">
+            Public Charitable Trust (Deed No. 16/2024, PAN: AALTM2352G) dedicated to grassroots educational aid, free healthcare relief camps, women self-reliance, and rural welfare across Bihar and India.
           </p>
 
           <div className="flex gap-4 mt-4 flex-wrap justify-center">
@@ -97,27 +97,59 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 3. Stitch Mission Brief Section */}
-      <section className="max-w-[1280px] mx-auto px-6 mb-16 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-        <div className="flex flex-col gap-6">
-          <h2 className="text-3xl font-semibold text-[#031635]">Our Mission & Vision</h2>
-          <p className="text-base text-[#44474e] leading-relaxed">
-            We believe in a world where every community has the resources to thrive. Through strategic partnerships, verifiable accountability, and on-the-ground action, Ratnakar&apos;s NGO is dedicated to long-term sustainable development.
-          </p>
-          <Link
-            href="/about"
-            className="text-sm font-bold text-[#964900] hover:underline underline-offset-4 w-fit flex items-center gap-1"
-          >
-            Read Our Full Story <span className="material-symbols-outlined text-[20px]">arrow_forward</span>
-          </Link>
-        </div>
+      {/* 3. President's Message & Core Mission */}
+      <section className="max-w-[1280px] mx-auto px-6 mb-16">
+        <div className="bg-white border border-[#e0e3e5] rounded-2xl p-8 md:p-12 shadow-sm grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+          {/* President Photo */}
+          <div className="lg:col-span-5 flex flex-col items-center text-center">
+            <div className="relative w-64 h-72 sm:w-72 sm:h-80 rounded-2xl overflow-hidden shadow-md border-4 border-white ring-1 ring-slate-200">
+              <img
+                className="w-full h-full object-cover object-top"
+                src="/images/kamla_kumari.jpg"
+                alt="Smt. Kamla Kumari - President, Maa Samundri Devi Charitable Trust"
+              />
+              <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-[#031635]/90 via-[#031635]/40 to-transparent p-3 text-white">
+                <span className="text-[10px] uppercase font-bold tracking-wider bg-[#F57C00] px-2 py-0.5 rounded-full inline-block mb-1">
+                  Founder & President
+                </span>
+                <p className="font-bold text-sm">Smt. Kamla Kumari</p>
+                <p className="text-[10px] text-slate-300">श्रीमती कमला कुमारी (अध्यक्ष)</p>
+              </div>
+            </div>
+            <p className="text-xs text-slate-500 font-semibold mt-3">📞 +91 77660 84876 • Aurangabad, Bihar</p>
+          </div>
 
-        <div className="h-72 rounded-xl overflow-hidden shadow-sm border border-[#e0e3e5]">
-          <img
-            className="w-full h-full object-cover"
-            src="https://lh3.googleusercontent.com/aida-public/AB6AXuDGvdr344GLk3CxWvw0CKCm_1eQ9rBasKqjm71loAJbgkRl3MJI9DeXhJ4saGxAH9tzxMGdswz73WfFMIeCF7LopuNWtRIWUik7DfZjwsQFN9ZreVVxcQ0IURRaMTepgGrkJNdPNCHITGIHqvOHXCaAk3LTnM0LpO0lJgotfeMx9oRpgfanYoJQVCMnnHpPR8kFfDcZhM5iUx_8_jnQSEEkIzKdZQrAxlaCF_h7UQ4umIxnygfQ4ihI5Q"
-            alt="Planting Sapling Impact"
-          />
+          {/* President Message Content */}
+          <div className="lg:col-span-7 flex flex-col gap-5">
+            <div className="inline-flex items-center gap-1.5 bg-[#E8F5E9] text-[#1B5E20] px-3.5 py-1 rounded-full text-xs font-bold w-fit">
+              <span className="material-symbols-outlined text-[16px]">format_quote</span>
+              President&apos;s Message
+            </div>
+            <h2 className="text-2xl sm:text-3xl font-bold text-[#031635] leading-tight">
+              &quot;True service begins when we reach the last person in the village.&quot;
+            </h2>
+            <p className="text-sm sm:text-base text-[#44474e] leading-relaxed">
+              Maa Samundri Devi Charitable Trust was established to bring real, verifiable assistance directly to families who need it most. From providing uniforms and educational materials to poor students, to organizing free healthcare diagnosis camps and teaching vocational tailoring skills to rural women, our trust is dedicated to human dignity and self-reliance.
+            </p>
+            <div className="bg-[#f7f9fb] p-4 rounded-xl border border-[#e0e3e5] text-xs text-[#031635] space-y-1">
+              <p>🏛️ <strong>Regd. Trust Deed:</strong> No. 16/2024, District Registry Office, Aurangabad (Bihar)</p>
+              <p>📜 <strong>Statutory Recognition:</strong> 12A URN: AALTM2352GE20261 | 80G Tax Exemption URN: AALTM2352GF20261</p>
+            </div>
+            <div className="pt-2 flex flex-wrap gap-4 items-center">
+              <Link
+                href="/about"
+                className="bg-[#031635] hover:bg-[#1a2b4b] text-white text-xs font-bold px-6 py-3 rounded-lg shadow transition-colors flex items-center gap-1.5"
+              >
+                Meet the Board of Trustees <span className="material-symbols-outlined text-[16px]">arrow_forward</span>
+              </Link>
+              <Link
+                href="/activities"
+                className="text-xs font-bold text-[#964900] hover:underline underline-offset-4 flex items-center gap-1"
+              >
+                View Our 7 Core Programs &rarr;
+              </Link>
+            </div>
+          </div>
         </div>
       </section>
 

@@ -26,7 +26,7 @@ export async function POST(req: Request) {
         slug: `${slug}-${Date.now()}`,
         excerpt,
         content,
-        author: author || "Ratnakar Team",
+        author: author || "Maa Samundri Devi Trust Team",
         category: category || "General",
         image: image || "https://images.unsplash.com/photo-1509062522246-3755977927d7?q=80&w=1200",
         published: true,

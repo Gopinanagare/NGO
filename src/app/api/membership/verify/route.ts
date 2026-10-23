@@ -96,18 +96,18 @@ export async function POST(req: Request) {
 
     sendEmail({
       to: cleanEmail,
-      subject: `Welcome to Ratnakar's NGO Membership! (${membershipNo})`,
+      subject: `Welcome to Maa Samundri Devi Charitable Trust Membership! (${membershipNo})`,
       html: `
         <div style="font-family: Arial, sans-serif; padding: 20px; color: #1e293b;">
-          <h2 style="color: #0f766e;">Membership Confirmation - Ratnakar's NGO</h2>
+          <h2 style="color: #0f766e;">Membership Confirmation - Maa Samundri Devi Charitable Trust</h2>
           <p>Dear <strong>${memberName}</strong>,</p>
-          <p>Welcome to our official NGO membership network! Thank you for enrolling in the <strong>${plan.title}</strong> plan.</p>
+          <p>Welcome to our official trust membership network! Thank you for enrolling in the <strong>${plan.title}</strong> plan.</p>
           <p><strong>Membership Number:</strong> ${membershipNo}<br />
           <strong>Validity:</strong> ${validFrom.toLocaleDateString("en-IN")} to ${validTill.toLocaleDateString("en-IN")}<br />
           <strong>Fee Paid:</strong> Rs. ${plan.fee.toLocaleString("en-IN")}</p>
-          <p>You now enjoy voting rights at annual meetings, quarterly impact reports, and exclusive VIP invitations.</p>
+          <p>You now enjoy participation rights in trust initiatives, regular impact updates, and exclusive community events.</p>
           <hr style="border: none; border-top: 1px solid #cbd5e1; margin: 20px 0;" />
-          <p style="font-size: 12px; color: #64748b;">Ratnakar's NGO | Made by Satyajit</p>
+          <p style="font-size: 12px; color: #64748b;">Maa Samundri Devi Charitable Trust | Made by Satyajit</p>
         </div>
       `,
     }).catch((err) => console.error("Membership email error:", err));
@@ -126,6 +126,13 @@ export async function POST(req: Request) {
       message: "Membership application submitted successfully! Pending verification.",
     });
 
+    response.cookies.set("samundri_auth_token", token, {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === "production",
+      sameSite: "lax",
+      maxAge: 7 * 24 * 60 * 60,
+      path: "/",
+    });
     response.cookies.set("ratnakar_auth_token", token, {
       httpOnly: true,
       secure: process.env.NODE_ENV === "production",

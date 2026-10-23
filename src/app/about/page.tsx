@@ -1,148 +1,337 @@
 import Link from "next/link";
 
 export default function AboutPage() {
+  const trustees = [
+    {
+      name: "Smt. Kamla Kumari",
+      hindiName: "श्रीमती कमला कुमारी",
+      designation: "President & Founder Managing Trustee",
+      role: "अध्यक्ष सह मुख्य न्यासी",
+      phone: "+91 77660 84876",
+      image: "/images/kamla_kumari.jpg",
+      isPresident: true,
+      bio: "Visionary founder and social worker leading grassroots development, rural welfare, women empowerment, and child educational aid across Bihar.",
+    },
+    {
+      name: "Shri Ram Vijay Yadav",
+      hindiName: "श्री राम विजय यादव",
+      designation: "General Secretary & Trustee",
+      role: "सचिव सह न्यासी",
+      phone: "+91 99559 72022",
+      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=400",
+      bio: "Coordinating executive operations, legal registrations, rural outreach, and administrative oversight of trust welfare programs.",
+    },
+    {
+      name: "Smt. Priyanka Kumari",
+      hindiName: "श्रीमती प्रियंका कुमारी",
+      designation: "Treasurer & Trustee",
+      role: "कोषाध्यक्ष सह न्यासी",
+      phone: "+91 78272 11196",
+      image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=400",
+      bio: "Managing institutional finances, fund distribution, audit compliances, and transparency of every charitable contribution.",
+    },
+    {
+      name: "Shri Chandan Kumar",
+      hindiName: "श्री चंदन कुमार",
+      designation: "Co-Treasurer & Trustee",
+      role: "सह-कोषाध्यक्ष सह न्यासी",
+      phone: "+91 72569 64547",
+      image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=400",
+      bio: "Assisting treasury operations, donor receipt verification, and banking compliance for public benefit projects.",
+    },
+    {
+      name: "Shri Kailash Yadav",
+      hindiName: "श्री कैलाश यादव",
+      designation: "Executive Member & Trustee",
+      role: "कार्यकारी सदस्य सह न्यासी",
+      phone: "+91 95726 85690",
+      image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=400",
+      bio: "Guiding community development initiatives, agricultural farmer assistance, and local volunteer mobilization.",
+    },
+    {
+      name: "Shri Dhananjay Kumar",
+      hindiName: "श्री धनन्जय कुमार",
+      designation: "Executive Member & Trustee",
+      role: "कार्यकारी सदस्य सह न्यासी",
+      phone: "+91 91221 38448",
+      image: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?q=80&w=400",
+      bio: "Spearheading field operations, educational camps, and disaster relief logistics in rural regions.",
+    },
+    {
+      name: "Smt. Ranju Kumari",
+      hindiName: "श्रीमती रंजू कुमारी",
+      designation: "Executive Member & Trustee",
+      role: "कार्यकारी सदस्य सह न्यासी",
+      phone: "+91 99340 61064",
+      image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=400",
+      bio: "Championing women skill development programs, tailoring & handicraft workshops, and health awareness drives.",
+    },
+  ];
+
+  const complianceDocs = [
+    {
+      title: "80G Tax Exemption Provisional Approval Order",
+      meta: "Form 106 u/s 354(4) | URN: AALTM2352GF20261 | Tax Years 2026-27 to 2028-29",
+      href: "/docs/80G_Provisional_Approval.pdf",
+    },
+    {
+      title: "12A Provisional Registration Order",
+      meta: "Form 106 u/s 332(8) | URN: AALTM2352GE20261 | Tax Years 2026-27 to 2028-29",
+      href: "/docs/12A_Provisional_Registration.pdf",
+    },
+    {
+      title: "Official Registered Trust Deed (ट्रस्ट-विलेख)",
+      meta: "District Registry Office Aurangabad | Deed No. 16/2024 | Token No. 3232/2024",
+      href: "/docs/Trust_Deed_Registration_Aurangabad.pdf",
+    },
+    {
+      title: "Detailed Note on Proposed Activities",
+      meta: "Education, Medical Relief, Women & Youth Development, Agriculture & General Utility",
+      href: "/docs/Proposed_Activities_Note.pdf",
+    },
+    {
+      title: "Statutory Nil Declaration",
+      meta: "Income Tax Department Form 104 Compliance Declaration signed by Founder Smt. Kamla Kumari",
+      href: "/docs/Nil_Declaration.pdf",
+    },
+    {
+      title: "Permanent Account Number (e-PAN) Card",
+      meta: "Income Tax Dept., Govt. of India | PAN: AALTM2352G | Maa Samundri Devi Charitable Trust",
+      href: "/images/pan_card.jpg",
+    },
+  ];
+
   return (
     <div className="py-12 max-w-[1280px] mx-auto px-6 space-y-16">
-      {/* Hero / Our Story Section */}
+      {/* 1. Hero / Our Story Section */}
       <section className="flex flex-col md:flex-row gap-10 items-center">
         <div className="flex-1 space-y-6">
-          <h1 className="text-4xl sm:text-5xl font-bold text-[#031635]">Our Story</h1>
-          <p className="text-lg text-[#44474e] leading-relaxed">
-            Founded with a vision of grassroots empowerment, Ratnakar&apos;s NGO emerged from a simple belief: verifiable action creates lasting change. What began as a local community drive in response to educational and healthcare disparities has scaled into a robust institutional framework supporting thousands across India. Our history is defined by relentless optimization of aid delivery and an unwavering commitment to transparent impact.
+          <div className="inline-flex items-center gap-2 bg-[#E8F5E9] text-[#1B5E20] px-3.5 py-1.5 rounded-full text-xs font-bold shadow-sm">
+            <span className="material-symbols-outlined text-[16px] fill">verified</span>
+            Registered Public Charitable Trust • Deed No. 16/2024
+          </div>
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#031635] tracking-tight">
+            Our Story & Heritage
+          </h1>
+          <p className="text-base sm:text-lg text-[#44474e] leading-relaxed">
+            Founded on <strong>14 March 2024</strong> in Aurangabad, Bihar, <strong>Maa Samundri Devi Charitable Trust</strong> (माँ समुन्द्री देवी चैरिटेबल ट्रस्ट) was established with a singular devotion: bringing tangible upliftment to economically disadvantaged families, vulnerable children, and rural communities.
+          </p>
+          <p className="text-sm text-[#555860] leading-relaxed">
+            Under the visionary leadership of our President <strong>Smt. Kamla Kumari</strong>, the Trust has received official <strong>12A Registration</strong> and <strong>80G Tax Exemption Approval</strong> from the Government of India Income Tax Department. Our activities focus on free educational coaching, mobile medical camps, disaster relief, women empowerment through vocational training, and sustainable rural agricultural development.
           </p>
 
-          <div className="flex gap-8 pt-4">
-            <div>
-              <div className="text-4xl font-bold text-[#031635]">14</div>
-              <div className="text-xs font-semibold text-[#75777f]">Years of Impact</div>
+          <div className="grid grid-cols-2 sm:grid-cols-3 gap-6 pt-2">
+            <div className="p-4 bg-white rounded-xl border border-[#e0e3e5] shadow-sm">
+              <div className="text-2xl font-bold text-[#031635]">14/03/2024</div>
+              <div className="text-xs font-semibold text-[#75777f] mt-1">Incorporation Date</div>
             </div>
-            <div className="w-px bg-[#c5c6cf]"></div>
-            <div>
-              <div className="text-4xl font-bold text-[#031635]">140+</div>
-              <div className="text-xs font-semibold text-[#75777f]">Villages & Sectors</div>
+            <div className="p-4 bg-white rounded-xl border border-[#e0e3e5] shadow-sm">
+              <div className="text-2xl font-bold text-[#F57C00]">80G & 12A</div>
+              <div className="text-xs font-semibold text-[#75777f] mt-1">Tax Exempt Approved</div>
+            </div>
+            <div className="p-4 bg-white rounded-xl border border-[#e0e3e5] shadow-sm col-span-2 sm:col-span-1">
+              <div className="text-2xl font-bold text-[#031635]">AALTM2352G</div>
+              <div className="text-xs font-semibold text-[#75777f] mt-1">Permanent PAN</div>
             </div>
           </div>
         </div>
 
-        <div className="flex-1 w-full h-[400px] rounded-xl overflow-hidden shadow-sm border border-[#e0e3e5]">
-          <img
-            className="w-full h-full object-cover"
-            src="https://lh3.googleusercontent.com/aida-public/AB6AXuCdrBhnKwqdFTmPgNNN_HoxT6VyWxa8SszUnne-1zLj2gSmXQzNszCURur0PQZGeW44BtlJK0pAAF7GJ84190_ihtxITRxe3z8fAHN9LZtEov8DoTvIwA7tj3jSXLp0B3JVsN4lKu-j6i4Iw65-AEeC790f6vGXsrww0oK3-VmpUROni5vyu2GPHEFnp1fcBQAkETm1c8D5mgNJB-jKv4FSeVWde560O-qLj9_GrJPLlzJvbBazZNoQaQ"
-            alt="Ratnakar's NGO Team on Ground"
-          />
+        {/* President Spotlight Card */}
+        <div className="flex-1 w-full max-w-md bg-white rounded-2xl overflow-hidden shadow-lg border border-[#e0e3e5]">
+          <div className="relative h-[380px] bg-slate-100 overflow-hidden">
+            <img
+              className="w-full h-full object-cover object-top hover:scale-105 transition-transform duration-500"
+              src="/images/kamla_kumari.jpg"
+              alt="Smt. Kamla Kumari - President, Maa Samundri Devi Charitable Trust"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#031635]/90 via-[#031635]/20 to-transparent"></div>
+            <div className="absolute bottom-4 left-6 right-6 text-white">
+              <span className="inline-block bg-[#F57C00] text-white text-[11px] font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full mb-1">
+                President & Founder
+              </span>
+              <h3 className="text-2xl font-bold">Smt. Kamla Kumari</h3>
+              <p className="text-xs text-slate-300">श्रीमती कमला कुमारी • अध्यक्ष सह मुख्य न्यासी</p>
+            </div>
+          </div>
+          <div className="p-6 space-y-3 bg-white">
+            <p className="text-xs text-slate-600 italic leading-relaxed">
+              &quot;Our mission is rooted in genuine service to the underprivileged. Whether providing education to a child, medical relief to an elderly resident, or dignified self-employment skills to women, we treat every action as a sacred duty.&quot;
+            </p>
+            <div className="flex items-center justify-between pt-2 border-t border-slate-100 text-xs">
+              <span className="font-semibold text-slate-700">📞 +91 77660 84876</span>
+              <span className="text-emerald-700 font-bold flex items-center gap-1">
+                <span className="material-symbols-outlined text-[16px] text-emerald-600">verified</span> Verified Signatory
+              </span>
+            </div>
+          </div>
         </div>
       </section>
 
-      {/* Mission, Vision, Core Values Bento */}
+      {/* 2. Mission, Vision, Core Values Bento */}
       <section className="grid grid-cols-1 md:grid-cols-3 gap-6">
         <div className="md:col-span-2 bg-white rounded-xl p-8 shadow-sm border border-[#e0e3e5] flex flex-col justify-center space-y-6">
-          <h2 className="text-2xl font-semibold text-[#031635]">Mission & Vision</h2>
+          <h2 className="text-2xl font-bold text-[#031635]">Trust Objectives & Vision</h2>
           <div className="space-y-4 text-sm text-[#44474e]">
             <p className="border-l-4 border-[#F57C00] pl-4">
-              <strong className="text-[#031635] block mb-1">Mission:</strong> To engineer scalable, sustainable solutions for vulnerable communities through digital literacy labs, mobile healthcare clinics, and transparent resource allocation.
+              <strong className="text-[#031635] block mb-1">Our Core Mission:</strong> To undertake dedicated charitable initiatives in education, medical relief, relief of the poor and distressed, vocational skill development, legal rights awareness, consumer welfare, and agricultural rural development on a purely not-for-profit basis.
             </p>
             <p className="border-l-4 border-[#031635] pl-4">
-              <strong className="text-[#031635] block mb-1">Vision:</strong> A globally resilient ecosystem where institutional trust and grassroots action converge to eliminate systemic inequality.
+              <strong className="text-[#031635] block mb-1">Inclusive Service:</strong> The benefits of all activities and institutions established by Maa Samundri Devi Charitable Trust are open to all citizens without discrimination based on caste, religion, creed, or gender.
             </p>
           </div>
         </div>
 
         <div className="bg-[#031635] text-white rounded-xl p-8 shadow-md space-y-6">
-          <h3 className="text-xl font-bold">Core Values</h3>
+          <h3 className="text-xl font-bold">Guiding Pillars</h3>
           <ul className="space-y-4 text-xs">
             <li className="flex items-start gap-3">
-              <span className="material-symbols-outlined text-[#ffb786]">verified_user</span>
+              <span className="material-symbols-outlined text-[#ffb786]">school</span>
+              <div>
+                <strong className="block text-white text-sm font-semibold">Education & Skills</strong>
+                <span className="text-[#b6c6ef]">Scholarships, coaching, and vocational training.</span>
+              </div>
+            </li>
+            <li className="flex items-start gap-3">
+              <span className="material-symbols-outlined text-[#ffb786]">health_and_safety</span>
+              <div>
+                <strong className="block text-white text-sm font-semibold">Medical Relief</strong>
+                <span className="text-[#b6c6ef]">Free health camps, disease prevention, and medicine aid.</span>
+              </div>
+            </li>
+            <li className="flex items-start gap-3">
+              <span className="material-symbols-outlined text-[#ffb786]">volunteer_activism</span>
               <div>
                 <strong className="block text-white text-sm font-semibold">Radical Transparency</strong>
-                <span className="text-[#b6c6ef]">Every rupee tracked and audited.</span>
-              </div>
-            </li>
-            <li className="flex items-start gap-3">
-              <span className="material-symbols-outlined text-[#ffb786]">trending_up</span>
-              <div>
-                <strong className="block text-white text-sm font-semibold">Measurable Impact</strong>
-                <span className="text-[#b6c6ef]">Data-driven outcomes and verified receipts.</span>
-              </div>
-            </li>
-            <li className="flex items-start gap-3">
-              <span className="material-symbols-outlined text-[#ffb786]">diversity_3</span>
-              <div>
-                <strong className="block text-white text-sm font-semibold">Local Empowerment</strong>
-                <span className="text-[#b6c6ef]">Communities lead first.</span>
+                <span className="text-[#b6c6ef]">Official 80G & 12A audited compliance.</span>
               </div>
             </li>
           </ul>
         </div>
       </section>
 
-      {/* Leadership Team */}
+      {/* 3. Official Leadership & Board of Trustees */}
       <section className="space-y-8">
-        <div className="text-center max-w-2xl mx-auto">
-          <h2 className="text-3xl font-semibold text-[#031635]">Leadership Team</h2>
-          <p className="text-sm text-[#44474e] mt-2">Governed by experts in international development, healthcare, and education.</p>
+        <div className="text-center max-w-2xl mx-auto space-y-2">
+          <span className="text-xs font-bold text-[#F57C00] tracking-wider uppercase">Governing Body</span>
+          <h2 className="text-3xl font-bold text-[#031635]">Board of Trustees</h2>
+          <p className="text-sm text-[#44474e]">
+            Governed by the dedicated founders and trustees registered under Deed No. 16/2024 at the District Registry Office, Aurangabad (Bihar).
+          </p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
-          <div className="bg-white rounded-xl overflow-hidden shadow-sm border border-[#e0e3e5] hover:-translate-y-1 transition-transform">
-            <img className="h-48 w-full object-cover" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=400" alt="Ratnakar Singh" />
-            <div className="p-4 text-center">
-              <h4 className="text-lg font-bold text-[#031635]">Ratnakar Singh</h4>
-              <p className="text-xs font-bold text-[#F57C00] mt-1">Founder & Managing Trustee</p>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {trustees.map((t, idx) => (
+            <div
+              key={idx}
+              className={`bg-white rounded-xl overflow-hidden shadow-sm border transition-all hover:-translate-y-1 ${
+                t.isPresident ? "border-[#F57C00] ring-2 ring-[#F57C00]/20" : "border-[#e0e3e5]"
+              }`}
+            >
+              <div className="h-52 w-full bg-slate-100 overflow-hidden relative">
+                <img
+                  className={`w-full h-full object-cover ${t.isPresident ? "object-top" : "object-center"}`}
+                  src={t.image}
+                  alt={t.name}
+                />
+                {t.isPresident && (
+                  <span className="absolute top-2 right-2 bg-[#F57C00] text-white text-[10px] font-bold px-2 py-0.5 rounded shadow">
+                    PRESIDENT
+                  </span>
+                )}
+              </div>
+              <div className="p-4 space-y-2">
+                <div>
+                  <h4 className="text-base font-bold text-[#031635]">{t.name}</h4>
+                  <p className="text-[11px] text-slate-500">{t.hindiName}</p>
+                </div>
+                <p className="text-xs font-bold text-[#F57C00]">{t.designation}</p>
+                <p className="text-[11px] text-slate-600 line-clamp-3 leading-relaxed">{t.bio}</p>
+                <div className="pt-2 border-t border-slate-100 flex items-center justify-between text-[11px] text-slate-500 font-medium">
+                  <span>📞 {t.phone}</span>
+                </div>
+              </div>
             </div>
-          </div>
-
-          <div className="bg-white rounded-xl overflow-hidden shadow-sm border border-[#e0e3e5] hover:-translate-y-1 transition-transform">
-            <img className="h-48 w-full object-cover" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=400" alt="Dr. Arvind Mehta" />
-            <div className="p-4 text-center">
-              <h4 className="text-lg font-bold text-[#031635]">Dr. Arvind Mehta</h4>
-              <p className="text-xs font-bold text-[#F57C00] mt-1">Director of Healthcare</p>
-            </div>
-          </div>
-
-          <div className="bg-white rounded-xl overflow-hidden shadow-sm border border-[#e0e3e5] hover:-translate-y-1 transition-transform">
-            <img className="h-48 w-full object-cover" src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=400" alt="Sunita Rao" />
-            <div className="p-4 text-center">
-              <h4 className="text-lg font-bold text-[#031635]">Sunita Rao</h4>
-              <p className="text-xs font-bold text-[#F57C00] mt-1">Head of Education</p>
-            </div>
-          </div>
-
-          <div className="bg-white rounded-xl overflow-hidden shadow-sm border border-[#e0e3e5] hover:-translate-y-1 transition-transform">
-            <img className="h-48 w-full object-cover" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=400" alt="Vikram Sharma" />
-            <div className="p-4 text-center">
-              <h4 className="text-lg font-bold text-[#031635]">Vikram Sharma</h4>
-              <p className="text-xs font-bold text-[#F57C00] mt-1">Head of Field Operations</p>
-            </div>
-          </div>
+          ))}
         </div>
       </section>
 
-      {/* Transparency & Legal Section */}
-      <section className="bg-[#E8F5E9] rounded-xl p-8 md:p-12 shadow-sm border border-[#d9e6da]">
-        <div className="flex flex-col md:flex-row gap-8 items-start">
-          <div className="flex-1 space-y-4">
-            <h2 className="text-2xl font-bold text-[#131e17]">Transparency & Statutory Compliance</h2>
-            <p className="text-sm text-[#3e4a41]">
-              We operate with absolute financial clarity. Ratnakar&apos;s NGO is a registered non-profit organization holding active 80G tax exemption approval, 12A trust registration, and CSR-1 registration.
+      {/* 4. Transparency & Statutory Compliance Section */}
+      <section className="bg-[#E8F5E9] rounded-2xl p-8 md:p-12 shadow-sm border border-[#d9e6da] space-y-8">
+        <div className="flex flex-col md:flex-row gap-8 items-start justify-between">
+          <div className="space-y-4 max-w-xl">
+            <span className="inline-flex items-center gap-1.5 bg-white text-[#1B5E20] px-3.5 py-1 rounded-full text-xs font-bold shadow-sm">
+              <span className="material-symbols-outlined text-[16px]">verified</span> Government of India Recognized
+            </span>
+            <h2 className="text-2xl sm:text-3xl font-bold text-[#131e17]">
+              Statutory Compliance & Legal Registration
+            </h2>
+            <p className="text-sm text-[#3e4a41] leading-relaxed">
+              Maa Samundri Devi Charitable Trust operates with absolute transparency and complete regulatory compliance under Indian Law. All registrations, income tax orders, and trust deed records are publicly available for donors, members, and verification authorities.
             </p>
-            <div className="inline-flex items-center gap-2 bg-[#d9e6da] px-3 py-1.5 rounded text-[#131e17] text-xs font-bold mt-2">
-              <span className="material-symbols-outlined text-sm">gavel</span>
-              Reg No: NGO-IND-2024-884930 | 80G Cert: CIT(E)/80G/2024-25/A-99201
+            <div className="space-y-2 text-xs font-semibold text-[#131e17]">
+              <div className="bg-white/80 p-3 rounded-lg border border-[#c5d8c6] space-y-1">
+                <p>📋 <strong>Registered Trust Deed:</strong> Deed No. 16, Book 4, Vol. 1, Pages 142–152 (Year 2024)</p>
+                <p>🏛️ <strong>Registering Authority:</strong> District Registry Office, Aurangabad (Bihar)</p>
+                <p>🆔 <strong>Permanent Account Number (PAN):</strong> AALTM2352G</p>
+                <p>📜 <strong>12A Provisional URN:</strong> AALTM2352GE20261 (Order Dt: 02-10-2026)</p>
+                <p>💳 <strong>80G Provisional URN:</strong> AALTM2352GF20261 (Tax Benefit u/s 354(4))</p>
+              </div>
             </div>
           </div>
 
-          <div className="flex-1 w-full bg-white p-6 rounded-lg border border-[#e0e3e5] space-y-4">
-            <h3 className="text-base font-bold text-[#031635]">Financial Transparency</h3>
-            <ul className="space-y-3 text-xs">
-              <li className="flex items-center justify-between p-3 bg-[#f7f9fb] rounded">
-                <span className="font-semibold text-slate-800">2025-26 Annual Audited Report</span>
-                <span className="material-symbols-outlined text-[#F57C00]">download</span>
-              </li>
-              <li className="flex items-center justify-between p-3 bg-[#f7f9fb] rounded border-t border-slate-100">
-                <span className="font-semibold text-slate-800">80G & 12A Govt Tax Certificate</span>
-                <span className="material-symbols-outlined text-[#F57C00]">download</span>
-              </li>
-            </ul>
+          <div className="flex flex-col items-center justify-center p-6 bg-white rounded-xl border border-[#c5d8c6] shadow-sm max-w-xs text-center w-full">
+            <img
+              src="/images/trust_stamp.png"
+              alt="Trust Stamp and Seal"
+              className="w-24 h-24 object-contain mb-3"
+            />
+            <h4 className="text-sm font-bold text-slate-800">Maa Samundri Devi Charitable Trust</h4>
+            <p className="text-[11px] text-slate-500 mt-1">Official Registered Seal • Aurangabad, Bihar</p>
+            <a
+              href="/images/pan_card.jpg"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-4 text-xs font-bold text-[#F57C00] hover:underline flex items-center gap-1"
+            >
+              <span className="material-symbols-outlined text-[16px]">visibility</span> View e-PAN Card
+            </a>
+          </div>
+        </div>
+
+        {/* Official Document Downloads */}
+        <div className="space-y-4 pt-4 border-t border-[#c5d8c6]">
+          <h3 className="text-lg font-bold text-[#131e17] flex items-center gap-2">
+            <span className="material-symbols-outlined text-[#1B5E20]">folder_open</span>
+            Official Documents & Government Orders
+          </h3>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            {complianceDocs.map((doc, idx) => (
+              <a
+                key={idx}
+                href={doc.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-white p-4 rounded-xl border border-[#c5d8c6] hover:border-[#F57C00] shadow-sm hover:shadow transition-all flex flex-col justify-between group"
+              >
+                <div>
+                  <div className="flex items-center justify-between mb-2">
+                    <span className="text-[10px] font-bold text-emerald-800 bg-emerald-50 px-2 py-0.5 rounded uppercase">
+                      Official PDF
+                    </span>
+                    <span className="material-symbols-outlined text-slate-400 group-hover:text-[#F57C00] transition-colors">
+                      download
+                    </span>
+                  </div>
+                  <h4 className="text-xs font-bold text-slate-800 group-hover:text-[#F57C00] transition-colors">
+                    {doc.title}
+                  </h4>
+                  <p className="text-[11px] text-slate-500 mt-1.5 leading-snug">{doc.meta}</p>
+                </div>
+                <span className="text-[11px] font-bold text-[#F57C00] mt-3 flex items-center gap-1">
+                  Open / Download Document &rarr;
+                </span>
+              </a>
+            ))}
           </div>
         </div>
       </section>

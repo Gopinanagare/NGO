@@ -1,4 +1,6 @@
 import PDFDocument from "pdfkit";
+import path from "path";
+import fs from "fs";
 
 export interface DonationReceiptData {
   receiptNumber: string;
@@ -80,24 +82,27 @@ export function generateDonationReceiptPDF(data: DonationReceiptData): Promise<B
       
       // Header Text
       doc.fillColor("#ffffff")
-         .fontSize(22)
+         .fontSize(20)
          .font("Helvetica-Bold")
-         .text(data.ngoName || "Ratnakar's NGO", 40, 40, { align: "center" });
+         .text(data.ngoName || "MAA SAMUNDRI DEVI CHARITABLE TRUST", 40, 38, { align: "center" });
 
-      doc.fontSize(10)
+      doc.fontSize(9.5)
          .font("Helvetica")
-         .text(data.ngoAddress || "123 Humanity Enclave, Sector 15, New Delhi - 110001, India", 40, 68, { align: "center" });
+         .text(data.ngoAddress || "Pipardih Ward No- 33, Gali No- 04, Aurangabad – 824101, Bihar, India", 40, 64, { align: "center" });
       
-      doc.fontSize(9)
-         .text(`Reg No: ${data.ngoRegNo || "NGO-IND-2024-884930"}  |  80G Cert: ${data.ngo80GNo || "CIT(E)/80G/2024-25/A-99201"}  |  12A Reg: ${data.ngo12ANo || "CIT(E)/12A/2024-25/A-11029"}`, 40, 84, { align: "center" });
+      doc.fontSize(8.5)
+         .text(`PAN: AALTM2352G  |  Deed No: 16/2024  |  80G URN: ${data.ngo80GNo || "AALTM2352GF20261"}  |  12A URN: ${data.ngo12ANo || "AALTM2352GE20261"}`, 40, 80, { align: "center" });
+
+      doc.fontSize(8)
+         .text("Contact: +91 77660 84876  |  contact@samundridevitrust.org", 40, 96, { align: "center" });
 
       // Title Section
       doc.fillColor(primaryColor)
-         .fontSize(14)
+         .fontSize(13)
          .font("Helvetica-Bold")
-         .text("DONATION RECEIPT & 80G TAX EXEMPTION CERTIFICATE", 40, 135, { align: "center" });
+         .text("DONATION RECEIPT & 80G TAX EXEMPTION CERTIFICATE", 40, 132, { align: "center" });
 
-      doc.moveTo(40, 155).lineTo(555, 155).strokeColor("#e2e8f0").stroke();
+      doc.moveTo(40, 150).lineTo(555, 150).strokeColor("#e2e8f0").stroke();
 
       // Receipt Metadata Row
       const formattedDate = new Date(data.createdAt).toLocaleDateString("en-IN", {
@@ -167,18 +172,34 @@ export function generateDonationReceiptPDF(data: DonationReceiptData): Promise<B
       doc.font("Helvetica-Oblique").text(numberToWordsINR(data.amount), 180, dY);
 
       // Tax Exemption Disclaimer
-      doc.rect(40, 605, 515, 75).fillAndStroke("#f8fafc", "#e2e8f0");
-      doc.fillColor("#334155").fontSize(9).font("Helvetica-Bold").text("TAX EXEMPTION NOTICE (SECTION 80G):", 55, 615);
-      doc.font("Helvetica").fontSize(8.5).text(
-        "Donations to Ratnakar's NGO are eligible for 50% tax deduction under Section 80G of the Income Tax Act, 1961. This digital receipt is valid and electronically generated upon payment confirmation.",
-        55, 630, { width: 485, align: "justify" }
+      doc.rect(40, 595, 515, 75).fillAndStroke("#f8fafc", "#e2e8f0");
+      doc.fillColor("#334155").fontSize(9).font("Helvetica-Bold").text("TAX EXEMPTION NOTICE (SECTION 80G):", 55, 605);
+      doc.font("Helvetica").fontSize(8).text(
+        "Donations to MAA SAMUNDRI DEVI CHARITABLE TRUST are eligible for 50% deduction under Section 80G of the Income Tax Act, 1961 (Provisional URN: AALTM2352GF20261, PAN: AALTM2352G, 12A URN: AALTM2352GE20261). This digital receipt is valid and electronically generated upon payment confirmation.",
+        55, 618, { width: 485, align: "justify" }
       );
 
+      // Official Stamp & Signature if available
+      const stampPath = path.join(process.cwd(), "public", "images", "trust_stamp.png");
+      if (fs.existsSync(stampPath)) {
+        try {
+          doc.image(stampPath, 260, 680, { width: 65 });
+        } catch {}
+      }
+
+      const sigPath = path.join(process.cwd(), "public", "images", "kamla_kumari_signature.png");
+      if (fs.existsSync(sigPath)) {
+        try {
+          doc.image(sigPath, 420, 678, { width: 85 });
+        } catch {}
+      }
+
       // Footer Signatures & Credit
-      doc.moveTo(40, 700).lineTo(555, 700).strokeColor("#cbd5e1").stroke();
+      doc.moveTo(40, 725).lineTo(555, 725).strokeColor("#cbd5e1").stroke();
 
       doc.fillColor(darkColor).fontSize(9).font("Helvetica-Bold").text("Authorized Signatory", 400, 735, { align: "center" });
-      doc.fontSize(8).font("Helvetica").text("Ratnakar's NGO Management", 400, 748, { align: "center" });
+      doc.fontSize(8.5).font("Helvetica-Bold").text("Kamla Kumari (President)", 400, 747, { align: "center" });
+      doc.fontSize(8).font("Helvetica").text("Maa Samundri Devi Charitable Trust", 400, 759, { align: "center" });
 
       doc.fontSize(8)
          .fillColor("#64748b")
@@ -187,7 +208,7 @@ export function generateDonationReceiptPDF(data: DonationReceiptData): Promise<B
       doc.fontSize(8)
          .fillColor("#0f766e")
          .font("Helvetica-Bold")
-         .text("Ratnakar's NGO | Made by Satyajit", 40, 780, { align: "center" });
+         .text("Maa Samundri Devi Charitable Trust | Made by Satyajit", 40, 782, { align: "center" });
 
       doc.end();
     } catch (err) {

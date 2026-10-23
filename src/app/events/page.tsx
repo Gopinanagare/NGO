@@ -22,7 +22,7 @@ export default function EventsPage() {
         </span>
         <h1 className="text-4xl md:text-5xl font-bold text-[#031635]">Participate & Volunteer</h1>
         <p className="text-base text-[#44474e] leading-relaxed">
-          Join Ratnakar&apos;s NGO community events, tree plantation drives, health camps, and digital lab inaugurations across India.
+          Join Maa Samundri Devi Charitable Trust community events, tree plantation drives, health camps, and education initiatives across Bihar and India.
         </p>
       </div>
 

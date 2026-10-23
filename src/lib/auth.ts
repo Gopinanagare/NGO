@@ -2,7 +2,7 @@ import jwt from "jsonwebtoken";
 import bcrypt from "bcryptjs";
 import { cookies } from "next/headers";
 
-const JWT_SECRET = process.env.JWT_SECRET || "ratnakar-ngo-jwt-secret-key-2026-super-secure-key";
+const JWT_SECRET = process.env.JWT_SECRET || "samundri-devi-trust-jwt-secret-key-2026-super-secure-key";
 
 export interface AuthPayload {
   id: string;
@@ -34,7 +34,7 @@ export async function comparePassword(password: string, hashed: string): Promise
 export async function getAuthUser(): Promise<AuthPayload | null> {
   try {
     const cookieStore = await cookies();
-    const token = cookieStore.get("ratnakar_auth_token")?.value;
+    const token = cookieStore.get("samundri_auth_token")?.value || cookieStore.get("ratnakar_auth_token")?.value;
     if (!token) return null;
     return verifyToken(token);
   } catch {

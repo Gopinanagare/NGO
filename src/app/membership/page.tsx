@@ -153,7 +153,7 @@ export default function MembershipPage() {
           key: orderData.keyId || "rzp_test_YOUR_KEY_HERE",
           amount: orderData.amount || planFee * 100,
           currency: orderData.currency || "INR",
-          name: "Ratnakar's NGO",
+          name: "Maa Samundri Devi Charitable Trust",
           description: `Membership Fee - ${selectedPlan.title}`,
           order_id: orderData.orderId,
           prefill: {

@@ -26,7 +26,7 @@ export async function GET(req: Request, { params }: { params: Promise<{ id: stri
     return new Response(new Uint8Array(pdfBuffer), {
       headers: {
         "Content-Type": "application/pdf",
-        "Content-Disposition": `attachment; filename="Ratnakar_NGO_Certificate_${cert.certificateNo}.pdf"`,
+        "Content-Disposition": `attachment; filename="Maa_Samundri_Devi_Trust_Certificate_${cert.certificateNo}.pdf"`,
       },
     });
   } catch (error) {

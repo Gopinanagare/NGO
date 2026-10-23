@@ -37,11 +37,18 @@ export async function POST(req: Request) {
       user: tokenPayload,
     });
 
-    response.cookies.set("ratnakar_auth_token", token, {
+    response.cookies.set("samundri_auth_token", token, {
       httpOnly: true,
       secure: process.env.NODE_ENV === "production",
       sameSite: "lax",
       maxAge: 7 * 24 * 60 * 60, // 7 days
+      path: "/",
+    });
+    response.cookies.set("ratnakar_auth_token", token, {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === "production",
+      sameSite: "lax",
+      maxAge: 7 * 24 * 60 * 60,
       path: "/",
     });
 

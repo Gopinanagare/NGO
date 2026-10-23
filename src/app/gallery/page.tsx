@@ -21,7 +21,7 @@ export default function GalleryPage() {
         </span>
         <h1 className="text-4xl md:text-5xl font-bold text-[#031635]">Photo & Video Gallery</h1>
         <p className="text-base text-[#44474e] leading-relaxed">
-          High-resolution documentary photographs captured across Ratnakar&apos;s NGO community centers, mobile clinics, and school laboratories.
+          High-resolution documentary photographs captured across Maa Samundri Devi Charitable Trust community centers, health camps, and relief initiatives.
         </p>
       </div>
 

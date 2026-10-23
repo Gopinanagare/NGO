@@ -51,9 +51,11 @@ export default function ContactPage() {
           <div className="w-14 h-14 rounded-full bg-[#1a2b4b]/10 flex items-center justify-center text-[#031635]">
             <span className="material-symbols-outlined text-2xl fill">location_on</span>
           </div>
-          <h4 className="text-lg font-bold text-[#031635]">Headquarters</h4>
-          <p className="text-sm text-[#44474e] leading-relaxed">
-            Ratnakar&apos;s NGO Foundation<br />Sector 14, Institutional Area, New Delhi, 110001
+          <h4 className="text-lg font-bold text-[#031635]">Registered Office</h4>
+          <p className="text-xs text-[#44474e] leading-relaxed">
+            <strong>Maa Samundri Devi Charitable Trust</strong><br />
+            Pipardih Ward No- 33, Gali No- 04<br />
+            Aurangabad – 824101, Bihar, India
           </p>
         </div>
 
@@ -62,8 +64,9 @@ export default function ContactPage() {
             <span className="material-symbols-outlined text-2xl fill">mail</span>
           </div>
           <h4 className="text-lg font-bold text-[#031635]">Email Us</h4>
-          <p className="text-sm text-[#44474e] leading-relaxed">
-            contact@ratnakarngo.org<br />donations@ratnakarngo.org
+          <p className="text-xs text-[#44474e] leading-relaxed">
+            contact@maasamundridevi.org<br />
+            support@maasamundridevi.org
           </p>
         </div>
 
@@ -71,9 +74,11 @@ export default function ContactPage() {
           <div className="w-14 h-14 rounded-full bg-[#1a2b4b]/10 flex items-center justify-center text-[#031635]">
             <span className="material-symbols-outlined text-2xl fill">call</span>
           </div>
-          <h4 className="text-lg font-bold text-[#031635]">Call Us</h4>
-          <p className="text-sm text-[#44474e] leading-relaxed">
-            +91 98765 43210<br />Mon - Sat, 9:00 AM - 6:00 PM IST
+          <h4 className="text-lg font-bold text-[#031635]">Call Helpline</h4>
+          <p className="text-xs text-[#44474e] leading-relaxed">
+            +91 77660 84876 (President)<br />
+            +91 99559 72022 (Secretary)<br />
+            Mon - Sat, 9:00 AM - 6:00 PM IST
           </p>
         </div>
       </section>
@@ -176,8 +181,8 @@ export default function ContactPage() {
         {/* Map Container */}
         <div className="w-full h-[450px] rounded-xl overflow-hidden border border-[#e0e3e5] shadow-sm">
           <iframe
-            title="Ratnakar NGO Office Location"
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3501.9774618218685!2d77.2185293!3d28.6304535!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390cfd37b741d057%3A0xcdee88e47393c3f1!2sConnaught%20Place%2C%20New%20Delhi%2C%20Delhi%20110001!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin"
+            title="Maa Samundri Devi Charitable Trust Office Location"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d58022.45667353118!2d84.3400547!3d24.7538965!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x398d5786a3d90233%3A0xe24403aa607c3ad9!2sAurangabad%2C%20Bihar!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin"
             width="100%"
             height="100%"
             style={{ border: 0 }}

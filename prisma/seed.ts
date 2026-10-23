@@ -2,37 +2,37 @@ import { prisma } from "../src/lib/prisma";
 import bcrypt from "bcryptjs";
 
 async function main() {
-  console.log("Seeding database for Ratnakar's NGO...");
+  console.log("Seeding database for Maa Samundri Devi Charitable Trust...");
 
   // 1. Seed NGO Info
   await prisma.nGOInfo.upsert({
     where: { id: "1" },
     update: {
-      name: "Ratnakar's NGO",
-      tagline: "Empowering Communities, Transforming Lives Across India",
-      regNumber: "NGO-IND-2024-884930",
-      taxExempt80G: "CIT(E)/80G/2024-25/A-99201",
-      taxExempt12A: "CIT(E)/12A/2024-25/A-11029",
-      address: "123 Humanity Enclave, Sector 15, New Delhi - 110001, India",
-      phone: "+91 98765 43210",
-      email: "contact@ratnakarngo.org",
-      logoUrl: "/logo.png",
-      signatureUrl: "/signature.png",
+      name: "Maa Samundri Devi Charitable Trust",
+      tagline: "Dedicated to Health, Education, Environment and Social Welfare",
+      regNumber: "Deed No: 16/2024 (Aurangabad)",
+      taxExempt80G: "AALTM2352GF20261",
+      taxExempt12A: "AALTM2352GE20261",
+      address: "Pipardih Ward No- 33, Gali No- 04, Aurangabad – 824101, Bihar",
+      phone: "+91 77660 84876",
+      email: "contact@samundridevitrust.org",
+      logoUrl: "/images/trust_stamp.png",
+      signatureUrl: "/images/kamla_kumari_signature.png",
       razorpayKeyId: "rzp_test_YOUR_KEY_HERE",
       razorpayKeySecret: "YOUR_RAZORPAY_SECRET_HERE",
     },
     create: {
       id: "1",
-      name: "Ratnakar's NGO",
-      tagline: "Empowering Communities, Transforming Lives Across India",
-      regNumber: "NGO-IND-2024-884930",
-      taxExempt80G: "CIT(E)/80G/2024-25/A-99201",
-      taxExempt12A: "CIT(E)/12A/2024-25/A-11029",
-      address: "123 Humanity Enclave, Sector 15, New Delhi - 110001, India",
-      phone: "+91 98765 43210",
-      email: "contact@ratnakarngo.org",
-      logoUrl: "/logo.png",
-      signatureUrl: "/signature.png",
+      name: "Maa Samundri Devi Charitable Trust",
+      tagline: "Dedicated to Health, Education, Environment and Social Welfare",
+      regNumber: "Deed No: 16/2024 (Aurangabad)",
+      taxExempt80G: "AALTM2352GF20261",
+      taxExempt12A: "AALTM2352GE20261",
+      address: "Pipardih Ward No- 33, Gali No- 04, Aurangabad – 824101, Bihar",
+      phone: "+91 77660 84876",
+      email: "contact@samundridevitrust.org",
+      logoUrl: "/images/trust_stamp.png",
+      signatureUrl: "/images/kamla_kumari_signature.png",
       razorpayKeyId: "rzp_test_YOUR_KEY_HERE",
       razorpayKeySecret: "YOUR_RAZORPAY_SECRET_HERE",
     },
@@ -41,13 +41,26 @@ async function main() {
   // 2. Admin User
   const adminPassword = await bcrypt.hash("Admin@123456", 10);
   await prisma.user.upsert({
+    where: { email: "admin@samundridevitrust.org" },
+    update: { password: adminPassword },
+    create: {
+      email: "admin@samundridevitrust.org",
+      password: adminPassword,
+      name: "Kamla Kumari (President)",
+      phone: "+91 77660 84876",
+      role: "ADMIN",
+    },
+  });
+
+  // Also retain or ensure admin@ratnakarngo.org can log in if needed
+  await prisma.user.upsert({
     where: { email: "admin@ratnakarngo.org" },
     update: { password: adminPassword },
     create: {
       email: "admin@ratnakarngo.org",
       password: adminPassword,
-      name: "Ratnakar Administrator",
-      phone: "+91 98765 00000",
+      name: "Administrator",
+      phone: "+91 77660 84876",
       role: "ADMIN",
     },
   });
@@ -170,8 +183,8 @@ async function main() {
         title: "How Digital Education is Transforming Rural Villages in India",
         slug: "digital-education-rural-india",
         excerpt: "Exploring the life-changing impact of providing computers and internet access to young minds in remote schools.",
-        content: `Education is the most powerful tool to break the cycle of generational poverty. At Ratnakar's NGO, we recently established 5 digital literacy centers in remote villages. The enthusiasm among students and teachers is inspiring...`,
-        author: "Ratnakar Team",
+        content: `Education is the most powerful tool to break the cycle of generational poverty. At Maa Samundri Devi Charitable Trust, we recently established digital literacy centers and community awareness programs. The enthusiasm among students and teachers is inspiring...`,
+        author: "Maa Samundri Devi Trust Team",
         category: "Education",
         image: "https://images.unsplash.com/photo-1509062522246-3755977927d7?q=80&w=1200&auto=format&fit=crop",
         published: true,

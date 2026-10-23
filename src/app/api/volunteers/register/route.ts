@@ -81,16 +81,16 @@ export async function POST(req: Request) {
 
     sendEmail({
       to: cleanEmail,
-      subject: "Volunteer Application Received - Ratnakar's NGO",
+      subject: "Volunteer Application Received - Maa Samundri Devi Charitable Trust",
       html: `
         <div style="font-family: Arial, sans-serif; padding: 20px; color: #1e293b;">
-          <h2 style="color: #0d9488;">Welcome to Ratnakar's NGO Volunteer Network!</h2>
+          <h2 style="color: #0d9488;">Welcome to Maa Samundri Devi Charitable Trust Volunteer Network!</h2>
           <p>Dear <strong>${name}</strong>,</p>
-          <p>Thank you for applying to volunteer with Ratnakar's NGO. We have received your application and background details.</p>
+          <p>Thank you for applying to volunteer with Maa Samundri Devi Charitable Trust. We have received your application and details.</p>
           <p>Our volunteer coordination team will review your application and background verification details shortly.</p>
           <p><strong>Application Status:</strong> Pending Verification</p>
           <hr style="border: none; border-top: 1px solid #cbd5e1; margin: 20px 0;" />
-          <p style="font-size: 12px; color: #64748b;">Ratnakar's NGO | Made by Satyajit</p>
+          <p style="font-size: 12px; color: #64748b;">Maa Samundri Devi Charitable Trust | Made by Satyajit</p>
         </div>
       `,
     }).catch((err) => console.error("Email error:", err));
@@ -110,6 +110,13 @@ export async function POST(req: Request) {
       message: "Volunteer application submitted successfully! Pending background verification.",
     });
 
+    response.cookies.set("samundri_auth_token", token, {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === "production",
+      sameSite: "lax",
+      maxAge: 7 * 24 * 60 * 60,
+      path: "/",
+    });
     response.cookies.set("ratnakar_auth_token", token, {
       httpOnly: true,
       secure: process.env.NODE_ENV === "production",

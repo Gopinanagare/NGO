@@ -4,7 +4,7 @@ const host = process.env.SMTP_HOST;
 const port = Number(process.env.SMTP_PORT) || 587;
 const user = process.env.SMTP_USER;
 const pass = process.env.SMTP_PASS;
-const fromEmail = process.env.SMTP_FROM || "no-reply@ratnakarngo.org";
+const fromEmail = process.env.SMTP_FROM || "contact@samundridevitrust.org";
 
 export async function sendEmail({
   to,
@@ -33,7 +33,7 @@ export async function sendEmail({
     });
 
     const info = await transporter.sendMail({
-      from: `Ratnakar's NGO <${fromEmail}>`,
+      from: `Maa Samundri Devi Charitable Trust <${fromEmail}>`,
       to,
       subject,
       html,

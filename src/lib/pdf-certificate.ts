@@ -1,4 +1,6 @@
 import PDFDocument from "pdfkit";
+import path from "path";
+import fs from "fs";
 
 export interface VolunteerCertificateData {
   certificateNo: string;
@@ -32,61 +34,71 @@ export function generateVolunteerCertificatePDF(data: VolunteerCertificateData):
 
       // Top Banner Header
       doc.fillColor(primaryColor)
-         .fontSize(26)
+         .fontSize(24)
          .font("Helvetica-Bold")
-         .text(data.ngoName || "RATNAKAR'S NGO", 40, 55, { align: "center" });
+         .text(data.ngoName || "MAA SAMUNDRI DEVI CHARITABLE TRUST", 40, 50, { align: "center" });
 
       doc.fillColor(goldColor)
-         .fontSize(12)
+         .fontSize(11)
          .font("Helvetica-Bold")
-         .text("EMPOWERING COMMUNITIES • TRANSFORMING LIVES", 40, 88, { align: "center" });
+         .text("AURANGABAD, BIHAR • 80G & 12A REGD CHARITABLE TRUST • DEED NO: 16/2024", 40, 82, { align: "center" });
 
-      doc.moveTo(150, 110).lineTo(692, 110).strokeColor(goldColor).lineWidth(1.5).stroke();
+      doc.moveTo(150, 102).lineTo(692, 102).strokeColor(goldColor).lineWidth(1.5).stroke();
 
       // Certificate Title
       doc.fillColor(darkColor)
          .fontSize(24)
          .font("Helvetica-Bold")
-         .text("CERTIFICATE OF VOLUNTEER EXCELLENCE", 40, 130, { align: "center" });
+         .text("CERTIFICATE OF VOLUNTEER EXCELLENCE", 40, 122, { align: "center" });
 
       doc.fillColor("#475569")
          .fontSize(12)
          .font("Helvetica-Oblique")
-         .text("This certificate is proudly awarded to", 40, 175, { align: "center" });
+         .text("This certificate is proudly awarded to", 40, 165, { align: "center" });
 
       // Volunteer Name
       doc.fillColor(primaryColor)
-         .fontSize(30)
+         .fontSize(28)
          .font("Helvetica-Bold")
-         .text(data.volunteerName, 40, 205, { align: "center" });
+         .text(data.volunteerName, 40, 195, { align: "center" });
 
-      doc.moveTo(250, 245).lineTo(592, 245).strokeColor(primaryColor).lineWidth(1).stroke();
+      doc.moveTo(250, 235).lineTo(592, 235).strokeColor(primaryColor).lineWidth(1).stroke();
 
       // Citation Text
       doc.fillColor(darkColor)
          .fontSize(11)
          .font("Helvetica")
          .text(
-           `In sincere appreciation for selfless service, leadership, and invaluable contribution to the initiative:`,
-           60, 265, { align: "center" }
+            `In sincere appreciation for selfless service, leadership, and invaluable contribution to the initiative:`,
+            60, 255, { align: "center" }
          );
 
       doc.fillColor("#0369a1")
-         .fontSize(16)
+         .fontSize(15)
          .font("Helvetica-Bold")
-         .text(`"${data.projectName}"`, 60, 290, { align: "center" });
+         .text(`"${data.projectName}"`, 60, 280, { align: "center" });
 
       doc.fillColor(darkColor)
-         .fontSize(12)
+         .fontSize(11.5)
          .font("Helvetica")
          .text(
-           `Successfully completing a total of ${data.totalHours} Verified Volunteer Hours with utmost dedication.`,
-           60, 325, { align: "center" }
+            `Successfully completing a total of ${data.totalHours} Verified Volunteer Hours with utmost dedication.`,
+            60, 312, { align: "center" }
          );
 
-      // Seal / Badge Icon Box
-      doc.rect(385, 370, 72, 72).fillAndStroke("#fef3c7", goldColor);
-      doc.fillColor(goldColor).fontSize(10).font("Helvetica-Bold").text("OFFICIAL\nSEAL\nVERIFIED", 385, 392, { align: "center" });
+      // Official Stamp Image / Seal Box
+      const stampPath = path.join(process.cwd(), "public", "images", "trust_stamp.png");
+      if (fs.existsSync(stampPath)) {
+        try {
+          doc.image(stampPath, 385, 350, { width: 72 });
+        } catch {
+          doc.rect(385, 355, 72, 72).fillAndStroke("#fef3c7", goldColor);
+          doc.fillColor(goldColor).fontSize(9).font("Helvetica-Bold").text("OFFICIAL\nTRUST SEAL\nVERIFIED", 385, 375, { align: "center" });
+        }
+      } else {
+        doc.rect(385, 355, 72, 72).fillAndStroke("#fef3c7", goldColor);
+        doc.fillColor(goldColor).fontSize(9).font("Helvetica-Bold").text("OFFICIAL\nTRUST SEAL\nVERIFIED", 385, 375, { align: "center" });
+      }
 
       // Signatures & Metadata Section
       const issueDateStr = new Date(data.issueDate).toLocaleDateString("en-IN", {
@@ -102,16 +114,25 @@ export function generateVolunteerCertificatePDF(data: VolunteerCertificateData):
       doc.font("Helvetica-Bold").text("Issue Date:", 80, 480);
       doc.font("Helvetica").text(issueDateStr, 160, 480);
 
+      // Signature Image
+      const sigPath = path.join(process.cwd(), "public", "images", "kamla_kumari_signature.png");
+      if (fs.existsSync(sigPath)) {
+        try {
+          doc.image(sigPath, 620, 405, { width: 85 });
+        } catch {}
+      }
+
       // Right: Authorized Signature
       doc.moveTo(580, 455).lineTo(740, 455).strokeColor(darkColor).lineWidth(1).stroke();
       doc.fillColor(darkColor).fontSize(10).font("Helvetica-Bold").text("Authorized Signatory", 580, 465, { align: "center", width: 160 });
-      doc.fontSize(8.5).font("Helvetica").text(data.authorizedSignee || "Ratnakar's NGO Management", 580, 480, { align: "center", width: 160 });
+      doc.fontSize(8.5).font("Helvetica-Bold").text(data.authorizedSignee || "Kamla Kumari, President", 580, 480, { align: "center", width: 160 });
+      doc.fontSize(7.5).font("Helvetica").text("Maa Samundri Devi Charitable Trust", 580, 495, { align: "center", width: 160 });
 
       // Bottom Footer Branding
       doc.fillColor(primaryColor)
          .fontSize(9)
          .font("Helvetica-Bold")
-         .text("Ratnakar's NGO Management Platform | Made by Satyajit", 40, 540, { align: "center" });
+         .text("Maa Samundri Devi Charitable Trust | Made by Satyajit", 40, 540, { align: "center" });
 
       doc.end();
     } catch (err) {

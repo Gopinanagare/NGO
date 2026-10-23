@@ -16,12 +16,12 @@ export default function ActivitiesPage() {
       .catch(() => {});
   }, []);
 
-  const categories = ["ALL", "Education", "Healthcare", "Rural Development", "Women Empowerment"];
+  const categories = ["ALL", "Education & Skill", "Medical Relief", "Rural Welfare", "Women & Youth", "Agriculture"];
 
   const filteredActivities =
     selectedCategory === "ALL"
       ? activities
-      : activities.filter((a) => a.category === selectedCategory);
+      : activities.filter((a) => a.category.toLowerCase().includes(selectedCategory.toLowerCase()) || a.category === selectedCategory);
 
   return (
     <div className="py-12 max-w-[1280px] mx-auto px-6 space-y-12">
@@ -29,11 +29,11 @@ export default function ActivitiesPage() {
       <div className="space-y-4 max-w-3xl">
         <span className="inline-flex items-center gap-1.5 bg-[#E8F5E9] text-[#1B5E20] px-3.5 py-1 rounded-full text-xs font-bold">
           <span className="material-symbols-outlined text-[16px] fill">verified</span>
-          Verified Ground Action
+          Verified Ground Action • 80G & 12A Certified
         </span>
-        <h1 className="text-4xl md:text-5xl font-bold text-[#031635]">Our Activities & Field Operations</h1>
+        <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#031635]">Our Activities & Field Operations</h1>
         <p className="text-base text-[#44474e] leading-relaxed">
-          Explore ongoing grassroots projects operated by Ratnakar&apos;s NGO across India. Every activity is documented, audited, and driven by community leaders.
+          Explore ongoing grassroots projects operated by <strong>Maa Samundri Devi Charitable Trust</strong> across Bihar and India. In accordance with our registered Trust Deed and proposed objectives, every activity delivers direct, transparent support in education, healthcare relief, rural poverty alleviation, women empowerment, and agricultural training.
         </p>
       </div>
 

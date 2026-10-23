@@ -28,15 +28,15 @@ export default function Header() {
           <div className="max-w-[1280px] mx-auto flex justify-between items-center">
             <div className="flex items-center gap-4 text-[13px]">
               <span className="flex items-center gap-1 text-[#ffb786]">
-                <span className="material-symbols-outlined text-[16px]">call</span> +91 98765 43210
+                <span className="material-symbols-outlined text-[16px]">call</span> +91 77660 84876
               </span>
               <span className="hidden sm:inline text-slate-500">|</span>
               <span className="hidden sm:flex items-center gap-1 text-slate-300">
-                <span className="material-symbols-outlined text-[16px]">mail</span> contact@ratnakarngo.org
+                <span className="material-symbols-outlined text-[16px]">mail</span> contact@maasamundridevi.org
               </span>
               <span className="hidden md:inline text-slate-500">|</span>
               <span className="hidden md:flex items-center gap-1 text-[#E8F5E9] font-medium">
-                <span className="material-symbols-outlined text-[16px] text-[#81c784]">verified</span> 80G Tax Exempt Certified
+                <span className="material-symbols-outlined text-[16px] text-[#81c784]">verified</span> 80G & 12A Certified (PAN: AALTM2352G)
               </span>
             </div>
 
@@ -90,10 +90,20 @@ export default function Header() {
 
         {/* Main Navbar */}
         <div className="max-w-[1280px] mx-auto px-6 py-3.5 flex justify-between items-center">
-          <Link href="/" className="flex items-center gap-2">
-            <span className="text-2xl font-bold text-[#031635] tracking-tight">
-              Ratnakar&apos;s <span className="text-[#F57C00]">NGO</span>
-            </span>
+          <Link href="/" className="flex items-center gap-2.5">
+            <img
+              src="/images/trust_stamp.png"
+              alt="Maa Samundri Devi Charitable Trust Seal"
+              className="w-10 h-10 object-contain rounded-full border border-blue-900/20 shadow-sm"
+            />
+            <div className="flex flex-col">
+              <span className="text-lg sm:text-xl font-bold text-[#031635] tracking-tight leading-none">
+                Maa Samundri Devi <span className="text-[#F57C00]">Trust</span>
+              </span>
+              <span className="text-[10px] font-semibold text-slate-500 uppercase tracking-wider">
+                Public Charitable Trust • Aurangabad
+              </span>
+            </div>
           </Link>
 
           {/* Desktop Links */}

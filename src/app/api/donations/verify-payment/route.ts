@@ -113,24 +113,24 @@ export async function POST(req: Request) {
     // Dispatch email notification with PDF receipt attached
     sendEmail({
       to: donorEmail,
-      subject: `Donation Receipt & 80G Tax Certificate - Ratnakar's NGO (${receiptNumber})`,
+      subject: `Donation Receipt & 80G Tax Certificate - Maa Samundri Devi Charitable Trust (${receiptNumber})`,
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; padding: 20px; color: #1e293b;">
-          <h2 style="color: #0f766e;">Thank You for Supporting Ratnakar's NGO!</h2>
+          <h2 style="color: #0f766e;">Thank You for Supporting Maa Samundri Devi Charitable Trust!</h2>
           <p>Dear <strong>${donorName}</strong>,</p>
           <p>We gratefully acknowledge receipt of your generous contribution of <strong>Rs. ${Number(amount).toLocaleString("en-IN")}</strong> towards <strong>${cause || "General Fund"}</strong>.</p>
-          <p>Your contribution helps us educate underprivileged children, deploy medical vans, and empower communities across India.</p>
+          <p>Your contribution directly supports our mission in education, healthcare, environmental conservation, and social welfare across Bihar and India.</p>
           <hr style="border: none; border-top: 1px solid #cbd5e1; margin: 20px 0;" />
           <p><strong>Receipt Number:</strong> ${receiptNumber}<br />
           <strong>Transaction ID:</strong> ${razorpay_payment_id || donation.razorpayPaymentId}<br />
-          <strong>80G Tax Benefit:</strong> Eligible for 50% deduction under Section 80G of the Income Tax Act.</p>
+          <strong>80G Tax Benefit:</strong> Eligible for 50% deduction under Section 80G of the Income Tax Act (URN: AALTM2352GF20261, PAN: AALTM2352G).</p>
           <p>Please find attached your official 80G Tax Exemption Donation Receipt PDF.</p>
-          <p style="margin-top: 30px; font-size: 12px; color: #64748b;">With warm regards,<br /><strong>Ratnakar's NGO Management</strong><br />Made by Satyajit</p>
+          <p style="margin-top: 30px; font-size: 12px; color: #64748b;">With warm regards,<br /><strong>Kamla Kumari (President)</strong><br />Maa Samundri Devi Charitable Trust<br />Made by Satyajit</p>
         </div>
       `,
       attachments: [
         {
-          filename: `Ratnakar_NGO_80G_Receipt_${receiptNumber}.pdf`,
+          filename: `Maa_Samundri_Devi_Trust_80G_Receipt_${receiptNumber}.pdf`,
           content: pdfBuffer,
           contentType: "application/pdf",
         },

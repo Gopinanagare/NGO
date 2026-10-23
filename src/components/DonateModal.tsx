@@ -96,7 +96,7 @@ export default function DonateModal({ isOpen, onClose, defaultCause = "General F
           key: orderData.keyId || "rzp_test_YOUR_KEY_HERE",
           amount: orderData.amount,
           currency: orderData.currency || "INR",
-          name: "Ratnakar's NGO",
+          name: "Maa Samundri Devi Charitable Trust",
           description: `Donation for ${cause}`,
           order_id: orderData.orderId,
           prefill: {
@@ -193,8 +193,8 @@ export default function DonateModal({ isOpen, onClose, defaultCause = "General F
           <div className="flex items-center gap-2">
             <span className="material-symbols-outlined text-[#F57C00] fill text-2xl">favorite</span>
             <div>
-              <h2 className="text-xl font-bold">Donate to Ratnakar&apos;s NGO</h2>
-              <p className="text-xs text-[#b6c6ef]">Section 80G Tax Exemption Certificate Generated Instantly</p>
+              <h2 className="text-xl font-bold">Donate to Maa Samundri Devi Trust</h2>
+              <p className="text-xs text-[#b6c6ef]">Section 80G Tax Exemption Certificate Generated Instantly (URN: AALTM2352GF20261)</p>
             </div>
           </div>
         </div>

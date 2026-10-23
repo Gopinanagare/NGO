@@ -49,12 +49,12 @@ export default function DonatePage() {
           <div className="bg-white rounded-xl border border-[#e0e3e5] shadow-sm p-6 md:p-8 space-y-6">
             <div className="inline-flex items-center gap-1.5 bg-[#E8F5E9] text-[#1B5E20] px-3 py-1 rounded text-xs font-bold">
               <span className="material-symbols-outlined text-[16px]">verified</span>
-              Section 80G Tax Benefit Eligible
+              Section 80G Tax Benefit (URN: AALTM2352GF20261)
             </div>
 
             <h2 className="text-2xl font-bold text-[#031635]">Support Our Key Causes</h2>
             <p className="text-sm text-[#44474e]">
-              All donations to Ratnakar&apos;s NGO generate an official 80G PDF receipt containing transaction ID, 80G registration details, and authorized signature.
+              All donations to <strong>Maa Samundri Devi Charitable Trust</strong> generate an official 80G PDF tax exemption receipt containing donor details, transaction ID, PAN (<strong>AALTM2352G</strong>), 80G approval number, and authorized signature.
             </p>
 
             <div className="space-y-4">

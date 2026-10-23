@@ -27,7 +27,7 @@ export async function POST(req: Request) {
         projectName,
         totalHours: volunteer.totalHours,
         issueDate: new Date(),
-        authorizedSignee: authorizedSignee || "Ratnakar's NGO Management",
+        authorizedSignee: authorizedSignee || "Kamla Kumari (President)",
       },
     });
 
@@ -44,22 +44,22 @@ export async function POST(req: Request) {
     // Email certificate to volunteer
     sendEmail({
       to: volunteer.email,
-      subject: `Official Volunteer Certificate - Ratnakar's NGO (${certificateNo})`,
+      subject: `Official Volunteer Certificate - Maa Samundri Devi Charitable Trust (${certificateNo})`,
       html: `
         <div style="font-family: Arial, sans-serif; padding: 20px; color: #1e293b;">
           <h2 style="color: #0d9488;">Congratulations ${volunteer.name}!</h2>
-          <p>We are delighted to present you with your official <strong>Certificate of Volunteer Excellence</strong> from Ratnakar's NGO.</p>
+          <p>We are delighted to present you with your official <strong>Certificate of Volunteer Excellence</strong> from Maa Samundri Devi Charitable Trust.</p>
           <p><strong>Project:</strong> ${projectName}<br />
           <strong>Total Verified Hours:</strong> ${volunteer.totalHours} Hours<br />
           <strong>Certificate ID:</strong> ${certificateNo}</p>
           <p>Your official PDF certificate is attached to this email and available for download in your volunteer portal.</p>
           <hr style="border: none; border-top: 1px solid #cbd5e1; margin: 20px 0;" />
-          <p style="font-size: 12px; color: #64748b;">Ratnakar's NGO | Made by Satyajit</p>
+          <p style="font-size: 12px; color: #64748b;">Maa Samundri Devi Charitable Trust | Made by Satyajit</p>
         </div>
       `,
       attachments: [
         {
-          filename: `Ratnakar_NGO_Volunteer_Certificate_${certificateNo}.pdf`,
+          filename: `Maa_Samundri_Devi_Trust_Volunteer_Certificate_${certificateNo}.pdf`,
           content: pdfBuffer,
           contentType: "application/pdf",
         },

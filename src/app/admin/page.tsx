@@ -153,7 +153,7 @@ export default function AdminDashboardPage() {
         body: JSON.stringify({
           volunteerId: certVolId,
           projectName: certProjName,
-          authorizedSignee: "Ratnakar's NGO Management",
+          authorizedSignee: "Kamla Kumari (President)",
         }),
       });
 
@@ -228,11 +228,11 @@ export default function AdminDashboardPage() {
         <div className="space-y-8">
           {/* Brand */}
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl bg-emerald-600 flex items-center justify-center text-white shadow-lg">
-              <Heart className="w-6 h-6 fill-white" />
+            <div className="w-10 h-10 rounded-xl bg-white flex items-center justify-center p-0.5 shadow-lg">
+              <img src="/images/trust_stamp.png" alt="Trust Seal" className="w-full h-full object-contain" />
             </div>
             <div>
-              <span className="text-lg font-black text-white block">Ratnakar&apos;s NGO</span>
+              <span className="text-sm font-black text-white block leading-tight">Maa Samundri Devi Trust</span>
               <span className="text-[10px] text-amber-400 font-bold uppercase tracking-wider block">Admin Management</span>
             </div>
           </div>
@@ -303,7 +303,7 @@ export default function AdminDashboardPage() {
               {activeTab === "enquiries" && "Website Contact Enquiries"}
               {activeTab === "settings" && "NGO Profile & Payment Settings"}
             </h1>
-            <p className="text-xs text-slate-500 mt-1">Ratnakar&apos;s NGO Centralized Management System</p>
+            <p className="text-xs text-slate-500 mt-1">Maa Samundri Devi Charitable Trust Centralized Management System</p>
           </div>
 
           <button
@@ -1026,10 +1026,13 @@ export default function AdminDashboardPage() {
             <h3 className="text-xl font-bold text-slate-900">NGO Profile & Payment Configuration</h3>
             <div className="space-y-4 text-xs text-slate-700">
               <div className="p-4 bg-slate-50 rounded-2xl border border-slate-200 space-y-2">
-                <p><strong>NGO Name:</strong> Ratnakar&apos;s NGO</p>
-                <p><strong>Reg Number:</strong> NGO-IND-2024-884930</p>
-                <p><strong>80G Certificate:</strong> CIT(E)/80G/2024-25/A-99201</p>
-                <p><strong>12A Registration:</strong> CIT(E)/12A/2024-25/A-11029</p>
+                <p><strong>Trust Legal Name:</strong> Maa Samundri Devi Charitable Trust (माँ समुन्द्री देवी चैरिटेबल ट्रस्ट)</p>
+                <p><strong>Founder &amp; President:</strong> Kamla Kumari (कमला कुमारी)</p>
+                <p><strong>Registered Address:</strong> Pipardih Ward No- 33, Gali No- 04, Aurangabad – 824101, Bihar</p>
+                <p><strong>PAN:</strong> AALTM2352G</p>
+                <p><strong>Trust Deed Reg No:</strong> Deed No. 16/2024, Aurangabad (14/03/2024)</p>
+                <p><strong>80G Provisional URN:</strong> AALTM2352GF20261 (Tax Years 2026-27 to 2028-29)</p>
+                <p><strong>12A Provisional URN:</strong> AALTM2352GE20261 (Tax Years 2026-27 to 2028-29)</p>
               </div>
 
               <div className="p-4 bg-emerald-50 rounded-2xl border border-emerald-200 space-y-2 text-emerald-950">

@@ -1,36 +1,92 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Maa Samundri Devi Charitable Trust (माँ समुन्द्री देवी चैरिटेबल ट्रस्ट)
 
-## Getting Started
+Official production-grade web portal and management platform for **Maa Samundri Devi Charitable Trust**, an Indian Public Charitable Trust established in Aurangabad, Bihar.
 
-First, run the development server:
+**Made with ❤️ by Satyajit**
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+---
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🏛️ Statutory & Legal Profile
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- **Legal Entity Name**: Maa Samundri Devi Charitable Trust (माँ समुन्द्री देवी चैरिटेबल ट्रस्ट)
+- **Settler, Founder & President**: Kamla Kumari (कमला कुमारी)
+- **Official Registration Date**: March 14, 2024 (14/03/2024)
+- **PAN**: `AALTM2352G`
+- **Trust Deed Registration**: Deed No. 16/2024, Book 4, Vol. 1, Page 142–152 (District Registry Office, Aurangabad, Bihar)
+- **Section 80G Approval (Provisional URN)**: `AALTM2352GF20261` (u/s 354(4), Assessment Years 2026-27 to 2028-29)
+- **Section 12A Registration (Provisional URN)**: `AALTM2352GE20261` (u/s 332(8), Assessment Years 2026-27 to 2028-29)
+- **Registered Address**: Pipardih Ward No- 33, Gali No- 04, Aurangabad – 824101, Bihar, India
+- **Official Contact**: +91 77660 84876 / contact@samundridevitrust.org
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Board of Trustees
+1. **Kamla Kumari** — Founder, Settler & President
+2. **Ram Vijay Yadav** — Secretary (+91 99559 72022)
+3. **Priyanka Kumari** — Treasurer (+91 78272 11196)
+4. **Chandan Kumar** — Co-Treasurer (+91 72569 64547)
+5. **Kailash Yadav** — Trustee (+91 95726 85690)
+6. **Dhananjay Kumar** — Trustee (+91 91221 38448)
+7. **Ranju Kumari** — Trustee (+91 99340 61064)
 
-## Learn More
+---
 
-To learn more about Next.js, take a look at the following resources:
+## 🌟 Core Features & Modules
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+1. **Public Information Portal**:
+   - President Spotlight & Vision Statement by Kamla Kumari.
+   - Statutory compliance showcase with direct PDF downloads for 12A, 80G, Trust Deed, and Activities Note.
+   - 7 Core activity pillars (Health, Education, Agriculture/Poverty, Culture, Environment, Social Welfare, Disaster Relief).
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+2. **Online 80G Tax-Exempt Donations**:
+   - Razorpay integration supporting UPI, Cards, NetBanking.
+   - Automatic generation of verified 80G PDF receipts stamped with the official trust seal and President Kamla Kumari's signature.
+   - Instant automated email dispatch of tax receipts to donors.
 
-## Deploy on Vercel
+3. **Volunteer Management & ID Card System**:
+   - Volunteer registration with automated tracking.
+   - High-fidelity downloadable digital Volunteer ID Card with QR code verification.
+   - Volunteer Certificate Generator with hours tracking and official seal.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+4. **Membership Registration**:
+   - Annual Supporting & Lifetime membership tiers.
+   - Digital Member ID card generation.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+5. **Centralized Administration Dashboard**:
+   - Analytics for donations, volunteers, and member growth.
+   - Full CMS for campaigns, news, events, and volunteer assignments.
+
+---
+
+## 🛠️ Technology Stack
+
+- **Framework**: Next.js 15 (App Router, Server Actions, API routes)
+- **Styling**: Tailwind CSS & Lucide Icons & Google Material Symbols
+- **Database / ORM**: SQLite & Prisma ORM
+- **PDF Generation**: PDFKit
+- **Auth**: JWT & HTTP-only cookies
+
+---
+
+## 🚀 Getting Started
+
+1. **Install dependencies**:
+   ```bash
+   npm install
+   ```
+
+2. **Prisma Setup & Database Seeding**:
+   ```bash
+   npx prisma generate
+   npx prisma db push
+   npx prisma db seed
+   ```
+
+3. **Run Development Server**:
+   ```bash
+   npm run dev
+   ```
+
+4. **Access the Application**:
+   - Public Website: [http://localhost:3000](http://localhost:3000)
+   - Admin Login: [http://localhost:3000/admin/login](http://localhost:3000/admin/login)
+     - Email: `admin@samundridevitrust.org`
+     - Password: `Admin@123456`

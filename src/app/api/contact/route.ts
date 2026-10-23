@@ -34,7 +34,7 @@ export async function POST(req: Request) {
 
     return NextResponse.json({
       success: true,
-      message: "Thank you for contacting Ratnakar's NGO! Our team will get back to you shortly.",
+      message: "Thank you for contacting Maa Samundri Devi Charitable Trust! Our team will get back to you shortly.",
       submission,
     });
   } catch (error: any) {

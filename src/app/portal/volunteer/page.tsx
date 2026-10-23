@@ -209,7 +209,7 @@ export default function VolunteerPortalPage() {
               <span className="material-symbols-outlined text-2xl fill">verified</span>
               <div className="text-xs">
                 <p className="font-bold text-sm">Verified & Approved NGO Volunteer</p>
-                <p>Your official Digital Volunteer ID Card is active and authorized by Ratnakar&apos;s NGO Management.</p>
+                <p>Your official Digital Volunteer ID Card is active and authorized by Maa Samundri Devi Charitable Trust Management.</p>
               </div>
             </div>
           )}

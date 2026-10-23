@@ -3,6 +3,7 @@ import { getAuthUser } from "@/lib/auth";
 
 export async function POST() {
   const response = NextResponse.json({ success: true, message: "Logged out successfully" });
+  response.cookies.delete("samundri_auth_token");
   response.cookies.delete("ratnakar_auth_token");
   return response;
 }

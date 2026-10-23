@@ -128,7 +128,7 @@ model VolunteerCertificate {
   totalHours       Float
   issueDate        DateTime  @default(now())
   pdfUrl           String?
-  authorizedSignee String    @default("Ratnakar's NGO Management")
+  authorizedSignee String    @default("Kamla Kumari (President)")
 }
 
 model MembershipPlan {
@@ -223,7 +223,7 @@ model BlogPost {
   slug        String   @unique
   excerpt     String
   content     String
-  author      String   @default("Ratnakar NGO Team")
+  author      String   @default("Maa Samundri Devi Trust Team")
   category    String   @default("Community")
   image       String
   published   Boolean  @default(true)
@@ -244,16 +244,16 @@ model ContactSubmission {
 
 model NGOInfo {
   id              String   @id @default("1")
-  name            String   @default("Ratnakar's NGO")
-  tagline         String   @default("Empowering Communities, Transforming Lives")
-  regNumber       String   @default("NGO-IND-2024-884930")
-  taxExempt80G    String   @default("CIT(E)/80G/2024-25/A-99201")
-  taxExempt12A    String   @default("CIT(E)/12A/2024-25/A-11029")
-  address         String   @default("123 Humanity Enclave, Sector 15, New Delhi - 110001, India")
-  phone           String   @default("+91 98765 43210")
-  email           String   @default("contact@ratnakarngo.org")
-  logoUrl         String   @default("/logo.png")
-  signatureUrl    String   @default("/signature.png")
+  name            String   @default("Maa Samundri Devi Charitable Trust")
+  tagline         String   @default("Dedicated to Health, Education, Environment and Social Welfare")
+  regNumber       String   @default("Deed No: 16/2024 (Aurangabad)")
+  taxExempt80G    String   @default("AALTM2352GF20261")
+  taxExempt12A    String   @default("AALTM2352GE20261")
+  address         String   @default("Pipardih Ward No- 33, Gali No- 04, Aurangabad – 824101, Bihar")
+  phone           String   @default("+91 77660 84876")
+  email           String   @default("contact@samundridevitrust.org")
+  logoUrl         String   @default("/images/trust_stamp.png")
+  signatureUrl    String   @default("/images/kamla_kumari_signature.png")
   razorpayKeyId   String   @default("rzp_test_YOUR_KEY_HERE")
   razorpayKeySecret String @default("YOUR_RAZORPAY_SECRET_HERE")
 }

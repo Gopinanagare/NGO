@@ -31,15 +31,15 @@ export async function PATCH(req: Request, { params }: { params: Promise<{ id: st
     if (updated) {
       sendEmail({
         to: updated.email,
-        subject: `Volunteer Status Update - Ratnakar's NGO (${status})`,
+        subject: `Volunteer Status Update - Maa Samundri Devi Charitable Trust (${status})`,
         html: `
           <div style="font-family: Arial, sans-serif; padding: 20px; color: #1e293b;">
             <h2 style="color: ${status === "APPROVED" ? "#0d9488" : "#dc2626"};">Volunteer Application Update</h2>
             <p>Dear <strong>${updated.name}</strong>,</p>
-            <p>Your volunteer application status with Ratnakar's NGO has been updated to: <strong>${status}</strong>.</p>
+            <p>Your volunteer application status with Maa Samundri Devi Charitable Trust has been updated to: <strong>${status}</strong>.</p>
             ${status === "APPROVED" ? `<p>Congratulations! You are now an approved volunteer. You can log into your portal to view assigned project activities and record volunteer hours.</p>` : `<p>Verification Notes: ${verificationNotes || "Application did not meet current requirements."}</p>`}
             <hr style="border: none; border-top: 1px solid #cbd5e1; margin: 20px 0;" />
-            <p style="font-size: 12px; color: #64748b;">Ratnakar's NGO | Made by Satyajit</p>
+            <p style="font-size: 12px; color: #64748b;">Maa Samundri Devi Charitable Trust | Made by Satyajit</p>
           </div>
         `,
       }).catch((err) => console.error("Email notification error:", err));

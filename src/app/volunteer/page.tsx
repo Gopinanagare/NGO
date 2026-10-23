@@ -291,7 +291,7 @@ export default function VolunteerPage() {
             </div>
 
             <div>
-              <label className="block font-bold text-[#031635] mb-1">Why do you want to volunteer with Ratnakar&apos;s NGO?</label>
+              <label className="block font-bold text-[#031635] mb-1">Why do you want to volunteer with Maa Samundri Devi Charitable Trust?</label>
               <textarea
                 rows={3}
                 placeholder="Briefly describe your motivation..."
