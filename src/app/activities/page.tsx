@@ -3,8 +3,66 @@
 import { useState, useEffect } from "react";
 import DonateModal from "@/components/DonateModal";
 
+const DEFAULT_ACTIVITIES = [
+  {
+    id: "act-1",
+    title: "Free Eye, Cataract & Medical Health Camp",
+    category: "Medical Relief",
+    description: "Flagship medical camp in collaboration with Narayan Medical College & Hospital (NMCH Jamuhar, Rohtas). Offering expert ophthalmology checkups, cataract screening, surgical referral, and free prescription medicine.",
+    location: "Sihada, Goradiha (Rafiganj), Aurangabad, Bihar",
+    beneficiaries: 1450,
+    date: "2025-03-20",
+    image: "/images/events/health_camp_doctors.jpg",
+    featured: true,
+  },
+  {
+    id: "act-2",
+    title: "Blanket, Clothes & Educational Kit Distribution",
+    category: "Education & Skill",
+    description: "Annual distribution drive distributing warm winter blankets, clothes, school bags, and stationery kits to children and elderly villagers in need.",
+    location: "Pipardih & Sihada, Aurangabad, Bihar",
+    beneficiaries: 650,
+    date: "2025-03-20",
+    image: "/images/events/blanket_distribution.jpg",
+    featured: true,
+  },
+  {
+    id: "act-3",
+    title: "Elder Felicitation & Community Narayan Bhoj",
+    category: "Rural Welfare",
+    description: "Honoring respected senior citizens of rural panchayats with traditional shawls and conducting a community mass meal (Narayan Bhoj) with women empowerment dialogues.",
+    location: "Goradiha Panchayat, Aurangabad, Bihar",
+    beneficiaries: 1200,
+    date: "2025-03-20",
+    image: "/images/events/honoring_elders.jpg",
+    featured: true,
+  },
+  {
+    id: "act-4",
+    title: "Specialist Cataract Screening & Vision Care",
+    category: "Medical Relief",
+    description: "Dedicated eye testing counters diagnosing cataracts and refractive errors for rural elders with direct guidance by senior eye specialists.",
+    location: "Village Sihada, Aurangabad, Bihar",
+    beneficiaries: 850,
+    date: "2025-03-20",
+    image: "/images/events/eye_checkup_camp.jpg",
+    featured: true,
+  },
+  {
+    id: "act-5",
+    title: "Angavastra & Winter Relief Support",
+    category: "Rural Welfare",
+    description: "Stage-level felicitation distributing warm shawls, sarees, and angavastras to underprivileged families during annual trust gatherings.",
+    location: "Sihada, Rafiganj, Aurangabad, Bihar",
+    beneficiaries: 500,
+    date: "2025-03-20",
+    image: "/images/events/cloth_distribution_stage.jpg",
+    featured: true,
+  },
+];
+
 export default function ActivitiesPage() {
-  const [activities, setActivities] = useState<any[]>([]);
+  const [activities, setActivities] = useState<any[]>(DEFAULT_ACTIVITIES);
   const [selectedCategory, setSelectedCategory] = useState("ALL");
   const [donateModalOpen, setDonateModalOpen] = useState(false);
   const [selectedCause, setSelectedCause] = useState("General Fund");
@@ -12,16 +70,20 @@ export default function ActivitiesPage() {
   useEffect(() => {
     fetch("/api/activities")
       .then((res) => res.json())
-      .then((data) => setActivities(data.activities || []))
+      .then((data) => {
+        if (data.activities && data.activities.length > 0) {
+          setActivities(data.activities);
+        }
+      })
       .catch(() => {});
   }, []);
 
-  const categories = ["ALL", "Education & Skill", "Medical Relief", "Rural Welfare", "Women & Youth", "Agriculture"];
+  const categories = ["ALL", "Medical Relief", "Education & Skill", "Rural Welfare", "Women & Youth", "Agriculture"];
 
   const filteredActivities =
     selectedCategory === "ALL"
       ? activities
-      : activities.filter((a) => a.category.toLowerCase().includes(selectedCategory.toLowerCase()) || a.category === selectedCategory);
+      : activities.filter((a) => (a.category || "").toLowerCase().includes(selectedCategory.toLowerCase()) || a.category === selectedCategory);
 
   return (
     <div className="py-12 max-w-[1280px] mx-auto px-6 space-y-12">
@@ -29,7 +91,7 @@ export default function ActivitiesPage() {
       <div className="space-y-4 max-w-3xl">
         <span className="inline-flex items-center gap-1.5 bg-[#E8F5E9] text-[#1B5E20] px-3.5 py-1 rounded-full text-xs font-bold">
           <span className="material-symbols-outlined text-[16px] fill">verified</span>
-          Verified Ground Action • 80G & 12A Certified
+          Verified Ground Action • 80G & 12A Certified • NGO Darpan: BR/2024/0378911
         </span>
         <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#031635]">Our Activities & Field Operations</h1>
         <p className="text-base text-[#44474e] leading-relaxed">
@@ -61,9 +123,13 @@ export default function ActivitiesPage() {
             key={act.id}
             className="bg-white rounded-xl border border-[#e0e3e5] overflow-hidden shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between"
           >
-            <div className="h-48 bg-slate-100 relative">
-              <img src={act.image} alt={act.title} className="w-full h-full object-cover" />
-              <span className="absolute top-3 left-3 bg-[#031635] text-white text-[11px] font-bold px-3 py-1 rounded">
+            <div className="h-52 bg-slate-100 relative overflow-hidden group">
+              <img
+                src={act.image || "/images/events/health_camp_doctors.jpg"}
+                alt={act.title}
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+              />
+              <span className="absolute top-3 left-3 bg-[#031635]/90 backdrop-blur-sm text-white text-[11px] font-bold px-3 py-1 rounded shadow">
                 {act.category}
               </span>
             </div>
@@ -72,7 +138,11 @@ export default function ActivitiesPage() {
               <div className="space-y-2">
                 <div className="inline-flex items-center gap-1 text-xs text-[#1B5E20] font-bold">
                   <span className="material-symbols-outlined text-[14px]">event</span>
-                  {new Date(act.startDate).toLocaleDateString("en-IN")}
+                  {new Date(act.date || act.startDate || "2025-03-20").toLocaleDateString("en-IN", {
+                    day: "numeric",
+                    month: "short",
+                    year: "numeric",
+                  })}
                 </div>
 
                 <h3 className="text-xl font-semibold text-[#031635] leading-tight">{act.title}</h3>

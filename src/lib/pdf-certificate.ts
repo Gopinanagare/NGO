@@ -41,7 +41,7 @@ export function generateVolunteerCertificatePDF(data: VolunteerCertificateData):
       doc.fillColor(goldColor)
          .fontSize(11)
          .font("Helvetica-Bold")
-         .text("AURANGABAD, BIHAR • 80G & 12A REGD CHARITABLE TRUST • DEED NO: 16/2024", 40, 82, { align: "center" });
+         .text("AURANGABAD, BIHAR • 80G & 12A REGD • NGO DARPAN: BR/2024/0378911 • DEED NO: 16/2024", 40, 82, { align: "center" });
 
       doc.moveTo(150, 102).lineTo(692, 102).strokeColor(goldColor).lineWidth(1.5).stroke();
 

@@ -4,22 +4,81 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import DonateModal from "@/components/DonateModal";
 
+const DEFAULT_CAMPAIGNS = [
+  {
+    id: "camp-1",
+    title: "Educate Rural Children & Youth",
+    description: "Providing school kits, stationery, digital learning tablets, and qualified teachers to children in underprivileged rural villages across Bihar.",
+    targetAmount: 500000,
+    raisedAmount: 185000,
+    image: "/images/events/blanket_distribution.jpg",
+    category: "Education",
+  },
+  {
+    id: "camp-2",
+    title: "Annual Free Health & Cataract Surgery Camps",
+    description: "Organizing specialist eye and medical diagnosis camps with Narayan Medical College & Hospital (NMCH Jamuhar, Rohtas) with free medicine and cataract surgery referrals.",
+    targetAmount: 750000,
+    raisedAmount: 320000,
+    image: "/images/events/health_camp_doctors.jpg",
+    category: "Healthcare",
+  },
+  {
+    id: "camp-3",
+    title: "Rural Blanket & Winter Relief Drive",
+    description: "Distributing warm winter blankets, clothing, and nutritional aid to vulnerable elderly villagers and marginalized families.",
+    targetAmount: 300000,
+    raisedAmount: 140000,
+    image: "/images/events/honoring_elders.jpg",
+    category: "Social Welfare",
+  },
+];
+
+const DEFAULT_ACTIVITIES = [
+  {
+    id: "act-1",
+    title: "Free Eye, Cataract & Medical Health Camp",
+    category: "Medical Relief",
+    description: "Organized in collaboration with Narayan Medical College & Hospital (NMCH Jamuhar, Rohtas) with free ophthalmologist checkups, cataract screening, and free essential medicines.",
+    location: "Sihada, Goradiha, Aurangabad, Bihar",
+    beneficiaries: 1450,
+    image: "/images/events/health_camp_doctors.jpg",
+  },
+  {
+    id: "act-2",
+    title: "Blanket, Clothes & Educational Kit Distribution",
+    category: "Education & Skill",
+    description: "Annual distribution of warm blankets, clothes, and school stationery kits for economically underprivileged children and elderly citizens.",
+    location: "Pipardih & Sihada, Aurangabad, Bihar",
+    beneficiaries: 650,
+    image: "/images/events/blanket_distribution.jpg",
+  },
+];
+
 export default function HomePage() {
   const [donateModalOpen, setDonateModalOpen] = useState(false);
   const [selectedCause, setSelectedCause] = useState("General Fund");
-  const [campaigns, setCampaigns] = useState<any[]>([]);
-  const [activities, setActivities] = useState<any[]>([]);
+  const [campaigns, setCampaigns] = useState<any[]>(DEFAULT_CAMPAIGNS);
+  const [activities, setActivities] = useState<any[]>(DEFAULT_ACTIVITIES);
   const [events, setEvents] = useState<any[]>([]);
 
   useEffect(() => {
     fetch("/api/campaigns")
       .then((res) => res.json())
-      .then((data) => setCampaigns(data.campaigns || []))
+      .then((data) => {
+        if (data.campaigns && data.campaigns.length > 0) {
+          setCampaigns(data.campaigns);
+        }
+      })
       .catch(() => {});
 
     fetch("/api/activities")
       .then((res) => res.json())
-      .then((data) => setActivities(data.activities || []))
+      .then((data) => {
+        if (data.activities && data.activities.length > 0) {
+          setActivities(data.activities);
+        }
+      })
       .catch(() => {});
 
     fetch("/api/events")
@@ -37,19 +96,19 @@ export default function HomePage() {
     <div className="space-y-16 pb-16">
       {/* 1. Stitch Hero Section */}
       <section className="relative w-full h-[580px] flex items-center justify-center px-6 md:px-10 overflow-hidden mb-12">
-        <div className="absolute inset-0 z-0 bg-[#f2f4f6]">
+        <div className="absolute inset-0 z-0 bg-[#031635]">
           <img
-            className="w-full h-full object-cover opacity-60"
-            src="https://lh3.googleusercontent.com/aida-public/AB6AXuAHGji4e0k01ZNoRduqYEXDeo-sFB6nQEhgbetVvV8bp9ni9f41HxbL9gkRWXgHKiGh-ippisFDZIhRpwYSw63IusuTgKChJ5SE8H-m56nsCWSX6GVAgQpJEq2mCY25suO2oeh_LmhFSo8jnY1pahGns1afxEtesJM7uGwr9CdAavDkDTuiIMC-940l91ywaPI1OXcfesTPK27Z_eAgcGUV3KlY_DCgi09QaGlowc0jaldCEq87R5zzxg"
-            alt="Maa Samundri Devi Charitable Trust Community Gathering"
+            className="w-full h-full object-cover opacity-45"
+            src="/images/events/health_camp_doctors.jpg"
+            alt="Maa Samundri Devi Charitable Trust Free Health and Medical Camp"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#031635]/90 to-[#031635]/40"></div>
+          <div className="absolute inset-0 bg-gradient-to-r from-[#031635]/95 via-[#031635]/80 to-[#031635]/60"></div>
         </div>
 
         <div className="relative z-10 text-center max-w-3xl flex flex-col items-center gap-6">
           <span className="inline-flex items-center gap-1.5 bg-[#E8F5E9] text-[#1B5E20] px-4 py-1.5 rounded-full text-xs font-bold shadow">
             <span className="material-symbols-outlined text-[16px] fill">verified</span>
-            Maa Samundri Devi Charitable Trust — 80G & 12A Certified
+            Maa Samundri Devi Charitable Trust — 80G, 12A &amp; NGO Darpan (BR/2024/0378911) Certified
           </span>
 
           <h1 className="text-3xl sm:text-5xl md:text-6xl font-bold text-white tracking-tight leading-tight">
@@ -131,9 +190,11 @@ export default function HomePage() {
             <p className="text-sm sm:text-base text-[#44474e] leading-relaxed">
               Maa Samundri Devi Charitable Trust was established to bring real, verifiable assistance directly to families who need it most. From providing uniforms and educational materials to poor students, to organizing free healthcare diagnosis camps and teaching vocational tailoring skills to rural women, our trust is dedicated to human dignity and self-reliance.
             </p>
-            <div className="bg-[#f7f9fb] p-4 rounded-xl border border-[#e0e3e5] text-xs text-[#031635] space-y-1">
+            <div className="bg-[#f7f9fb] p-4 rounded-xl border border-[#e0e3e5] text-xs text-[#031635] space-y-1.5">
               <p>🏛️ <strong>Regd. Trust Deed:</strong> No. 16/2024, District Registry Office, Aurangabad (Bihar)</p>
-              <p>📜 <strong>Statutory Recognition:</strong> 12A URN: AALTM2352GE20261 | 80G Tax Exemption URN: AALTM2352GF20261</p>
+              <p>🎖️ <strong>NGO Darpan Unique ID:</strong> <span className="font-mono font-bold text-emerald-800">BR/2024/0378911</span> (Doc: IN-BR-2400378911)</p>
+              <p>📜 <strong>Tax Approvals:</strong> 12A URN: AALTM2352GE20261 | 80G Tax Exemption: AALTM2352GF20261</p>
+              <p>🏦 <strong>Official Bank:</strong> Central Bank of India (A/C: <span className="font-mono font-bold">4156734014</span>, IFSC: <span className="font-mono font-bold">CBIN0284035</span>)</p>
             </div>
             <div className="pt-2 flex flex-wrap gap-4 items-center">
               <Link

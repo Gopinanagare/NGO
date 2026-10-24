@@ -32,11 +32,15 @@ export default function Header() {
               </span>
               <span className="hidden sm:inline text-slate-500">|</span>
               <span className="hidden sm:flex items-center gap-1 text-slate-300">
-                <span className="material-symbols-outlined text-[16px]">mail</span> contact@maasamundridevi.org
+                <span className="material-symbols-outlined text-[16px]">mail</span> contact@samundridevitrust.org
+              </span>
+              <span className="hidden md:inline text-slate-500">|</span>
+              <span className="hidden lg:flex items-center gap-1 text-[#ffcc80] font-medium">
+                <span className="material-symbols-outlined text-[15px]">badge</span> Darpan: BR/2024/0378911
               </span>
               <span className="hidden md:inline text-slate-500">|</span>
               <span className="hidden md:flex items-center gap-1 text-[#E8F5E9] font-medium">
-                <span className="material-symbols-outlined text-[16px] text-[#81c784]">verified</span> 80G & 12A Certified (PAN: AALTM2352G)
+                <span className="material-symbols-outlined text-[16px] text-[#81c784]">verified</span> 80G &amp; 12A Certified (PAN: AALTM2352G)
               </span>
             </div>
 

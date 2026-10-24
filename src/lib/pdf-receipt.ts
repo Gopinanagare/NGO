@@ -16,6 +16,7 @@ export interface DonationReceiptData {
   createdAt: Date | string;
   ngoName?: string;
   ngoRegNo?: string;
+  ngoDarpanId?: string;
   ngo80GNo?: string;
   ngo12ANo?: string;
   ngoAddress?: string;
@@ -91,10 +92,10 @@ export function generateDonationReceiptPDF(data: DonationReceiptData): Promise<B
          .text(data.ngoAddress || "Pipardih Ward No- 33, Gali No- 04, Aurangabad – 824101, Bihar, India", 40, 64, { align: "center" });
       
       doc.fontSize(8.5)
-         .text(`PAN: AALTM2352G  |  Deed No: 16/2024  |  80G URN: ${data.ngo80GNo || "AALTM2352GF20261"}  |  12A URN: ${data.ngo12ANo || "AALTM2352GE20261"}`, 40, 80, { align: "center" });
+         .text(`PAN: AALTM2352G  |  NGO Darpan: ${data.ngoDarpanId || "BR/2024/0378911"}  |  Deed No: 16/2024  |  80G: ${data.ngo80GNo || "AALTM2352GF20261"}`, 40, 80, { align: "center" });
 
       doc.fontSize(8)
-         .text("Contact: +91 77660 84876  |  contact@samundridevitrust.org", 40, 96, { align: "center" });
+         .text("Central Bank of India A/C: 4156734014 | IFSC: CBIN0284035 | Contact: +91 77660 84876", 40, 96, { align: "center" });
 
       // Title Section
       doc.fillColor(primaryColor)

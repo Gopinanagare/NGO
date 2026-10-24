@@ -1030,9 +1030,22 @@ export default function AdminDashboardPage() {
                 <p><strong>Founder &amp; President:</strong> Kamla Kumari (कमला कुमारी)</p>
                 <p><strong>Registered Address:</strong> Pipardih Ward No- 33, Gali No- 04, Aurangabad – 824101, Bihar</p>
                 <p><strong>PAN:</strong> AALTM2352G</p>
+                <p><strong>NGO Darpan ID:</strong> BR/2024/0378911</p>
                 <p><strong>Trust Deed Reg No:</strong> Deed No. 16/2024, Aurangabad (14/03/2024)</p>
                 <p><strong>80G Provisional URN:</strong> AALTM2352GF20261 (Tax Years 2026-27 to 2028-29)</p>
                 <p><strong>12A Provisional URN:</strong> AALTM2352GE20261 (Tax Years 2026-27 to 2028-29)</p>
+              </div>
+
+              <div className="p-4 bg-sky-50 rounded-2xl border border-sky-200 space-y-2 text-sky-950">
+                <p className="font-bold text-sky-900 flex items-center gap-1.5">
+                  <span className="material-symbols-outlined text-[16px]">account_balance</span>
+                  Official Bank Account Details:
+                </p>
+                <p><strong>Bank Name:</strong> Central Bank of India</p>
+                <p><strong>Account Number:</strong> 4156734014</p>
+                <p><strong>IFSC Code:</strong> CBIN0284035</p>
+                <p><strong>Branch:</strong> S.N. Sinha College, Aurangabad, Bihar</p>
+                <p><strong>Beneficiary:</strong> MAA SAMUNDRI DEVI CHARITABLE TRUST</p>
               </div>
 
               <div className="p-4 bg-emerald-50 rounded-2xl border border-emerald-200 space-y-2 text-emerald-950">

@@ -5,8 +5,8 @@ export default function AboutPage() {
     {
       name: "Smt. Kamla Kumari",
       hindiName: "श्रीमती कमला कुमारी",
-      designation: "President & Founder Managing Trustee",
-      role: "अध्यक्ष सह मुख्य न्यासी",
+      designation: "President & Founder Settler",
+      role: "अध्यक्ष सह मुख्य न्यासी (संस्थापक)",
       phone: "+91 77660 84876",
       image: "/images/kamla_kumari.jpg",
       isPresident: true,
@@ -18,26 +18,26 @@ export default function AboutPage() {
       designation: "General Secretary & Trustee",
       role: "सचिव सह न्यासी",
       phone: "+91 99559 72022",
-      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=400",
-      bio: "Coordinating executive operations, legal registrations, rural outreach, and administrative oversight of trust welfare programs.",
+      image: "/images/team/ram_vijay_yadav_secretary.jpg",
+      bio: "Honored with Bhagat Singh Samman 2026 at the National Blood Donor Convention. Coordinating executive operations, legal registrations, rural outreach, and administrative oversight.",
     },
     {
       name: "Smt. Priyanka Kumari",
-      hindiName: "श्रीमती प्रियंका कुमारी",
+      hindiName: "श्रीमती प्रियंका कुमारी (M.Sc., M.Ed.)",
       designation: "Treasurer & Trustee",
-      role: "कोषाध्यक्ष सह न्यासी",
+      role: "कोषाध्यक्ष सह न्यासी (Principal, Bal Vatika)",
       phone: "+91 78272 11196",
-      image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=400",
-      bio: "Managing institutional finances, fund distribution, audit compliances, and transparency of every charitable contribution.",
+      image: "/images/team/priyanka_kumari_treasurer.jpg",
+      bio: "M.Sc., M.Ed., Principal of Bal Vatika Play School. Managing institutional finances, educational curriculum assistance, fund distribution, and statutory audit compliance.",
     },
     {
-      name: "Shri Chandan Kumar",
-      hindiName: "श्री चंदन कुमार",
-      designation: "Co-Treasurer & Trustee",
-      role: "सह-कोषाध्यक्ष सह न्यासी",
-      phone: "+91 72569 64547",
-      image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=400",
-      bio: "Assisting treasury operations, donor receipt verification, and banking compliance for public benefit projects.",
+      name: "Dr. Rakesh Kant Kamal",
+      hindiName: "डॉ. राकेश कांत कमल (Ph.D. - IIT Dhanbad)",
+      designation: "Senior Consultant to the Trust",
+      role: "वरिष्ठ सलाहकार (पर्यावरणविद्)",
+      phone: "+91 77660 84876",
+      image: "/images/team/dr_rakesh_kant_kamal_consultant.jpg",
+      bio: "Ph.D. from IIT Dhanbad, Eminent Environmentalist and researcher. Advising on sustainable rural development, eco-conservation, clean water, and educational outreach.",
     },
     {
       name: "Shri Kailash Yadav",
@@ -45,8 +45,8 @@ export default function AboutPage() {
       designation: "Executive Member & Trustee",
       role: "कार्यकारी सदस्य सह न्यासी",
       phone: "+91 95726 85690",
-      image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=400",
-      bio: "Guiding community development initiatives, agricultural farmer assistance, and local volunteer mobilization.",
+      image: "/images/team/kailash_yadav_trustee.jpg",
+      bio: "Guiding community welfare initiatives, agricultural farmer assistance, blanket distribution, and local volunteer mobilization.",
     },
     {
       name: "Shri Dhananjay Kumar",
@@ -54,8 +54,26 @@ export default function AboutPage() {
       designation: "Executive Member & Trustee",
       role: "कार्यकारी सदस्य सह न्यासी",
       phone: "+91 91221 38448",
-      image: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?q=80&w=400",
-      bio: "Spearheading field operations, educational camps, and disaster relief logistics in rural regions.",
+      image: "/images/team/dhananjay_kumar_trustee.jpg",
+      bio: "Spearheading field operations, health camps, relief logistics, and community assistance in rural villages.",
+    },
+    {
+      name: "Smt. Swetprabha",
+      hindiName: "श्रीमती श्वेतप्रभा",
+      designation: "Trustee & Education Coordinator",
+      role: "न्यासी सह शिक्षा समन्वयक",
+      phone: "+91 78272 11196",
+      image: "/images/team/swetprabha_trustee.jpg",
+      bio: "Dedicated educator and social worker fostering children's primary education, moral learning, and women self-help empowerment drives.",
+    },
+    {
+      name: "Shri Chandan Kumar",
+      hindiName: "श्री चंदन कुमार",
+      designation: "Co-Treasurer & Trustee",
+      role: "सह-कोषाध्यक्ष सह न्यासी",
+      phone: "+91 72569 64547",
+      image: "/images/trust_stamp.png",
+      bio: "Assisting treasury operations, donor receipt verification, and banking compliance for public benefit projects.",
     },
     {
       name: "Smt. Ranju Kumari",
@@ -63,8 +81,8 @@ export default function AboutPage() {
       designation: "Executive Member & Trustee",
       role: "कार्यकारी सदस्य सह न्यासी",
       phone: "+91 99340 61064",
-      image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=400",
-      bio: "Championing women skill development programs, tailoring & handicraft workshops, and health awareness drives.",
+      image: "/images/trust_stamp.png",
+      bio: "Championing women skill development programs, tailoring & handicraft workshops, and rural health awareness drives.",
     },
   ];
 
@@ -98,6 +116,11 @@ export default function AboutPage() {
       title: "Permanent Account Number (e-PAN) Card",
       meta: "Income Tax Dept., Govt. of India | PAN: AALTM2352G | Maa Samundri Devi Charitable Trust",
       href: "/images/pan_card.jpg",
+    },
+    {
+      title: "Trust Bank Account Passbook & Certificate",
+      meta: "Central Bank of India | A/C: 4156734014 | IFSC: CBIN0284035 | S.N. Sinha College, Aurangabad",
+      href: "/images/team/bank_passbook_cbi.jpg",
     },
   ];
 
@@ -269,12 +292,21 @@ export default function AboutPage() {
               Maa Samundri Devi Charitable Trust operates with absolute transparency and complete regulatory compliance under Indian Law. All registrations, income tax orders, and trust deed records are publicly available for donors, members, and verification authorities.
             </p>
             <div className="space-y-2 text-xs font-semibold text-[#131e17]">
-              <div className="bg-white/80 p-3 rounded-lg border border-[#c5d8c6] space-y-1">
+              <div className="bg-white/80 p-3.5 rounded-lg border border-[#c5d8c6] space-y-1.5">
                 <p>📋 <strong>Registered Trust Deed:</strong> Deed No. 16, Book 4, Vol. 1, Pages 142–152 (Year 2024)</p>
                 <p>🏛️ <strong>Registering Authority:</strong> District Registry Office, Aurangabad (Bihar)</p>
                 <p>🆔 <strong>Permanent Account Number (PAN):</strong> AALTM2352G</p>
+                <p>🎖️ <strong>NGO Darpan Unique ID:</strong> <span className="font-mono text-emerald-800 font-bold">BR/2024/0378911</span> (Doc Ref: IN-BR-2400378911)</p>
                 <p>📜 <strong>12A Provisional URN:</strong> AALTM2352GE20261 (Order Dt: 02-10-2026)</p>
                 <p>💳 <strong>80G Provisional URN:</strong> AALTM2352GF20261 (Tax Benefit u/s 354(4))</p>
+                <div className="mt-2 pt-2 border-t border-[#c5d8c6] text-[#131e17]">
+                  <p className="font-bold text-emerald-950 flex items-center gap-1">
+                    <span className="material-symbols-outlined text-[15px]">account_balance</span> Official Trust Bank Account (For NEFT/RTGS/IMPS):
+                  </p>
+                  <p><strong>Bank:</strong> Central Bank of India • <strong>Branch:</strong> S.N. Sinha College, Aurangabad</p>
+                  <p><strong>A/C Number:</strong> <span className="font-mono font-bold text-emerald-800">4156734014</span> • <strong>IFSC:</strong> <span className="font-mono font-bold text-emerald-800">CBIN0284035</span></p>
+                  <p><strong>Account Name:</strong> MAA SAMUNDRI DEVI CHARITABLE TRUST</p>
+                </div>
               </div>
             </div>
           </div>

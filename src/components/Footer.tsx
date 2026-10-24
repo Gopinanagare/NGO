@@ -27,13 +27,25 @@ export default function Footer() {
             <div className="space-y-1 text-xs text-slate-400">
               <p>📍 <strong>Registered Office:</strong> Pipardih Ward No- 33, Gali No- 04, Aurangabad - 824101, Bihar</p>
               <p>📞 <strong>Helpline:</strong> +91 77660 84876 (President) / +91 99559 72022 (Secretary)</p>
-              <p>✉️ <strong>Email:</strong> contact@maasamundridevi.org</p>
+              <p>✉️ <strong>Email:</strong> contact@samundridevitrust.org</p>
             </div>
-            <div className="pt-1">
-              <span className="inline-flex items-center gap-1.5 bg-[#E8F5E9] text-[#1B5E20] px-3 py-1 rounded text-xs font-bold">
+            <div className="pt-2 flex flex-wrap gap-2 text-xs">
+              <span className="inline-flex items-center gap-1.5 bg-[#E8F5E9] text-[#1B5E20] px-3 py-1 rounded font-bold">
                 <span className="material-symbols-outlined text-[16px] fill">verified</span>
-                80G & 12A Certified Non-Profit • PAN: AALTM2352G
+                80G &amp; 12A Certified • PAN: AALTM2352G
               </span>
+              <span className="inline-flex items-center gap-1.5 bg-amber-950/80 text-amber-300 border border-amber-600/40 px-3 py-1 rounded font-bold">
+                <span className="material-symbols-outlined text-[16px]">badge</span>
+                NGO Darpan: BR/2024/0378911
+              </span>
+            </div>
+            <div className="p-3 bg-slate-900/90 rounded-xl border border-slate-800 text-[11px] text-slate-300 space-y-1">
+              <p className="font-bold text-amber-400 flex items-center gap-1">
+                <span className="material-symbols-outlined text-[14px]">account_balance</span> Official Trust Bank Account (Donations &amp; NEFT/RTGS):
+              </p>
+              <p><strong>Bank:</strong> Central Bank of India (S.N. Sinha College Branch, Aurangabad)</p>
+              <p><strong>A/C No:</strong> <span className="font-mono text-white font-bold tracking-wider">4156734014</span> | <strong>IFSC:</strong> <span className="font-mono text-white font-bold">CBIN0284035</span></p>
+              <p><strong>Beneficiary:</strong> MAA SAMUNDRI DEVI CHARITABLE TRUST</p>
             </div>
           </div>
 

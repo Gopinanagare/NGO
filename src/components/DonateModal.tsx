@@ -25,6 +25,14 @@ export default function DonateModal({ isOpen, onClose, defaultCause = "General F
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [successData, setSuccessData] = useState<{ donationId: string; receiptNumber: string } | null>(null);
+  const [showBankDetails, setShowBankDetails] = useState(false);
+  const [copiedField, setCopiedField] = useState<string | null>(null);
+
+  const handleCopy = (text: string, field: string) => {
+    navigator.clipboard.writeText(text);
+    setCopiedField(field);
+    setTimeout(() => setCopiedField(null), 2000);
+  };
 
   const presetAmounts = [500, 1000, 2500, 5000, 10000];
 
@@ -342,6 +350,70 @@ export default function DonateModal({ isOpen, onClose, defaultCause = "General F
                 >
                   Continue to Details
                 </button>
+
+                {/* Direct Bank Transfer Option */}
+                <div className="pt-2 border-t border-slate-200">
+                  <button
+                    type="button"
+                    onClick={() => setShowBankDetails(!showBankDetails)}
+                    className="w-full text-xs text-[#031635] font-bold py-2 flex items-center justify-between hover:text-[#F57C00] transition-colors"
+                  >
+                    <span className="flex items-center gap-1.5">
+                      <span className="material-symbols-outlined text-[16px]">account_balance</span>
+                      Prefer Direct Bank Transfer (NEFT / RTGS / IMPS)?
+                    </span>
+                    <span className="material-symbols-outlined text-[18px]">
+                      {showBankDetails ? "expand_less" : "expand_more"}
+                    </span>
+                  </button>
+
+                  {showBankDetails && (
+                    <div className="mt-2 bg-[#f0f9ff] border border-[#bae6fd] rounded-xl p-3.5 space-y-2 text-xs">
+                      <div className="flex justify-between items-center border-b border-sky-100 pb-1.5">
+                        <span className="text-slate-500 font-semibold">Beneficiary:</span>
+                        <span className="font-bold text-[#031635] text-right">MAA SAMUNDRI DEVI CHARITABLE TRUST</span>
+                      </div>
+                      <div className="flex justify-between items-center border-b border-sky-100 pb-1.5">
+                        <span className="text-slate-500 font-semibold">Bank Name:</span>
+                        <span className="font-bold text-[#031635]">Central Bank of India</span>
+                      </div>
+                      <div className="flex justify-between items-center border-b border-sky-100 pb-1.5">
+                        <span className="text-slate-500 font-semibold">Account Number:</span>
+                        <div className="flex items-center gap-1.5">
+                          <span className="font-mono font-bold text-sky-950 text-sm">4156734014</span>
+                          <button
+                            type="button"
+                            onClick={() => handleCopy("4156734014", "modal-acc")}
+                            className="bg-white px-2 py-0.5 rounded border border-sky-300 hover:bg-sky-100 text-[10px] font-bold"
+                          >
+                            {copiedField === "modal-acc" ? "Copied!" : "Copy"}
+                          </button>
+                        </div>
+                      </div>
+                      <div className="flex justify-between items-center border-b border-sky-100 pb-1.5">
+                        <span className="text-slate-500 font-semibold">IFSC Code:</span>
+                        <div className="flex items-center gap-1.5">
+                          <span className="font-mono font-bold text-sky-950 text-sm">CBIN0284035</span>
+                          <button
+                            type="button"
+                            onClick={() => handleCopy("CBIN0284035", "modal-ifsc")}
+                            className="bg-white px-2 py-0.5 rounded border border-sky-300 hover:bg-sky-100 text-[10px] font-bold"
+                          >
+                            {copiedField === "modal-ifsc" ? "Copied!" : "Copy"}
+                          </button>
+                        </div>
+                      </div>
+                      <div className="flex justify-between items-center text-[11px] text-slate-600">
+                        <span>Branch:</span>
+                        <span>S.N. Sinha College, Aurangabad (Bihar)</span>
+                      </div>
+                      <div className="flex justify-between items-center text-[11px] text-slate-600 pt-1 border-t border-sky-100">
+                        <span>NGO Darpan ID:</span>
+                        <span className="font-mono font-bold text-sky-950">BR/2024/0378911</span>
+                      </div>
+                    </div>
+                  )}
+                </div>
               </div>
             )}
 

@@ -13,6 +13,12 @@ async function main() {
       regNumber: "Deed No: 16/2024 (Aurangabad)",
       taxExempt80G: "AALTM2352GF20261",
       taxExempt12A: "AALTM2352GE20261",
+      darpanId: "BR/2024/0378911",
+      panNumber: "AALTM2352G",
+      bankName: "Central Bank of India",
+      accountNumber: "4156734014",
+      ifscCode: "CBIN0284035",
+      branchName: "S.N. Sinha College, Aurangabad (Bihar)",
       address: "Pipardih Ward No- 33, Gali No- 04, Aurangabad – 824101, Bihar",
       phone: "+91 77660 84876",
       email: "contact@samundridevitrust.org",
@@ -28,6 +34,12 @@ async function main() {
       regNumber: "Deed No: 16/2024 (Aurangabad)",
       taxExempt80G: "AALTM2352GF20261",
       taxExempt12A: "AALTM2352GE20261",
+      darpanId: "BR/2024/0378911",
+      panNumber: "AALTM2352G",
+      bankName: "Central Bank of India",
+      accountNumber: "4156734014",
+      ifscCode: "CBIN0284035",
+      branchName: "S.N. Sinha College, Aurangabad (Bihar)",
       address: "Pipardih Ward No- 33, Gali No- 04, Aurangabad – 824101, Bihar",
       phone: "+91 77660 84876",
       email: "contact@samundridevitrust.org",
@@ -97,87 +109,127 @@ async function main() {
   }
 
   // 4. Seed Campaigns
-  const existingCampaigns = await prisma.campaign.count();
-  if (existingCampaigns === 0) {
-    await prisma.campaign.create({
-      data: {
-        title: "Educate 500 Rural Children",
-        slug: "educate-500-rural-children",
-        description: "Providing school kits, digital tablets, and qualified teachers to children in underprivileged rural villages.",
-        targetAmount: 500000,
-        raisedAmount: 0,
-        image: "https://images.unsplash.com/photo-1497633762265-9d179a990aa6?q=80&w=1200&auto=format&fit=crop",
-        category: "Education",
-        status: "ACTIVE",
-      },
-    });
+  await prisma.campaign.deleteMany({});
+  await prisma.campaign.create({
+    data: {
+      title: "Educate Rural Children & Youth",
+      slug: "educate-rural-children-youth",
+      description: "Providing school kits, stationery, digital learning tablets, and qualified teachers to children in underprivileged rural villages across Bihar.",
+      targetAmount: 500000,
+      raisedAmount: 75000,
+      image: "/images/events/blanket_distribution.jpg",
+      category: "Education",
+      status: "ACTIVE",
+    },
+  });
 
-    await prisma.campaign.create({
-      data: {
-        title: "Mobile Health & Vaccination Clinic",
-        slug: "mobile-health-clinic",
-        description: "Deploying fully equipped mobile medical vans with doctors to remote tribal belts and slums.",
-        targetAmount: 750000,
-        raisedAmount: 0,
-        image: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?q=80&w=1200&auto=format&fit=crop",
-        category: "Healthcare",
-        status: "ACTIVE",
-      },
-    });
+  await prisma.campaign.create({
+    data: {
+      title: "Annual Free Health & Cataract Surgery Camps",
+      slug: "free-health-cataract-camps",
+      description: "Organizing specialist eye and medical diagnosis camps with Narayan Medical College & Hospital (NMCH Jamuhar, Rohtas) with free medicine and cataract surgery referrals.",
+      targetAmount: 750000,
+      raisedAmount: 180000,
+      image: "/images/events/health_camp_doctors.jpg",
+      category: "Healthcare",
+      status: "ACTIVE",
+    },
+  });
 
-    // 5. Seed Activities / Projects
-    await prisma.activity.create({
-      data: {
-        title: "Digital Literacy & Computer Lab Center",
-        category: "Education",
-        description: "Established a 20-computer lab catering to 300+ youth to provide free coding, basic computing, and internet training.",
-        location: "Najafgarh, Delhi",
-        beneficiaries: 320,
-        date: "2026-01-15",
-        image: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=1200&auto=format&fit=crop",
+  // 5. Seed Activities / Projects
+  await prisma.activity.deleteMany({});
+  await prisma.activity.createMany({
+    data: [
+      {
+        title: "Free Eye, Cataract & Medical Health Camp",
+        category: "Medical Relief",
+        description: "Organized in collaboration with Narayan Medical College & Hospital (NMCH Jamuhar, Rohtas) with free ophthalmologist checkups, cataract screening, lens replacement surgery referral, and free essential medicines.",
+        location: "Sihada, Goradiha (Rafiganj), Aurangabad, Bihar",
+        beneficiaries: 1450,
+        date: "2025-03-20",
+        image: "/images/events/health_camp_doctors.jpg",
         featured: true,
       },
-    });
-
-    await prisma.activity.create({
-      data: {
-        title: "Mega Free Eye & Dental Checkup Camp",
-        category: "Healthcare",
-        description: "Screened 1,200 senior citizens and children, distributing free prescription glasses and essential medicines.",
-        location: "Alwar, Rajasthan",
+      {
+        title: "Blanket, Clothes & Educational Kit Distribution",
+        category: "Education & Skill",
+        description: "Annual distribution of warm blankets, clothes, and school stationery kits for economically underprivileged children, elderly citizens, and marginalized families.",
+        location: "Pipardih & Sihada, Aurangabad, Bihar",
+        beneficiaries: 650,
+        date: "2025-03-20",
+        image: "/images/events/blanket_distribution.jpg",
+        featured: true,
+      },
+      {
+        title: "Elder Felicitation & Community Narayan Bhoj",
+        category: "Rural Welfare",
+        description: "Honoring senior village citizens with traditional shawls and organizing a mass community feast (Narayan Bhoj) with women empowerment discourse.",
+        location: "Goradiha Panchayat, Aurangabad, Bihar",
         beneficiaries: 1200,
-        date: "2026-02-05",
-        image: "https://images.unsplash.com/photo-1584515979956-d9f6e5d09982?q=80&w=1200&auto=format&fit=crop",
+        date: "2025-03-20",
+        image: "/images/events/honoring_elders.jpg",
         featured: true,
       },
-    });
-
-    // 6. Seed Events
-    await prisma.event.create({
-      data: {
-        title: "Annual Impact Summit & Volunteer Recognition 2026",
-        description: "Gathering all volunteers, members, and supporters to celebrate achievements and outline future milestones.",
-        venue: "Main Auditorium, India International Centre, Lodhi Estate, New Delhi",
-        eventDate: "2026-09-15",
-        eventTime: "10:00 AM - 04:00 PM",
-        bannerImage: "https://images.unsplash.com/photo-1511578314322-379afb476865?q=80&w=1200&auto=format&fit=crop",
-        maxVolunteers: 25,
-        registeredVolunteers: 0,
-        status: "UPCOMING",
+      {
+        title: "Specialist Cataract Screening & Vision Care",
+        category: "Medical Relief",
+        description: "On-site eye diagnosis, vision acuity testing, prescribing glasses, and direct patient mobilization for cataract removal procedures in rural Rohtas/Aurangabad.",
+        location: "Village Sihada, Aurangabad, Bihar",
+        beneficiaries: 850,
+        date: "2025-03-20",
+        image: "/images/events/eye_checkup_camp.jpg",
+        featured: true,
       },
-    });
+      {
+        title: "Angavastra & Winter Relief Support",
+        category: "Rural Welfare",
+        description: "Direct community stage felicitation offering warm winter blankets, sarees, and angavastras to vulnerable widows and impoverished villagers.",
+        location: "Sihada, Rafiganj, Aurangabad, Bihar",
+        beneficiaries: 500,
+        date: "2025-03-20",
+        image: "/images/events/cloth_distribution_stage.jpg",
+        featured: true,
+      },
+    ],
+  });
 
-    // 7. Seed Gallery Items
-    await prisma.galleryItem.createMany({
-      data: [
-        { title: "Children enjoying interactive learning in class", category: "Education", mediaType: "image", url: "https://images.unsplash.com/photo-1509062522246-3755977927d7?q=80&w=800&auto=format&fit=crop" },
-        { title: "Free Health screening camp doctor consultation", category: "Healthcare", mediaType: "image", url: "https://images.unsplash.com/photo-1576091160550-2173dba999ef?q=80&w=800&auto=format&fit=crop" },
-        { title: "Tree plantation drive with community volunteers", category: "Environment", mediaType: "image", url: "https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?q=80&w=800&auto=format&fit=crop" },
-        { title: "Women Skill Development Sewing Center", category: "Empowerment", mediaType: "image", url: "https://images.unsplash.com/photo-1489987707025-afc232f7ea0f?q=80&w=800&auto=format&fit=crop" },
-      ],
-    });
+  // 6. Seed Events
+  await prisma.event.deleteMany({});
+  await prisma.event.create({
+    data: {
+      title: "Annual Punyatithi Smriti Samaroh & Mega Health Camp 2026",
+      description: "Commemoration assembly, free multi-specialty medical checkups, cataract surgeries in association with NMCH Jamuhar, Rohtas, educational kits, and blanket distribution in rural Aurangabad.",
+      venue: "Village Sihada, Goradiha Panchayat (Rafiganj), District Aurangabad, Bihar",
+      eventDate: "2026-03-20",
+      eventTime: "10:00 AM - 05:00 PM",
+      bannerImage: "/images/events/punyatithi_kamla_kumari.jpg",
+      maxVolunteers: 50,
+      registeredVolunteers: 12,
+      status: "UPCOMING",
+    },
+  });
 
-    // 8. Seed Blog Posts
+  // 7. Seed Gallery Items
+  await prisma.galleryItem.deleteMany({});
+  await prisma.galleryItem.createMany({
+    data: [
+      { title: "Specialist doctors examining patients at Free Health Camp", category: "Healthcare", mediaType: "image", url: "/images/events/health_camp_doctors.jpg" },
+      { title: "President Kamla Kumari inaugurating Punyatithi Smriti Samaroh", category: "Community", mediaType: "image", url: "/images/events/punyatithi_kamla_kumari.jpg" },
+      { title: "Blanket and educational material distribution for rural families", category: "Empowerment", mediaType: "image", url: "/images/events/blanket_distribution.jpg" },
+      { title: "Honoring village elders with traditional shawls and respect", category: "Social Welfare", mediaType: "image", url: "/images/events/honoring_elders.jpg" },
+      { title: "Senior citizens attending health and cataract screening camp", category: "Healthcare", mediaType: "image", url: "/images/events/beneficiaries_elders.jpg" },
+      { title: "Free eye checkup and diagnosis by NMCH medical team", category: "Healthcare", mediaType: "image", url: "/images/events/eye_checkup_camp.jpg" },
+      { title: "Cloth and angavastra distribution ceremony on stage", category: "Social Welfare", mediaType: "image", url: "/images/events/cloth_distribution_stage.jpg" },
+      { title: "Secretary Ram Vijay Yadav honored with Bhagat Singh Samman 2026", category: "Community", mediaType: "image", url: "/images/team/ram_vijay_yadav_award.jpg" },
+      { title: "Community Narayan Bhoj mass feast for rural beneficiaries", category: "Community", mediaType: "image", url: "/images/events/narayan_seva_feast.jpg" },
+      { title: "Rural gathering and awareness session during annual samaroh", category: "Community", mediaType: "image", url: "/images/events/community_gathering_1.jpg" },
+      { title: "Central Bank of India Official Account Record Verification", category: "Compliance", mediaType: "image", url: "/images/team/bank_passbook_cbi.jpg" },
+    ],
+  });
+
+  // 8. Seed Blog Posts
+  const existingBlogs = await prisma.blogPost.count();
+  if (existingBlogs === 0) {
     await prisma.blogPost.create({
       data: {
         title: "How Digital Education is Transforming Rural Villages in India",
@@ -186,7 +238,7 @@ async function main() {
         content: `Education is the most powerful tool to break the cycle of generational poverty. At Maa Samundri Devi Charitable Trust, we recently established digital literacy centers and community awareness programs. The enthusiasm among students and teachers is inspiring...`,
         author: "Maa Samundri Devi Trust Team",
         category: "Education",
-        image: "https://images.unsplash.com/photo-1509062522246-3755977927d7?q=80&w=1200&auto=format&fit=crop",
+        image: "/images/events/blanket_distribution.jpg",
         published: true,
       },
     });
